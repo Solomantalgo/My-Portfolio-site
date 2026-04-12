@@ -11,6 +11,7 @@
 <meta property="og:description" content="Building fast, modern websites for businesses and custom web systems. Based in Kampala, Uganda.">
 <meta property="og:url" content="https://solomantalgo.online">
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700;800;900&family=Epilogue:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/solologo.png">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -46,8 +47,8 @@ nav{
   background:rgba(7,9,15,0.85);backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border2);
 }
-.nav-logo{font-family:var(--font-h);font-size:0.9rem;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-0.5px}
-.nav-logo span{color:var(--lime)}
+.nav-logo{display:flex;align-items:center}
+.nav-logo img{height:35px;width:auto}
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;font-weight:400;letter-spacing:0.03em;transition:color 0.2s}
 .nav-links a:hover{color:var(--lime)}
@@ -349,7 +350,7 @@ footer strong{color:var(--lime)}
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Solo<span>.</span></a>
+  <a href="#" class="nav-logo"><img src="images/solologo.png" alt="Solo Logo"></a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#work">Work</a></li>
@@ -391,7 +392,7 @@ footer strong{color:var(--lime)}
       <span class="orbit-tag">Supabase ⚡</span>
     </div>
     <div class="hero-img-frame">
-      <img src="https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Kisense Solomon web developer Kampala">
+      <img src="images/At work.png" alt="Kisense Solomon web developer Kampala">
       <div class="float-badge top-left">
         <div class="badge-num">8+</div>
         <div class="badge-txt">Projects Built</div>
@@ -664,7 +665,7 @@ footer strong{color:var(--lime)}
     <div class="about-grid">
       <div class="about-img-wrap reveal">
         <div class="about-img">
-          <img src="https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Kisense Solomon developer Kampala" loading="lazy">
+          <img src="images/At work.png" alt="Kisense Solomon developer Kampala" loading="lazy">
         </div>
         <div class="about-card">
           <div class="about-card-row"><div class="about-dot green"></div><div class="about-card-txt"><strong>Web Design</strong> — active projects</div></div>
@@ -744,7 +745,7 @@ footer strong{color:var(--lime)}
 
 <!-- FOOTER -->
 <footer>
-  <div class="f-logo">Solo<span>.</span></div>
+  <div class="f-logo"><img src="images/solologo.png" alt="Solo Logo" style="height:30px;width:auto"></div>
   <p>© 2025 Kisense Solomon · Kampala, Uganda · <strong>solomantalgo.online</strong></p>
   <p style="font-size:0.72rem">Built by me, for me 🛠️</p>
 </footer>
