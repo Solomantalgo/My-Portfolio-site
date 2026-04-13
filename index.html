@@ -722,22 +722,24 @@ footer strong{color:var(--lime)}
       </div>
       <div class="contact-form reveal">
         <h3>Send a Message</h3>
-        <div class="form-row">
-          <div class="fg"><label>Your Name</label><input type="text" placeholder="e.g. Grace Nakato"></div>
-          <div class="fg"><label>Phone / WhatsApp</label><input type="tel" placeholder="e.g. 0772 000 000"></div>
-        </div>
-        <div class="fg">
-          <label>What Do You Need?</label>
-          <select>
-            <option>Business Website</option>
-            <option>Custom Web System</option>
-            <option>Website Improvement / Fix</option>
-            <option>Google Maps & SEO Setup</option>
-            <option>Something Else</option>
-          </select>
-        </div>
-        <div class="fg"><label>Tell Me More</label><textarea placeholder="Describe your business and what you need. The more detail the better."></textarea></div>
-        <button class="f-submit" onclick="alert('Message received! I\'ll get back to you on WhatsApp within the hour. 🚀')">Send Message →</button>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="fg"><label>Your Name</label><input type="text" id="formName" name="name" placeholder="e.g. Grace Nakato" required></div>
+            <div class="fg"><label>Phone / WhatsApp</label><input type="tel" id="formPhone" name="phone" placeholder="e.g. 0772 000 000" required></div>
+          </div>
+          <div class="fg">
+            <label>What Do You Need?</label>
+            <select id="formService" name="service">
+              <option>Business Website</option>
+              <option>Custom Web System</option>
+              <option>Website Improvement / Fix</option>
+              <option>Google Maps & SEO Setup</option>
+              <option>Something Else</option>
+            </select>
+          </div>
+          <div class="fg"><label>Tell Me More</label><textarea id="formMessage" name="message" placeholder="Describe your business and what you need. The more detail the better."></textarea></div>
+          <button type="submit" class="f-submit" id="submitBtn">Send Message →</button>
+        </form>
       </div>
     </div>
   </div>
@@ -829,6 +831,66 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
 },{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Contact Form Handler (Dual-Channel: Formspree + WhatsApp)
+document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const btn = document.getElementById('submitBtn');
+  const originalBtnText = btn.innerHTML;
+  
+  const name = document.getElementById('formName').value;
+  const phone = document.getElementById('formPhone').value;
+  const service = document.getElementById('formService').value;
+  const message = document.getElementById('formMessage').value;
+
+  // 1. Show loading state
+  btn.innerHTML = 'Sending... ⏳';
+  btn.style.opacity = '0.7';
+  btn.disabled = true;
+
+  // 2. Prepare WhatsApp Message
+  const waMessage = `*New Booking Request*%0A%0A` +
+                    `*Name:* ${name}%0A` +
+                    `*Phone:* ${phone}%0A` +
+                    `*Service:* ${service}%0A` +
+                    `*Message:* ${message}`;
+  const whatsappUrl = `https://wa.me/256775224728?text=${waMessage}`;
+
+  // 3. Send to Formspree (Dual-Channel)
+  // IMPORTANT: Replace 'YOUR_FORMSPREE_ID' with your actual ID from formspree.io later
+  const formspreeId = 'YOUR_FORMSPREE_ID'; 
+  
+  try {
+    if (formspreeId !== 'YOUR_FORMSPREE_ID') {
+      await fetch(`https://formspree.io/f/${formspreeId}`, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+    }
+    
+    // 4. Success & WhatsApp Redirect
+    btn.innerHTML = 'Sent! Opening WhatsApp... ✅';
+    setTimeout(() => {
+      window.open(whatsappUrl, '_blank');
+      btn.innerHTML = originalBtnText;
+      btn.style.opacity = '1';
+      btn.disabled = false;
+      this.reset();
+    }, 1000);
+
+  } catch (error) {
+    console.error('Submission error:', error);
+    // Even if Formspree fails, we still try to open WhatsApp so the lead isn't lost
+    window.open(whatsappUrl, '_blank');
+    btn.innerHTML = originalBtnText;
+    btn.style.opacity = '1';
+    btn.disabled = false;
+  }
+});
 </script>
 </body>
 </html>
