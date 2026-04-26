@@ -129,16 +129,16 @@
     animation: fadeIn 1s ease 0.4s both;
   }
 
-  /* WhatsApp — HERO button */
+  /* ── WhatsApp HERO pill ── */
   .btn-wa {
     position: relative;
     width: 100%;
     max-width: 360px;
-    background: var(--green);
-    color: #040f04;
+    background: #2db80f;          /* slightly muted green — less blinding */
+    color: #030f03;
     border: none;
-    border-radius: 12px;
-    padding: 15px 24px;
+    border-radius: 100px;
+    padding: 14px 18px 14px 14px;
     display: flex;
     align-items: center;
     gap: 14px;
@@ -146,140 +146,143 @@
     text-decoration: none;
     overflow: hidden;
     animation: fadeUp 0.6s ease 0.5s both;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 0 30px rgba(57,255,20,0.4), 0 4px 20px rgba(0,0,0,0.5);
+    transition: transform 0.18s, box-shadow 0.18s;
+    /* toned-down shadow — no big neon bloom */
+    box-shadow: 0 4px 18px rgba(30,160,10,0.35), 0 2px 6px rgba(0,0,0,0.4);
     margin-bottom: 10px;
   }
 
   .btn-wa::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+    top: 0; left: 0;
+    width: 55%; height: 50%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent);
+    border-radius: 100px 100px 0 0;
+    pointer-events: none;
   }
 
   .btn-wa:hover {
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 0 50px rgba(57,255,20,0.6), 0 8px 30px rgba(0,0,0,0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(30,160,10,0.45), 0 4px 10px rgba(0,0,0,0.5);
   }
 
   .btn-wa:active { transform: scale(0.98); }
 
-  /* Pulse ring on WA button */
-  .btn-wa::after {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 14px;
-    border: 2px solid var(--green);
-    animation: pulse-ring 2s ease infinite;
-    pointer-events: none;
-  }
-
-  @keyframes pulse-ring {
-    0% { opacity: 1; transform: scale(1); }
-    70% { opacity: 0; transform: scale(1.04); }
-    100% { opacity: 0; transform: scale(1.04); }
-  }
-
   .btn-icon {
-    width: 40px; height: 40px;
+    width: 42px; height: 42px;
     border-radius: 50%;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.18);
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
 
-  .btn-wa .btn-icon svg { fill: #040f04; }
+  .btn-wa .btn-icon svg { fill: #030f03; }
 
   .btn-text { flex: 1; }
+
   .btn-label {
     font-family: 'Orbitron', monospace;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
+    letter-spacing: 0.5px;
   }
+
   .btn-sub {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 400;
-    opacity: 0.7;
-    letter-spacing: 1px;
+    opacity: 0.65;
+    letter-spacing: 0.3px;
   }
 
   .btn-arrow {
-    font-size: 20px;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
     font-weight: 700;
-    opacity: 0.6;
+    flex-shrink: 0;
   }
 
-  /* Secondary buttons */
+  /* ── Secondary pill buttons ── */
   .btn-secondary {
     width: 100%;
     max-width: 360px;
-    background: var(--card-bg);
-    border: 1px solid rgba(57,255,20,0.25);
-    border-radius: 12px;
-    padding: 12px 20px;
+    background: rgba(57,255,20,0.06);
+    border: 1.5px solid rgba(57,255,20,0.2);
+    border-radius: 100px;
+    padding: 12px 16px 12px 12px;
     display: flex;
     align-items: center;
     gap: 14px;
     cursor: pointer;
     text-decoration: none;
     color: var(--text);
-    transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
-    margin-bottom: 8px;
-    backdrop-filter: blur(10px);
+    transition: border-color 0.18s, background 0.18s, transform 0.18s;
+    margin-bottom: 9px;
   }
 
   .btn-secondary:hover {
-    border-color: var(--green);
-    background: rgba(57,255,20,0.06);
+    border-color: rgba(57,255,20,0.45);
+    background: rgba(57,255,20,0.1);
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(57,255,20,0.15);
   }
 
   .btn-secondary .btn-icon {
-    background: rgba(57,255,20,0.08);
+    background: rgba(57,255,20,0.09);
     border: 1px solid rgba(57,255,20,0.2);
   }
 
   .btn-secondary .btn-icon svg { fill: var(--green); }
 
+  .btn-secondary .btn-arrow {
+    background: rgba(57,255,20,0.09);
+    color: var(--green);
+  }
+
   .btn-secondary:nth-of-type(2) { animation: fadeUp 0.6s ease 0.65s both; }
   .btn-secondary:nth-of-type(3) { animation: fadeUp 0.6s ease 0.75s both; }
-  .btn-secondary:nth-of-type(4) { animation: fadeUp 0.6s ease 0.85s both; }
 
-  /* Save contact button - special style */
+  /* ── Save contact pill ── */
   .btn-save {
     width: 100%;
     max-width: 360px;
     background: transparent;
-    border: 1px dashed rgba(57,255,20,0.35);
-    border-radius: 12px;
-    padding: 10px 20px;
+    border: 1.5px dashed rgba(57,255,20,0.3);
+    border-radius: 100px;
+    padding: 10px 16px 10px 12px;
     display: flex;
     align-items: center;
     gap: 14px;
     cursor: pointer;
     color: var(--green);
-    transition: all 0.2s;
+    text-decoration: none;
+    transition: border-color 0.18s, background 0.18s, transform 0.18s;
     margin-top: 2px;
-    animation: fadeUp 0.6s ease 0.95s both;
+    animation: fadeUp 0.6s ease 0.85s both;
   }
 
   .btn-save:hover {
     background: rgba(57,255,20,0.05);
-    border-color: var(--green);
-    box-shadow: 0 0 16px rgba(57,255,20,0.1);
+    border-color: rgba(57,255,20,0.5);
     transform: translateY(-2px);
   }
 
   .btn-save .save-icon {
     width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(57,255,20,0.07);
     display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
+    font-size: 15px;
     flex-shrink: 0;
+  }
+
+  .btn-save .btn-arrow {
+    background: rgba(57,255,20,0.07);
+    color: var(--green);
   }
 
   .save-label {
@@ -288,13 +291,14 @@
     font-weight: 700;
     letter-spacing: 1px;
     display: block;
+    margin-bottom: 1px;
   }
 
   .save-sub {
     font-size: 11px;
     font-weight: 300;
     color: var(--text-dim);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
   }
 
   /* Footer */
@@ -378,7 +382,7 @@
   <!-- WhatsApp HERO -->
   <a href="https://wa.me/256775224728?text=Hi%20Solo%2C%20I%20found%20your%20profile%20and%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." class="btn-wa">
     <div class="btn-icon">
-      <svg width="26" height="26" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <svg width="24" height="24" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </div>
     <div class="btn-text">
       <span class="btn-label">Chat on WhatsApp</span>
@@ -390,34 +394,35 @@
   <!-- Call -->
   <a href="tel:+256775224728" class="btn-secondary">
     <div class="btn-icon">
-      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
     </div>
     <div class="btn-text">
       <span class="btn-label">Call Directly</span>
       <span class="btn-sub">+256 775 224 728</span>
     </div>
-    <span class="btn-arrow" style="color:var(--text-dim)">→</span>
+    <span class="btn-arrow">→</span>
   </a>
 
   <!-- Website -->
   <a href="https://solomantalgo.online" target="_blank" class="btn-secondary">
     <div class="btn-icon">
-      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
     </div>
     <div class="btn-text">
       <span class="btn-label">Visit Website</span>
       <span class="btn-sub">solomantalgo.online</span>
     </div>
-    <span class="btn-arrow" style="color:var(--text-dim)">→</span>
+    <span class="btn-arrow">→</span>
   </a>
 
   <!-- Save Contact -->
-  <a href="/connect/Solo_Kisense.vcf" class="btn-save">
+  <a href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0D%0AVERSION%3A3.0%0D%0AFN%3AKisense%20Solomon%0D%0AN%3ASolomon%3BKisense%3B%3B%3B%0D%0ATEL%3BTYPE%3DCELL%3A%2B256775224728%0D%0AURL%3Ahttps%3A%2F%2Fsolomantalgo.online%0D%0AEMAIL%3Asolo%40solomantalgo.online%0D%0ATITLE%3AFull-Stack%20Developer%0D%0AORG%3ASolomanTalgo%0D%0ANOTE%3ADeveloper%20%C2%B7%20Problem%20Solver%20%C2%B7%20Builder%0D%0AEND%3AVCARD" class="btn-save">
     <div class="save-icon">⬇</div>
-    <div>
+    <div class="btn-text">
       <span class="save-label">SAVE CONTACT</span>
       <span class="save-sub">Add Solo to your phonebook</span>
     </div>
+    <span class="btn-arrow">→</span>
   </a>
 
   <div class="footer">
