@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/(.*).vcf",
+      "source": "/(.*\\\\.vcf)",
       "headers": [
         {
           "key": "Content-Type",
