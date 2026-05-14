@@ -1,5 +1,13 @@
 const projects = [
   {
+    title: "Kookee Cart",
+    status: "LIVE CLIENT ✓",
+    desc: "A distribution powerhouse for FMCG products and official maker of Kooksy Ice Cream. Features a custom catalog & ordering platform.",
+    stack: ["FMCG", "Ice Cream", "Distribution"],
+    image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=700",
+    url: "https://kookee-cart.vercel.app/"
+  },
+  {
     title: "Bite Right Restaurant",
     status: "LIVE CLIENT ✓",
     desc: "A modern menu & ordering site for a real restaurant. Syncs with Google Sheets for real-time price updates.",
@@ -8,19 +16,35 @@ const projects = [
     url: "https://biteright-restuarant.vercel.app/"
   },
   {
+    title: "Grand Heights Hotel",
+    status: "LIVE DEMO",
+    desc: "Luxury hospitality site with room galleries, amenities showcase, and booking inquiry system.",
+    stack: ["Hotel", "Luxury", "Gold Theme"],
+    image: "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=700",
+    url: "https://hotels-and-spa.solomantalgo.online/"
+  },
+  {
     title: "Lifecare Medical Centre",
     status: "LIVE DEMO",
-    desc: "Medical clinic with doctors section, appointment booking and emergency contact strip.",
+    desc: "Modern health clinic with doctors section, appointment booking and emergency contact strip.",
     stack: ["Hospital", "Doctors Grid", "Navy Theme"],
-    image: "https://images.pexels.com/photos/4225880/pexels-photo-4225880.jpeg?auto=compress&cs=tinysrgb&w=700",
+    image: "/images/medical.png",
     url: "https://clinic-demo.solomantalgo.online"
+  },
+  {
+    title: "The Gourmet Restaurant",
+    status: "LIVE DEMO",
+    desc: "Fine dining restaurant demo with elegant layout, digital menu, and reservation form.",
+    stack: ["Dining", "Reservations", "Elegant"],
+    image: "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=700",
+    url: "https://restaurant-demo.solomantalgo.online/"
   },
   {
     title: "Zuri Beauty Studio",
     status: "LIVE DEMO",
     desc: "Luxury beauty salon with African images, gold theme, gallery and booking form.",
     stack: ["Beauty", "Gold Theme", "Slideshow"],
-    image: "https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?auto=compress&cs=tinysrgb&w=700",
+    image: "/images/saloon.png",
     url: "https://saloon-demo.solomantalgo.online"
   },
   {
@@ -38,8 +62,18 @@ const projects = [
     stack: ["Bridal", "Luxury", "Rose Theme"],
     image: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=700",
     url: "https://bridal-demo.solomantalgo.online"
+  },
+  {
+    title: "LifeCare Spa & Hotel",
+    status: "LIVE DEMO",
+    desc: "Premium wellness retreat demo featuring luxury spa treatments, hotel rooms, and wellness packages.",
+    stack: ["Spa", "Wellness", "Hotel"],
+    image: "https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=700",
+    url: "https://life-care-demo.solomantalgo.online/"
   }
 ];
+
+
 
 const Work = () => {
   return (
