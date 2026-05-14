@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 
-const Hero = () => {
+const Hero = ({ openHireModal }) => {
   useEffect(() => {
     // TYPING LOGIC FROM TRIAL.HTML
     const typing = document.getElementById('typing');
+    if (!typing) return;
     const roles = ['Web Designer', 'Fullstack Developer', 'Problem Solver', 'Based in Kampala 🇺🇬', '48hr Delivery ⚡'];
     let ri = 0, ci = 0, del = false;
 
@@ -45,6 +46,8 @@ const Hero = () => {
           <a href="#work" className="btn-lime">View My Work →</a>
           <a href="#pricing" className="btn-ghost">See Pricing</a>
         </div>
+
+
         <div className="hero-stats">
           <div className="h-stat"><strong>10+</strong><span>Projects Built</span></div>
           <div className="h-stat"><strong>48hr</strong><span>Avg Delivery</span></div>

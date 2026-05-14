@@ -1,4 +1,4 @@
-const Pricing = () => {
+const Pricing = ({ openHireModal }) => {
   return (
     <section id="pricing">
       <div className="container">
@@ -54,7 +54,9 @@ const Pricing = () => {
             </ul>
             <a href="#contact" className="price-btn price-btn-ghost">Get Started</a>
           </div>
+
         </div>
+
         <div className="reveal" style={{ marginTop: '1.5rem' }}>
           <p style={{ textAlign: 'center', fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '1.2rem', fontWeight: 300 }}>Add-on services — available with any package</p>
           <div className="addon-grid">

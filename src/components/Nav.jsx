@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Nav = () => {
+const Nav = ({ openHireModal }) => {
   return (
     <nav>
       <Link to="/" className="nav-logo">Solo<span>.</span></Link>
@@ -12,10 +12,11 @@ const Nav = () => {
         <li><a href="/#faq">FAQ</a></li>
         <li><Link to="/links">Links</Link></li>
       </ul>
-      <a href="/#contact" className="nav-hire">Hire Me</a>
+      <button onClick={openHireModal} className="nav-hire" style={{ border: 'none', cursor: 'pointer' }}>Hire Me</button>
     </nav>
   );
 };
+
 
 
 export default Nav;

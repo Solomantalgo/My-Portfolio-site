@@ -14,7 +14,7 @@ import FAB from '../components/FAB';
 import Cursor from '../components/Cursor';
 import SEO from '../components/SEO';
 
-function Home() {
+function Home({ openHireModal }) {
   useEffect(() => {
     // REVEAL ANIMATION LOGIC FROM TRIAL.HTML
     const reveal = () => {
@@ -40,14 +40,14 @@ function Home() {
     <>
       <SEO />
       <Cursor />
-      <Nav />
+      <Nav openHireModal={openHireModal} />
       <main>
-        <Hero />
+        <Hero openHireModal={openHireModal} />
         <TrustStrip />
         <Services />
         <Work />
         <Process />
-        <Pricing />
+        <Pricing openHireModal={openHireModal} />
         <About />
         <FAQ />
         <Contact />
@@ -57,5 +57,6 @@ function Home() {
     </>
   );
 }
+
 
 export default Home;
