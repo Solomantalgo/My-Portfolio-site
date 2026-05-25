@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import { ExternalLink, ArrowLeft, Globe, ShoppingCart, Utensils, Stethoscope, Scissors, Shirt, Heart, Hotel } from 'lucide-react';
+import { ExternalLink, ArrowLeft, Globe, ShoppingCart, Utensils, Stethoscope, Scissors, Shirt, Heart, Hotel, Cake } from 'lucide-react';
 
 const links = [
   {
@@ -45,6 +45,13 @@ const links = [
         url: "https://restaurant-demo.solomantalgo.online/",
         desc: "Fine dining & reservation demo",
         icon: <Utensils size={18} />,
+        color: "#3B6FFF"
+      },
+      {
+        name: "Golden Crust Bakery",
+        url: "https://bakery-demo.solomantalgo.online/",
+        desc: "Artisan bakery & custom order demo",
+        icon: <Cake size={18} />,
         color: "#3B6FFF"
       },
       {

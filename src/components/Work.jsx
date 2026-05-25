@@ -52,7 +52,7 @@ const projects = [
     status: "LIVE DEMO",
     desc: "Laundry and dry cleaning with pickup booking form and free delivery pitch.",
     stack: ["Laundry", "Booking Form", "Blue Theme"],
-    image: "https://images.pexels.com/photos/4107112/pexels-photo-4107112.jpeg?auto=compress&cs=tinysrgb&w=700",
+    image: "https://images.pexels.com/photos/7282378/pexels-photo-7282378.jpeg?auto=compress&cs=tinysrgb&w=700",
     url: "https://laundry-demo.solomantalgo.online"
   },
   {
@@ -70,6 +70,14 @@ const projects = [
     stack: ["Spa", "Wellness", "Hotel"],
     image: "https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=700",
     url: "https://life-care-demo.solomantalgo.online/"
+  },
+  {
+    title: "Golden Crust Bakery",
+    status: "LIVE DEMO",
+    desc: "Artisan bakery demo featuring fresh breads, cakes, pastry menus, and custom order forms.",
+    stack: ["Bakery", "Order Form", "Warm Theme"],
+    image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80",
+    url: "https://bakery-demo.solomantalgo.online"
   }
 ];
 

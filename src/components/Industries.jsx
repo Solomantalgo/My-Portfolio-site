@@ -5,6 +5,7 @@ const Industries = () => {
     { icon: "💇‍♀️", name: "Salon", url: "https://saloon-demo.solomantalgo.online", sub: "View Demo →" },
     { icon: "👔", name: "Laundry", url: "https://laundry-demo.solomantalgo.online", sub: "View Demo →" },
     { icon: "👰", name: "Bridal", url: "https://bridal-demo.solomantalgo.online", sub: "View Demo →" },
+    { icon: "🥐", name: "Bakery", url: "https://bakery-demo.solomantalgo.online", sub: "View Demo →" },
     { icon: "💊", name: "Pharmacy", sub: "Coming Soon" },
     { icon: "📷", name: "Photography", sub: "Coming Soon" },
     { icon: "💍", name: "Jewellery", sub: "Coming Soon" },
