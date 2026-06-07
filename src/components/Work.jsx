@@ -78,6 +78,54 @@ const projects = [
     stack: ["Bakery", "Order Form", "Warm Theme"],
     image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80",
     url: "https://bakery-demo.solomantalgo.online"
+  },
+  {
+    title: "Vogue Fashion Boutique",
+    status: "LIVE DEMO",
+    desc: "Modern apparel and clothing store demo featuring collection displays and integrated lookbooks.",
+    stack: ["Fashion", "Lookbook", "Modern Layout"],
+    image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=80",
+    url: "https://fashion-demo.solomantalgo.online/"
+  },
+  {
+    title: "Apex Fitness Gym",
+    status: "LIVE DEMO",
+    desc: "Dynamic fitness studio website with class schedules, trainer grids, and membership options.",
+    stack: ["Gym", "Schedules", "Dark Theme"],
+    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=700&q=80",
+    url: "https://gym-demo.solomantalgo.online/"
+  },
+  {
+    title: "Aurum Jewellery Studio",
+    status: "LIVE DEMO",
+    desc: "High-end jewelry showroom showcasing engagement rings, luxury watches, and custom design requests.",
+    stack: ["Jewellery", "Luxury Catalog", "Elegant Theme"],
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80",
+    url: "https://jewellery-demo.solomantalgo.online/"
+  },
+  {
+    title: "Luxe Nails & Spa",
+    status: "LIVE DEMO",
+    desc: "Chic nail salon landing page featuring custom art portfolios, pricing tables, and online booking.",
+    stack: ["Nail Studio", "Portfolio Gallery", "Pastel Theme"],
+    image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=700&q=80",
+    url: "https://nails-demo.solomantalgo.online/"
+  },
+  {
+    title: "Focus Photography Studio",
+    status: "LIVE DEMO",
+    desc: "Professional photography portfolio displaying travel, wedding, and studio galleries with a booking system.",
+    stack: ["Photography", "Masonry Gallery", "Minimalist"],
+    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=700&q=80",
+    url: "https://photography-demo.solomantalgo.online/"
+  },
+  {
+    title: "Glow Makeup Artistry",
+    status: "LIVE DEMO",
+    desc: "Elegant cosmetics and makeup artist website showcasing bridal packages, tutorial bookings, and reviews.",
+    stack: ["Makeup Artist", "Service Pricing", "Warm Aesthetic"],
+    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=80",
+    url: "https://makeup-demo.solomantalgo.online/"
   }
 ];
 
@@ -114,7 +162,7 @@ const Work = () => {
             <div>
               <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🚧</div>
               <h3 style={{ fontFamily: 'var(--font-h)', fontSize: '0.95rem', marginBottom: '0.5rem' }}>More Coming Soon</h3>
-              <p style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>Photography, hotel, pharmacy, jewellery demos in progress.</p>
+              <p style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>Hotel, pharmacy, tours & travel demos in progress.</p>
             </div>
           </div>
         </div>

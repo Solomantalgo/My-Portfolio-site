@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import { ExternalLink, ArrowLeft, Globe, ShoppingCart, Utensils, Stethoscope, Scissors, Shirt, Heart, Hotel, Cake } from 'lucide-react';
+import { ExternalLink, ArrowLeft, Globe, ShoppingCart, Utensils, Stethoscope, Scissors, Shirt, Heart, Hotel, Cake, ShoppingBag, Dumbbell, Gem, Sparkles, Camera } from 'lucide-react';
 
 const links = [
   {
@@ -55,6 +55,27 @@ const links = [
         color: "#3B6FFF"
       },
       {
+        name: "Vogue Fashion Boutique",
+        url: "https://fashion-demo.solomantalgo.online/",
+        desc: "Modern apparel & clothing store demo",
+        icon: <ShoppingBag size={18} />,
+        color: "#3B6FFF"
+      },
+      {
+        name: "Apex Fitness Gym",
+        url: "https://gym-demo.solomantalgo.online/",
+        desc: "Gym memberships & trainer schedule demo",
+        icon: <Dumbbell size={18} />,
+        color: "#3B6FFF"
+      },
+      {
+        name: "Aurum Jewellery Studio",
+        url: "https://jewellery-demo.solomantalgo.online/",
+        desc: "Luxury jewelry collection & catalog demo",
+        icon: <Gem size={18} />,
+        color: "#3B6FFF"
+      },
+      {
         name: "Lifecare Medical Centre",
         url: "https://clinic-demo.solomantalgo.online/",
         desc: "Health clinic & appointment demo",
@@ -80,6 +101,27 @@ const links = [
         url: "https://saloon-demo.solomantalgo.online/",
         desc: "Beauty salon & gallery demo",
         icon: <Scissors size={18} />,
+        color: "#3B6FFF"
+      },
+      {
+        name: "Luxe Nails & Spa",
+        url: "https://nails-demo.solomantalgo.online/",
+        desc: "Nail salon services & appointment booking demo",
+        icon: <Sparkles size={18} />,
+        color: "#3B6FFF"
+      },
+      {
+        name: "Focus Photography Studio",
+        url: "https://photography-demo.solomantalgo.online/",
+        desc: "Creative photo gallery & photoshoot booking demo",
+        icon: <Camera size={18} />,
+        color: "#3B6FFF"
+      },
+      {
+        name: "Glow Makeup Artistry",
+        url: "https://makeup-demo.solomantalgo.online/",
+        desc: "Bridal packages & makeup consultation demo",
+        icon: <Sparkles size={18} />,
         color: "#3B6FFF"
       }
     ]
