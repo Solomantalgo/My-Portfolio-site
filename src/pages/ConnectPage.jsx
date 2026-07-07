@@ -58,8 +58,8 @@ const ConnectPage = () => {
     {
       id: 'website',
       title: 'View My Website',
-      url: 'https://solomantalgo.online',
-      icon: <Globe className="w-6 h-6" />,
+      url: 'https://solomantalgo.com',
+      icon: <Globe className="w-6 h-6" />, 
       primary: false,
     },
     {

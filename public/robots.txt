@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://solomantalgo.online/sitemap.xml
+Sitemap: https://solomantalgo.com/sitemap.xml

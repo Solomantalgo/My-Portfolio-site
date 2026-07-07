@@ -1,4 +1,4 @@
-import aboutPhoto from '../assets/solo-about-photo.png';
+import aboutPhoto from '../assets/solonew.png';
 
 const About = () => {
   return (

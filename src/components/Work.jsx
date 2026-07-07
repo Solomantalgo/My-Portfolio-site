@@ -21,7 +21,7 @@ const projects = [
     desc: "Luxury hospitality site with room galleries, amenities showcase, and booking inquiry system.",
     stack: ["Hotel", "Luxury", "Gold Theme"],
     image: "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=700",
-    url: "https://hotels-and-spa.solomantalgo.online/"
+    url: "https://hotels-and-spa.solomantalgo.com/"
   },
   {
     title: "Lifecare Medical Centre",
@@ -37,7 +37,7 @@ const projects = [
     desc: "Fine dining restaurant demo with elegant layout, digital menu, and reservation form.",
     stack: ["Dining", "Reservations", "Elegant"],
     image: "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=700",
-    url: "https://restaurant-demo.solomantalgo.online/"
+    url: "https://restaurant-demo.solomantalgo.com/"
   },
   {
     title: "Zuri Beauty Studio",
@@ -45,7 +45,7 @@ const projects = [
     desc: "Luxury beauty salon with African images, gold theme, gallery and booking form.",
     stack: ["Beauty", "Gold Theme", "Slideshow"],
     image: "/images/saloon.png",
-    url: "https://saloon-demo.solomantalgo.online"
+    url: "https://saloon-demo.solomantalgo.com"
   },
   {
     title: "PressedUG Laundry",
@@ -53,7 +53,7 @@ const projects = [
     desc: "Laundry and dry cleaning with pickup booking form and free delivery pitch.",
     stack: ["Laundry", "Booking Form", "Blue Theme"],
     image: "https://images.pexels.com/photos/7282378/pexels-photo-7282378.jpeg?auto=compress&cs=tinysrgb&w=700",
-    url: "https://laundry-demo.solomantalgo.online"
+    url: "https://laundry-demo.solomantalgo.com"
   },
   {
     title: "Ivory Bridal Studio",
@@ -61,7 +61,7 @@ const projects = [
     desc: "Rose and cream editorial luxury bridal site with gallery and consultation form.",
     stack: ["Bridal", "Luxury", "Rose Theme"],
     image: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=700",
-    url: "https://bridal-demo.solomantalgo.online"
+    url: "https://bridal-demo.solomantalgo.com"
   },
   {
     title: "LifeCare Spa & Hotel",
@@ -69,7 +69,7 @@ const projects = [
     desc: "Premium wellness retreat demo featuring luxury spa treatments, hotel rooms, and wellness packages.",
     stack: ["Spa", "Wellness", "Hotel"],
     image: "https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=700",
-    url: "https://life-care-demo.solomantalgo.online/"
+    url: "https://life-care-demo.solomantalgo.com/"
   },
   {
     title: "Golden Crust Bakery",
@@ -77,7 +77,7 @@ const projects = [
     desc: "Artisan bakery demo featuring fresh breads, cakes, pastry menus, and custom order forms.",
     stack: ["Bakery", "Order Form", "Warm Theme"],
     image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80",
-    url: "https://bakery-demo.solomantalgo.online"
+    url: "https://bakery-demo.solomantalgo.com"
   },
   {
     title: "Vogue Fashion Boutique",
@@ -85,7 +85,7 @@ const projects = [
     desc: "Modern apparel and clothing store demo featuring collection displays and integrated lookbooks.",
     stack: ["Fashion", "Lookbook", "Modern Layout"],
     image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=80",
-    url: "https://fashion-demo.solomantalgo.online/"
+    url: "https://fashion-demo.solomantalgo.com/"
   },
   {
     title: "Apex Fitness Gym",
@@ -93,7 +93,7 @@ const projects = [
     desc: "Dynamic fitness studio website with class schedules, trainer grids, and membership options.",
     stack: ["Gym", "Schedules", "Dark Theme"],
     image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=700&q=80",
-    url: "https://gym-demo.solomantalgo.online/"
+    url: "https://gym-demo.solomantalgo.com/"
   },
   {
     title: "Aurum Jewellery Studio",
@@ -101,7 +101,7 @@ const projects = [
     desc: "High-end jewelry showroom showcasing engagement rings, luxury watches, and custom design requests.",
     stack: ["Jewellery", "Luxury Catalog", "Elegant Theme"],
     image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80",
-    url: "https://jewellery-demo.solomantalgo.online/"
+    url: "https://jewellery-demo.solomantalgo.com/"
   },
   {
     title: "Luxe Nails & Spa",
@@ -109,7 +109,7 @@ const projects = [
     desc: "Chic nail salon landing page featuring custom art portfolios, pricing tables, and online booking.",
     stack: ["Nail Studio", "Portfolio Gallery", "Pastel Theme"],
     image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=700&q=80",
-    url: "https://nails-demo.solomantalgo.online/"
+    url: "https://nails-demo.solomantalgo.com/"
   },
   {
     title: "Focus Photography Studio",
@@ -117,7 +117,7 @@ const projects = [
     desc: "Professional photography portfolio displaying travel, wedding, and studio galleries with a booking system.",
     stack: ["Photography", "Masonry Gallery", "Minimalist"],
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=700&q=80",
-    url: "https://photography-demo.solomantalgo.online/"
+    url: "https://photography-demo.solomantalgo.com/"
   },
   {
     title: "Glow Makeup Artistry",

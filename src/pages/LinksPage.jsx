@@ -28,98 +28,98 @@ const links = [
     items: [
       {
         name: "LifeCare Spa & Hotel",
-        url: "https://life-care-demo.solomantalgo.online/",
+        url: "https://life-care-demo.solomantalgo.com/",
         desc: "Luxury wellness, spa & hospitality demo",
         icon: <Heart size={18} />,
         color: "#3B6FFF"
       },
       {
         name: "Grand Heights Hotel & Spa",
-        url: "https://hotels-and-spa.solomantalgo.online/",
+        url: "https://hotels-and-spa.solomantalgo.com/",
         desc: "Luxury hospitality & booking demo",
         icon: <Hotel size={18} />,
         color: "#3B6FFF"
       },
       {
         name: "The Gourmet Restaurant",
-        url: "https://restaurant-demo.solomantalgo.online/",
+        url: "https://restaurant-demo.solomantalgo.com/",
         desc: "Fine dining & reservation demo",
         icon: <Utensils size={18} />,
         color: "#3B6FFF"
       },
       {
         name: "Golden Crust Bakery",
-        url: "https://bakery-demo.solomantalgo.online/",
+        url: "https://bakery-demo.solomantalgo.com/",
         desc: "Artisan bakery & custom order demo",
         icon: <Cake size={18} />,
         color: "#3B6FFF"
       },
       {
         name: "Vogue Fashion Boutique",
-        url: "https://fashion-demo.solomantalgo.online/",
+        url: "https://fashion-demo.solomantalgo.com/",
         desc: "Modern apparel & clothing store demo",
         icon: <ShoppingBag size={18} />,
         color: "#3B6FFF"
       },
       {
         name: "Apex Fitness Gym",
-        url: "https://gym-demo.solomantalgo.online/",
+        url: "https://gym-demo.solomantalgo.com/",
         desc: "Gym memberships & trainer schedule demo",
         icon: <Dumbbell size={18} />,
         color: "#3B6FFF"
       },
       {
         name: "Aurum Jewellery Studio",
-        url: "https://jewellery-demo.solomantalgo.online/",
+        url: "https://jewellery-demo.solomantalgo.com/",
         desc: "Luxury jewelry collection & catalog demo",
         icon: <Gem size={18} />,
         color: "#3B6FFF"
       },
       {
         name: "Lifecare Medical Centre",
-        url: "https://clinic-demo.solomantalgo.online/",
+        url: "https://clinic-demo.solomantalgo.com/",
         desc: "Health clinic & appointment demo",
         icon: <Stethoscope size={18} />,
         color: "#3B6FFF"
       },
       {
         name: "PressedUG Laundry",
-        url: "https://laundry-demo.solomantalgo.online/",
+        url: "https://laundry-demo.solomantalgo.com/",
         desc: "Laundry pickup & delivery demo",
         icon: <Shirt size={18} />,
         color: "#3B6FFF"
       },
       {
         name: "Ivory Bridal Studio",
-        url: "https://bridal-demo.solomantalgo.online/",
+        url: "https://bridal-demo.solomantalgo.com/",
         desc: "Luxury bridal & consultation demo",
         icon: <Globe size={18} />,
         color: "#3B6FFF"
       },
       {
         name: "Zuri Beauty Studio",
-        url: "https://saloon-demo.solomantalgo.online/",
+        url: "https://saloon-demo.solomantalgo.com/",
         desc: "Beauty salon & gallery demo",
         icon: <Scissors size={18} />,
         color: "#3B6FFF"
       },
       {
         name: "Luxe Nails & Spa",
-        url: "https://nails-demo.solomantalgo.online/",
+        url: "https://nails-demo.solomantalgo.com/",
         desc: "Nail salon services & appointment booking demo",
         icon: <Sparkles size={18} />,
         color: "#3B6FFF"
       },
       {
         name: "Focus Photography Studio",
-        url: "https://photography-demo.solomantalgo.online/",
+        url: "https://photography-demo.solomantalgo.com/",
         desc: "Creative photo gallery & photoshoot booking demo",
         icon: <Camera size={18} />,
         color: "#3B6FFF"
       },
       {
         name: "Glow Makeup Artistry",
-        url: "https://makeup-demo.solomantalgo.online/",
+        url: "https://makeup-demo.solomantalgo.com/",
         desc: "Bridal packages & makeup consultation demo",
         icon: <Sparkles size={18} />,
         color: "#3B6FFF"
