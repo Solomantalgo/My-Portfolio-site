@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { MessageCircle, Phone, Globe, Terminal } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 const ConnectPage = () => {
   // Animation variants
@@ -71,12 +71,45 @@ const ConnectPage = () => {
     },
   ];
 
+  const connectSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Kisense Solomon",
+    "alternateName": "Solo",
+    "jobTitle": "Freelance Web Designer & Developer",
+    "url": "https://solomantalgo.com",
+    "email": "kmantalgosolo@gmail.com",
+    "telephone": "+256775224728",
+    "image": "https://solomantalgo.com/og-image.jpg",
+    "sameAs": [
+      "https://wa.me/256775224728",
+      "https://github.com/solomantalgo"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kampala",
+      "addressCountry": "UG"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+256775224728",
+      "contactType": "customer service",
+      "areaServed": "UG",
+      "availableLanguage": ["en", "Luganda"]
+    }
+  };
+
   return (
     <>
-      <Helmet>
-        <title>Connect | Solomantalgo</title>
-        <meta name="description" content="Connect with Solomantalgo - Developer, Problem Solver, Builder" />
-      </Helmet>
+      <SEO 
+        title="Connect | Solomon Talgo - Web Designer Kampala"
+        description="Get in touch with Solomon Kisense (Solomantalgo). Chat on WhatsApp, call directly, or browse GitHub projects. Let's build your next web application."
+        canonicalUrl="https://solomantalgo.com/connect"
+        ogTitle="Connect with Solomon Talgo | Web Developer Kampala"
+        ogDescription="Get in touch with Solomon Talgo (Kisense Solomon). WhatsApp, call, and projects all in one place."
+        ogUrl="https://solomantalgo.com/connect"
+        schemaData={connectSchema}
+      />
 
       <div className="min-h-screen bg-[#07090F] text-[#EEF0F8] flex flex-col items-center justify-center p-6 relative overflow-hidden font-['Epilogue',sans-serif]">
         {/* Background Gradients */}

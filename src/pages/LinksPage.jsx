@@ -137,7 +137,14 @@ const LinksPage = () => {
       position: 'relative',
       zIndex: 1
     }}>
-      <SEO title="Links | Solomon Talgo - Web Developer Portfolio" />
+      <SEO 
+        title="Links | Solomon Talgo - Web Developer Portfolio" 
+        description="Access all of Solomon Talgo's live client sites and industry demos in one place, including restaurant, hotel, spa, gym, and bridal websites."
+        canonicalUrl="https://solomantalgo.com/links"
+        ogTitle="Direct Links | Solomon Talgo - Web Developer Portfolio"
+        ogDescription="Check out all live client websites and interactive industry demos built by Kisense Solomon."
+        ogUrl="https://solomantalgo.com/links"
+      />
       
       <div className="container" style={{ maxWidth: '600px', margin: '0 auto' }}>
         <Link to="/" style={{ 
