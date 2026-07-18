@@ -2,6 +2,9 @@ import { motion } from 'framer-motion';
 import { MessageCircle, Phone, Globe, Terminal } from 'lucide-react';
 import SEO from '../components/SEO';
 
+const MotionDiv = motion.div;
+const MotionAnchor = motion.a;
+
 const GithubIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -116,14 +119,14 @@ const ConnectPage = () => {
         <div className="absolute top-[-20%] left-[-10%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full bg-[#00FF88]/10 blur-[100px] md:blur-[150px] pointer-events-none" />
         <div className="absolute bottom-[-20%] right-[-10%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full bg-[#3B6FFF]/10 blur-[100px] md:blur-[150px] pointer-events-none" />
 
-        <motion.div
+        <MotionDiv
           className="w-full max-w-md z-10 flex flex-col items-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Header Section */}
-          <motion.div variants={itemVariants} className="text-center mb-10 flex flex-col items-center">
+          <MotionDiv variants={itemVariants} className="text-center mb-10 flex flex-col items-center">
             <div className="w-16 h-16 rounded-2xl bg-[#111620] border border-[#00FF88]/20 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(0,255,136,0.15)] relative group">
               <div className="absolute inset-0 rounded-2xl bg-[#00FF88]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <Terminal className="w-8 h-8 text-[#00FF88]" />
@@ -135,12 +138,12 @@ const ConnectPage = () => {
             <p className="text-[#5A6380] text-sm md:text-base font-medium tracking-wide flex items-center justify-center gap-2">
               Developer <span className="w-1 h-1 rounded-full bg-[#00FF88]" /> Problem Solver <span className="w-1 h-1 rounded-full bg-[#00FF88]" /> Builder
             </p>
-          </motion.div>
+          </MotionDiv>
 
           {/* Links Section */}
-          <motion.div variants={itemVariants} className="w-full space-y-4 mb-12">
+          <MotionDiv variants={itemVariants} className="w-full space-y-4 mb-12">
             {links.map((link) => (
-              <motion.a
+              <MotionAnchor
                 key={link.id}
                 href={link.url}
                 target={link.url.startsWith('http') ? '_blank' : '_self'}
@@ -167,20 +170,20 @@ const ConnectPage = () => {
                 {link.primary && (
                   <span className="absolute top-0 right-0 w-2 h-2 rounded-full bg-[#00FF88] m-4 animate-pulse shadow-[0_0_10px_#00FF88]" />
                 )}
-              </motion.a>
+              </MotionAnchor>
             ))}
-          </motion.div>
+          </MotionDiv>
 
           {/* Footer Section */}
-          <motion.div variants={itemVariants} className="text-center">
+          <MotionDiv variants={itemVariants} className="text-center">
             <p className="text-[#EEF0F8] font-medium text-sm mb-2 opacity-80">
               Clean code. Real solutions. Impact.
             </p>
             <p className="text-[#5A6380] text-xs font-medium tracking-wider uppercase">
               Kampala, Uganda
             </p>
-          </motion.div>
-        </motion.div>
+          </MotionDiv>
+        </MotionDiv>
         
         <style dangerouslySetInnerHTML={{__html: `
           @keyframes shimmer {

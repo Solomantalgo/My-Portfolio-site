@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
+const MotionDiv = motion.div;
+
 const HireModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -206,14 +208,14 @@ const HireModal = ({ isOpen, onClose }) => {
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="portfolio-modal-overlay portfolio-modal-body"
             onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
           >
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -282,8 +284,8 @@ const HireModal = ({ isOpen, onClose }) => {
                 </button>
               </form>
               <p className="portfolio-modal-note">Available for new projects in Kampala.</p>
-            </motion.div>
-          </motion.div>
+            </MotionDiv>
+          </MotionDiv>
         )}
       </AnimatePresence>
     </>

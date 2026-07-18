@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>700k Corporate Demo Concepts | Solomon Talgo</title>
+    <link rel="icon" type="image/svg+xml" href="/src/assets/favicon/favicon.svg" />
+    <style>
+      :root {
+        --bg: #07090f;
+        --panel: #10151f;
+        --panel2: #161d2a;
+        --text: #eef0f8;
+        --muted: #8d96ad;
+        --line: rgba(255, 255, 255, 0.1);
+        --lime: #aaff3e;
+        --blue: #4f7cff;
+        --gold: #d8b15f;
+        --cyan: #48d5ff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, Arial, sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(7, 9, 15, 0.9);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(18px);
+      }
+
+      nav {
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .brand span {
+        color: var(--lime);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .nav-cta,
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+      }
+
+      .nav-cta,
+      .btn.primary {
+        background: var(--lime);
+        color: #07100b;
+        padding: 0 18px;
+      }
+
+      .btn.secondary {
+        border: 1px solid var(--line);
+        color: var(--text);
+        padding: 0 18px;
+      }
+
+      .hero {
+        min-height: 620px;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 48px;
+        align-items: center;
+        padding: 78px 0 56px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--lime);
+        border: 1px solid rgba(170, 255, 62, 0.22);
+        background: rgba(170, 255, 62, 0.06);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--lime);
+      }
+
+      h1 {
+        font-size: clamp(42px, 7vw, 84px);
+        line-height: 0.96;
+        letter-spacing: -0.055em;
+        max-width: 820px;
+        margin-bottom: 22px;
+      }
+
+      .lead {
+        max-width: 640px;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+
+      .hero-board {
+        background: linear-gradient(145deg, rgba(79, 124, 255, 0.18), rgba(170, 255, 62, 0.05)), var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        padding: 24px;
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.38);
+      }
+
+      .board-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .metric {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 18px;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 30px;
+        line-height: 1;
+      }
+
+      .metric span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 8px;
+      }
+
+      .board-table {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        padding: 15px 16px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(7, 9, 15, 0.38);
+      }
+
+      .row:last-child {
+        border-bottom: 0;
+      }
+
+      .row span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .row strong {
+        font-size: 13px;
+        color: var(--lime);
+      }
+
+      section {
+        padding: 74px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 28px;
+      }
+
+      .section-head h2 {
+        font-size: clamp(28px, 4vw, 48px);
+        line-height: 1.04;
+        letter-spacing: -0.04em;
+      }
+
+      .section-head p {
+        max-width: 470px;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .demo-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        overflow: hidden;
+        min-height: 560px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .demo-visual {
+        height: 190px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .demo-visual::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent, rgba(7, 9, 15, 0.86));
+      }
+
+      .finance {
+        background-image: url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80");
+      }
+
+      .logistics {
+        background-image: url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80");
+      }
+
+      .realestate {
+        background-image: url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80");
+      }
+
+      .demo-content {
+        padding: 24px;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+      }
+
+      .demo-content small {
+        color: var(--lime);
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .demo-content h3 {
+        font-size: 23px;
+        letter-spacing: -0.03em;
+        line-height: 1.12;
+        margin-bottom: 12px;
+      }
+
+      .demo-content p {
+        color: var(--muted);
+        font-size: 14px;
+        margin-bottom: 18px;
+      }
+
+      .page-list {
+        display: grid;
+        gap: 8px;
+        margin-top: auto;
+      }
+
+      .page-list span {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.035);
+        border-radius: 10px;
+        color: #cbd1df;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 9px 10px;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .feature {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        border-radius: 18px;
+        padding: 20px;
+      }
+
+      .feature b {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .feature p {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .site-map {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 18px;
+      }
+
+      .map-side,
+      .map-main {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        border-radius: 22px;
+        padding: 24px;
+      }
+
+      .map-side h3,
+      .map-main h3 {
+        margin-bottom: 16px;
+      }
+
+      .map-side a,
+      .map-main li {
+        display: block;
+        color: var(--muted);
+        border-bottom: 1px solid var(--line);
+        padding: 12px 0;
+        font-size: 14px;
+      }
+
+      .map-main ul {
+        list-style: none;
+        columns: 2;
+      }
+
+      .cta {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 24px;
+        align-items: center;
+        background: linear-gradient(135deg, rgba(170, 255, 62, 0.16), rgba(72, 213, 255, 0.08)), var(--panel);
+        border: 1px solid rgba(170, 255, 62, 0.22);
+        border-radius: 28px;
+        padding: 34px;
+      }
+
+      .cta h2 {
+        font-size: clamp(28px, 4vw, 46px);
+        letter-spacing: -0.04em;
+        line-height: 1.04;
+      }
+
+      .cta p {
+        color: var(--muted);
+        margin-top: 10px;
+        max-width: 680px;
+      }
+
+      footer {
+        padding: 32px 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 900px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero,
+        .site-map,
+        .cta {
+          grid-template-columns: 1fr;
+        }
+
+        .demo-grid,
+        .features {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head {
+          align-items: start;
+          flex-direction: column;
+        }
+
+        .map-main ul {
+          columns: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="shell">
+        <a class="brand" href="/">Solomon<span>Talgo</span></a>
+        <div class="nav-links">
+          <a href="#concepts">Concepts</a>
+          <a href="#pages">Page System</a>
+          <a href="#features">Corporate Value</a>
+          <a href="#contact">Book 700k Build</a>
+        </div>
+        <a class="nav-cta" href="https://wa.me/256775224728?text=Hello%20Solomon%2C%20I%20want%20a%20700k%20corporate%20website%20demo" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="shell hero">
+        <div>
+          <div class="tag"><span class="dot"></span> 700k Premium Corporate Tier</div>
+          <h1>Multi-page websites built for companies that need trust before the first call.</h1>
+          <p class="lead">These are not small landing pages. Each concept is a full corporate website system with executive positioning, service architecture, proof, compliance language, careers, insights, and conversion paths for serious buyers.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#concepts">View Concepts</a>
+            <a class="btn secondary" href="#pages">See Page Structure</a>
+          </div>
+        </div>
+        <aside class="hero-board" aria-label="Premium tier summary">
+          <div class="board-top">
+            <div class="metric"><strong>8-12</strong><span>Corporate pages per demo</span></div>
+            <div class="metric"><strong>700k</strong><span>UGX premium package</span></div>
+            <div class="metric"><strong>SEO</strong><span>Search-ready structure</span></div>
+            <div class="metric"><strong>CRM</strong><span>Lead capture ready</span></div>
+          </div>
+          <div class="board-table">
+            <div class="row"><span>Designed for</span><strong>Corporates</strong></div>
+            <div class="row"><span>Best clients</span><strong>Finance / Logistics / Property</strong></div>
+            <div class="row"><span>Value angle</span><strong>Authority + qualified leads</strong></div>
+            <div class="row"><span>Delivery pitch</span><strong>Premium website in days, not months</strong></div>
+          </div>
+        </aside>
+      </div>
+
+      <section id="concepts">
+        <div class="shell">
+          <div class="section-head">
+            <h2>Three irresistible 700k corporate demos.</h2>
+            <p>Each demo is aimed at a buyer with a real budget and a clear business reason to invest in a serious website.</p>
+          </div>
+
+          <div class="demo-grid">
+            <article class="demo-card">
+              <div class="demo-visual finance"></div>
+              <div class="demo-content">
+                <small>Finance / SACCO / Investment</small>
+                <h3>Summit Capital Advisory</h3>
+                <p>A corporate finance website for advisory firms, SACCOs, lenders, and investment groups that need credibility, board confidence, and structured lead intake.</p>
+                <div class="page-list">
+                  <span>Home: authority, numbers, sectors served</span>
+                  <span>Services: lending, advisory, investment products</span>
+                  <span>Insights: market reports and financial guides</span>
+                  <span>Compliance: licensing, governance, disclosures</span>
+                  <span>Contact: investor and SME inquiry flows</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="demo-card">
+              <div class="demo-visual logistics"></div>
+              <div class="demo-content">
+                <small>Logistics / Fleet / Distribution</small>
+                <h3>NileAxis Logistics Group</h3>
+                <p>A premium operations site for logistics companies that want enterprise clients, route visibility, fleet trust, and high-value quote requests.</p>
+                <div class="page-list">
+                  <span>Home: network reach and delivery promise</span>
+                  <span>Solutions: freight, warehousing, last-mile, cold chain</span>
+                  <span>Industries: FMCG, pharma, retail, construction</span>
+                  <span>Fleet: trucks, coverage, safety standards</span>
+                  <span>Request Quote: structured shipment brief</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="demo-card">
+              <div class="demo-visual realestate"></div>
+              <div class="demo-content">
+                <small>Real Estate / Developer / Property</small>
+                <h3>Imperial Estates Uganda</h3>
+                <p>A corporate property developer site for selling trust, showing projects, capturing serious buyers, and positioning the company as premium and reliable.</p>
+                <div class="page-list">
+                  <span>Home: featured development and investor promise</span>
+                  <span>Projects: residential, commercial, land estates</span>
+                  <span>Project Detail: gallery, plans, pricing request</span>
+                  <span>About: leadership, partners, milestones</span>
+                  <span>Book Viewing: WhatsApp and form lead capture</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="pages">
+        <div class="shell">
+          <div class="section-head">
+            <h2>Multi-page structure for corporate buyers.</h2>
+            <p>The premium tier should feel like a full company website, not one long page. This structure gives a corporate client room to prove capability.</p>
+          </div>
+          <div class="site-map">
+            <aside class="map-side">
+              <h3>Primary Navigation</h3>
+              <a href="#pages">Home</a>
+              <a href="#pages">About</a>
+              <a href="#pages">Services</a>
+              <a href="#pages">Industries</a>
+              <a href="#pages">Case Studies</a>
+              <a href="#pages">Insights</a>
+              <a href="#pages">Careers</a>
+              <a href="#pages">Contact</a>
+            </aside>
+            <div class="map-main">
+              <h3>Premium Page Modules</h3>
+              <ul>
+                <li>Executive hero with strong positioning</li>
+                <li>Board-level metrics and trust strip</li>
+                <li>Service detail pages with inquiry CTA</li>
+                <li>Industry solution pages</li>
+                <li>Case studies or project portfolio</li>
+                <li>Leadership and governance section</li>
+                <li>Compliance, certifications, and policies</li>
+                <li>News, insights, and SEO blog templates</li>
+                <li>Careers page with role listings</li>
+                <li>Quote, consultation, or viewing forms</li>
+                <li>WhatsApp routing by department</li>
+                <li>Google Analytics and Search Console setup</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <div class="shell">
+          <div class="section-head">
+            <h2>What makes it worth 700k.</h2>
+            <p>Corporate clients pay when the website helps them win trust, reduce friction, and capture better leads.</p>
+          </div>
+          <div class="features">
+            <div class="feature">
+              <b>Corporate credibility</b>
+              <p>Leadership, governance, proof, milestones, and partner sections make the business feel established.</p>
+            </div>
+            <div class="feature">
+              <b>Lead qualification</b>
+              <p>Forms ask the right questions, so WhatsApp conversations start with useful project details.</p>
+            </div>
+            <div class="feature">
+              <b>SEO depth</b>
+              <p>Multiple service and industry pages give Google more focused content to index.</p>
+            </div>
+            <div class="feature">
+              <b>Sales enablement</b>
+              <p>Case studies, downloadable profiles, and investor-ready pages help clients close bigger deals.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="shell">
+          <div class="cta">
+            <div>
+              <h2>Pitch this as a premium company website, not a portfolio template.</h2>
+              <p>Best target clients: real estate developers, logistics companies, SACCOs, private clinics, security firms, schools, construction firms, consultancies, and distributors.</p>
+            </div>
+            <a class="btn primary" href="https://wa.me/256775224728?text=Hello%20Solomon%2C%20I%20want%20a%20700k%20corporate%20multi-page%20website" target="_blank" rel="noopener noreferrer">Sell 700k Build</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell">Premium 700k corporate demo concepts by Solomon Talgo.</div>
+    </footer>
+  </body>
+</html>

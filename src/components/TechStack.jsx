@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 
+const MotionDiv = motion.div;
+
 const tech = [
   { name: 'React', level: 90, icon: 'RX' },
   { name: 'Tailwind CSS', level: 95, icon: 'TW' },
@@ -29,7 +31,7 @@ const TechStack = () => {
               </div>
 
               <div className="w-full h-[6px] bg-white/5 rounded-full overflow-hidden">
-                <motion.div
+                <MotionDiv
                   initial={{ width: 0 }}
                   whileInView={{ width: `${item.level}%` }}
                   viewport={{ once: true }}
