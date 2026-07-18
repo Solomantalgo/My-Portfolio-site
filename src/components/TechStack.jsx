@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
 
 const tech = [
-  { name: "React", level: 90, icon: "⚛️" },
-  { name: "Tailwind CSS", level: 95, icon: "🎨" },
-  { name: "JavaScript", level: 85, icon: "⚡" },
-  { name: "Spring Boot", level: 70, icon: "🍃" },
-  { name: "Supabase", level: 80, icon: "⚡" },
-  { name: "Java", level: 75, icon: "☕" },
-  { name: "Vercel / Git", level: 90, icon: "▲" },
-  { name: "SEO / Maps", level: 85, icon: "🔍" },
+  { name: 'React', level: 90, icon: 'RX' },
+  { name: 'Tailwind CSS', level: 95, icon: 'TW' },
+  { name: 'JavaScript', level: 85, icon: 'JS' },
+  { name: 'Spring Boot', level: 70, icon: 'SB' },
+  { name: 'Supabase', level: 80, icon: 'DB' },
+  { name: 'Java', level: 75, icon: 'JV' },
+  { name: 'Vercel / Git', level: 90, icon: 'VC' },
+  { name: 'SEO / Maps', level: 85, icon: 'SEO' }
 ];
 
 const TechStack = () => {
@@ -22,19 +22,19 @@ const TechStack = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {tech.map((item, i) => (
-            <div key={i} className="p-8 rounded-[32px] bg-card border border-white/5 hover:border-lime/20 transition-all duration-300">
+            <div key={item.name} className="p-8 rounded-[32px] bg-card border border-white/5 hover:border-lime/20 transition-all duration-300">
               <div className="flex items-center gap-4 mb-6">
-                <span className="text-3xl">{item.icon}</span>
+                <span className="text-sm font-head font-black text-lime">{item.icon}</span>
                 <h3 className="font-head text-sm font-bold text-white">{item.name}</h3>
               </div>
-              
+
               <div className="w-full h-[6px] bg-white/5 rounded-full overflow-hidden">
-                <motion.div 
-                   initial={{ width: 0 }}
-                   whileInView={{ width: `${item.level}%` }}
-                   viewport={{ once: true }}
-                   transition={{ duration: 1, delay: 0.1 * i }}
-                   className="h-full bg-lime"
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${item.level}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: 0.1 * i }}
+                  className="h-full bg-lime"
                 />
               </div>
               <div className="mt-3 flex justify-between">

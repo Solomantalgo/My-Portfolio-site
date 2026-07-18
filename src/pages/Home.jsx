@@ -42,12 +42,12 @@ function Home({ openHireModal }) {
       <Cursor />
       <Nav openHireModal={openHireModal} />
       <main>
-        <Hero openHireModal={openHireModal} />
+        <Hero />
         <TrustStrip />
         <Services />
         <Work />
         <Process />
-        <Pricing openHireModal={openHireModal} />
+        <Pricing />
         <About />
         <FAQ />
         <Contact />

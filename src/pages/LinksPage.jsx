@@ -1,271 +1,158 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import { ExternalLink, ArrowLeft, Globe, ShoppingCart, Utensils, Stethoscope, Scissors, Shirt, Heart, Hotel, Cake, ShoppingBag, Dumbbell, Gem, Sparkles, Camera } from 'lucide-react';
+import {
+  ArrowLeft,
+  Cake,
+  Camera,
+  ChevronDown,
+  Dumbbell,
+  ExternalLink,
+  Gem,
+  Globe,
+  Heart,
+  Hotel,
+  Scissors,
+  Shirt,
+  ShoppingBag,
+  ShoppingCart,
+  Sparkles,
+  Stethoscope,
+  Utensils
+} from 'lucide-react';
+import { projects } from '../data/projects';
 
-const links = [
-  {
-    category: "Live Client Sites",
-    items: [
-      {
-        name: "Kookee Cart",
-        url: "https://kookee-cart.vercel.app/",
-        desc: "Ice Cream Maker (Kooksy) & FMCG Distributor",
-        icon: <ShoppingCart size={18} />,
-        color: "#AAFF3E"
-      },
-      {
-        name: "Bite Right Restaurant",
-        url: "https://biteright-restuarant.vercel.app/",
-        desc: "Real-time menu & ordering system",
-        icon: <Utensils size={18} />,
-        color: "#AAFF3E"
-      }
-    ]
-  },
-  {
-    category: "Industry Demo Sites",
-    items: [
-      {
-        name: "LifeCare Spa & Hotel",
-        url: "https://life-care-demo.solomantalgo.com/",
-        desc: "Luxury wellness, spa & hospitality demo",
-        icon: <Heart size={18} />,
-        color: "#3B6FFF"
-      },
-      {
-        name: "Grand Heights Hotel & Spa",
-        url: "https://hotels-and-spa.solomantalgo.com/",
-        desc: "Luxury hospitality & booking demo",
-        icon: <Hotel size={18} />,
-        color: "#3B6FFF"
-      },
-      {
-        name: "The Gourmet Restaurant",
-        url: "https://restaurant-demo.solomantalgo.com/",
-        desc: "Fine dining & reservation demo",
-        icon: <Utensils size={18} />,
-        color: "#3B6FFF"
-      },
-      {
-        name: "Golden Crust Bakery",
-        url: "https://bakery-demo.solomantalgo.com/",
-        desc: "Artisan bakery & custom order demo",
-        icon: <Cake size={18} />,
-        color: "#3B6FFF"
-      },
-      {
-        name: "Vogue Fashion Boutique",
-        url: "https://fashion-demo.solomantalgo.com/",
-        desc: "Modern apparel & clothing store demo",
-        icon: <ShoppingBag size={18} />,
-        color: "#3B6FFF"
-      },
-      {
-        name: "Apex Fitness Gym",
-        url: "https://gym-demo.solomantalgo.com/",
-        desc: "Gym memberships & trainer schedule demo",
-        icon: <Dumbbell size={18} />,
-        color: "#3B6FFF"
-      },
-      {
-        name: "Aurum Jewellery Studio",
-        url: "https://jewellery-demo.solomantalgo.com/",
-        desc: "Luxury jewelry collection & catalog demo",
-        icon: <Gem size={18} />,
-        color: "#3B6FFF"
-      },
-      {
-        name: "Lifecare Medical Centre",
-        url: "https://clinic-demo.solomantalgo.com/",
-        desc: "Health clinic & appointment demo",
-        icon: <Stethoscope size={18} />,
-        color: "#3B6FFF"
-      },
-      {
-        name: "PressedUG Laundry",
-        url: "https://laundry-demo.solomantalgo.com/",
-        desc: "Laundry pickup & delivery demo",
-        icon: <Shirt size={18} />,
-        color: "#3B6FFF"
-      },
-      {
-        name: "Ivory Bridal Studio",
-        url: "https://bridal-demo.solomantalgo.com/",
-        desc: "Luxury bridal & consultation demo",
-        icon: <Globe size={18} />,
-        color: "#3B6FFF"
-      },
-      {
-        name: "Zuri Beauty Studio",
-        url: "https://saloon-demo.solomantalgo.com/",
-        desc: "Beauty salon & gallery demo",
-        icon: <Scissors size={18} />,
-        color: "#3B6FFF"
-      },
-      {
-        name: "Luxe Nails & Spa",
-        url: "https://nails-demo.solomantalgo.com/",
-        desc: "Nail salon services & appointment booking demo",
-        icon: <Sparkles size={18} />,
-        color: "#3B6FFF"
-      },
-      {
-        name: "Focus Photography Studio",
-        url: "https://photography-demo.solomantalgo.com/",
-        desc: "Creative photo gallery & photoshoot booking demo",
-        icon: <Camera size={18} />,
-        color: "#3B6FFF"
-      },
-      {
-        name: "Glow Makeup Artistry",
-        url: "https://makeup-demo.solomantalgo.com/",
-        desc: "Bridal packages & makeup consultation demo",
-        icon: <Sparkles size={18} />,
-        color: "#3B6FFF"
-      }
-    ]
-  }
-];
+const iconMap = {
+  bakery: Cake,
+  beauty: Scissors,
+  bridal: Globe,
+  fashion: ShoppingBag,
+  fitness: Dumbbell,
+  fmcg: ShoppingCart,
+  healthcare: Stethoscope,
+  hotel: Hotel,
+  jewellery: Gem,
+  laundry: Shirt,
+  makeup: Sparkles,
+  nails: Sparkles,
+  photography: Camera,
+  restaurant: Utensils,
+  spa: Heart
+};
+
+const projectIcon = (project) => {
+  const key = project.industry.toLowerCase();
+  if (key.includes('bakery')) return 'bakery';
+  if (key.includes('beauty')) return 'beauty';
+  if (key.includes('bridal')) return 'bridal';
+  if (key.includes('fashion')) return 'fashion';
+  if (key.includes('fitness')) return 'fitness';
+  if (key.includes('fmcg')) return 'fmcg';
+  if (key.includes('health')) return 'healthcare';
+  if (key.includes('hotel')) return 'hotel';
+  if (key.includes('jewellery')) return 'jewellery';
+  if (key.includes('laundry')) return 'laundry';
+  if (key.includes('makeup')) return 'makeup';
+  if (key.includes('nails')) return 'nails';
+  if (key.includes('photo')) return 'photography';
+  if (key.includes('restaurant')) return 'restaurant';
+  if (key.includes('spa')) return 'spa';
+  return 'fmcg';
+};
+
+const groupBy = (items, key) => {
+  const grouped = items.reduce((acc, item) => {
+    acc[item[key]] = [...(acc[item[key]] || []), item];
+    return acc;
+  }, {});
+
+  return Object.keys(grouped).sort().map((group) => ({ category: group, items: grouped[group] }));
+};
+
+const LinkCard = ({ item }) => {
+  const Icon = iconMap[projectIcon(item)] || Globe;
+
+  return (
+    <a href={item.url} target="_blank" rel="noopener noreferrer" className="link-card">
+      <div className="link-icon"><Icon size={18} /></div>
+      <div style={{ flex: 1 }}>
+        <h3>{item.title}</h3>
+        <p>{item.desc}</p>
+        <span>{item.live ? 'Live client' : item.tier} / {item.industry}</span>
+      </div>
+      <ExternalLink size={16} className="link-out-icon" />
+    </a>
+  );
+};
+
+const LinkSection = ({ title, sections, defaultOpen = false }) => {
+  const [openGroups, setOpenGroups] = useState(() => new Set(defaultOpen ? sections.map((section) => section.category) : []));
+
+  const toggleGroup = (category) => {
+    setOpenGroups((current) => {
+      const next = new Set(current);
+      next.has(category) ? next.delete(category) : next.add(category);
+      return next;
+    });
+  };
+
+  return (
+    <section className="links-directory-section">
+      <h2>{title}</h2>
+      <div className="links-accordion-list">
+        {sections.map((section) => {
+          const isOpen = openGroups.has(section.category);
+          return (
+            <div key={section.category} className="links-accordion">
+              <button type="button" onClick={() => toggleGroup(section.category)} aria-expanded={isOpen}>
+                <span>{section.category}</span>
+                <small>{section.items.length} {section.items.length === 1 ? 'site' : 'sites'}</small>
+                <ChevronDown size={18} />
+              </button>
+              {isOpen && (
+                <div className="links-panel">
+                  {section.items.map((item) => <LinkCard key={`${section.category}-${item.title}`} item={item} />)}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
 
 const LinksPage = () => {
+  const clientLinks = useMemo(() => [{ category: 'Live Client Sites', items: projects.filter((item) => item.live) }], []);
+  const byIndustry = useMemo(() => groupBy(projects, 'industry'), []);
+
   return (
-    <div className="links-page" style={{ 
-      minHeight: '100vh', 
-      background: 'var(--bg)', 
-      padding: '4rem 1.5rem',
-      position: 'relative',
-      zIndex: 1
-    }}>
-      <SEO 
-        title="Links | Solomon Talgo - Web Developer Portfolio" 
-        description="Access all of Solomon Talgo's live client sites and industry demos in one place, including restaurant, hotel, spa, gym, and bridal websites."
+    <div className="links-page">
+      <SEO
+        title="Links | Solomon Talgo - Web Developer Portfolio"
+        description="Access all of Solomon Talgo's live client sites and industry demos grouped by business category."
         canonicalUrl="https://solomantalgo.com/links"
         ogTitle="Direct Links | Solomon Talgo - Web Developer Portfolio"
         ogDescription="Check out all live client websites and interactive industry demos built by Kisense Solomon."
         ogUrl="https://solomantalgo.com/links"
       />
-      
-      <div className="container" style={{ maxWidth: '600px', margin: '0 auto' }}>
-        <Link to="/" style={{ 
-          display: 'inline-flex', 
-          alignItems: 'center', 
-          gap: '0.5rem', 
-          color: 'var(--muted)', 
-          textDecoration: 'none', 
-          fontSize: '0.85rem',
-          marginBottom: '2.5rem',
-          transition: 'color 0.2s'
-        }} className="hover:text-lime">
-          <ArrowLeft size={16} /> Back to Portfolio
-        </Link>
 
-        <header style={{ marginBottom: '3rem', textAlign: 'center' }}>
-          <div style={{ 
-            width: '80px', 
-            height: '80px', 
-            borderRadius: '20px', 
-            background: 'var(--card)', 
-            border: '1px solid var(--border)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: '0 auto 1.5rem',
-            fontSize: '2rem'
-          }}>
-            🚀
-          </div>
-          <h1 style={{ 
-            fontFamily: 'var(--font-h)', 
-            fontSize: '1.8rem', 
-            fontWeight: 800,
-            marginBottom: '0.5rem'
-          }}>Direct <span style={{ color: 'var(--lime)' }}>Links</span></h1>
-          <p style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>Access all my live projects and industry demos in one place.</p>
+      <div className="links-container">
+        <Link to="/" className="links-back"><ArrowLeft size={16} /> Back to Portfolio</Link>
+
+        <header className="links-hero">
+          <div className="links-mark"><Globe size={30} /></div>
+          <h1>Direct <span>Links</span></h1>
+          <p>Browse live client work and demo sites by budget tier or business industry.</p>
         </header>
 
-        <div className="links-grid" style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-          {links.map((section, idx) => (
-            <section key={idx}>
-              <h2 style={{ 
-                fontSize: '0.65rem', 
-                fontWeight: 700, 
-                textTransform: 'uppercase', 
-                letterSpacing: '0.15em', 
-                color: 'var(--lime)',
-                marginBottom: '1rem',
-                opacity: 0.8
-              }}>{section.category}</h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                {section.items.map((link, lIdx) => (
-                  <a 
-                    key={lIdx} 
-                    href={link.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="link-card"
-                    style={{
-                      background: 'var(--card)',
-                      border: '1px solid var(--border2)',
-                      padding: '1.2rem',
-                      borderRadius: '16px',
-                      textDecoration: 'none',
-                      color: 'inherit',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '1.2rem',
-                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                      position: 'relative',
-                      overflow: 'hidden'
-                    }}
-                  >
-                    <div style={{
-                      width: '44px',
-                      height: '44px',
-                      borderRadius: '12px',
-                      background: `rgba(170, 255, 62, 0.05)`,
-                      border: '1px solid rgba(170, 255, 62, 0.1)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'var(--lime)',
-                      flexShrink: 0
-                    }}>
-                      {link.icon}
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <h3 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.1rem' }}>{link.name}</h3>
-                      <p style={{ fontSize: '0.78rem', color: 'var(--muted)', fontWeight: 300 }}>{link.desc}</p>
-                    </div>
-                    <ExternalLink size={16} style={{ color: 'rgba(255,255,255,0.2)' }} />
-                  </a>
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
+        <LinkSection title="Client Work" sections={clientLinks} defaultOpen />
+        <LinkSection title="Demos By Industry" sections={byIndustry} />
 
-        <footer style={{ marginTop: '4rem', textAlign: 'center', borderTop: 'none' }}>
-          <p style={{ color: 'var(--muted)', fontSize: '0.75rem' }}>
-            &copy; {new Date().getFullYear()} Solomon Talgo. Built with ❤️ in Kampala.
-          </p>
+        <footer className="links-footer">
+          <p>&copy; {new Date().getFullYear()} Solomon Talgo. Built with care in Kampala.</p>
         </footer>
       </div>
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        .link-card:hover {
-          transform: scale(1.02);
-          border-color: rgba(170, 255, 62, 0.3);
-          background: var(--card2);
-          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .link-card:hover h3 {
-          color: var(--lime);
-        }
-        .link-card:hover svg {
-          color: var(--lime) !important;
-        }
-      `}} />
     </div>
   );
 };

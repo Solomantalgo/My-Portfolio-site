@@ -5,7 +5,7 @@ const HireModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
     whatsapp: '',
-    service: 'Business Website (Standard — 350k)',
+    service: 'Business Website (Standard - 350k)',
     notes: ''
   });
 
@@ -221,8 +221,8 @@ const HireModal = ({ isOpen, onClose }) => {
               className="portfolio-modal"
               onClick={(e) => e.stopPropagation()}
             >
-              <button className="portfolio-modal-close" onClick={onClose}>✕</button>
-              <span className="portfolio-modal-tag">Solo · Digital Artisan</span>
+              <button className="portfolio-modal-close" onClick={onClose}>X</button>
+              <span className="portfolio-modal-tag">Solo / Digital Artisan</span>
               <h2 className="portfolio-modal-title">Hire Solomon</h2>
               <p className="portfolio-modal-sub">Tell me about your project and I'll get back to you within 24 hours.</p>
               
@@ -256,10 +256,10 @@ const HireModal = ({ isOpen, onClose }) => {
                     value={formData.service}
                     onChange={(e) => setFormData({...formData, service: e.target.value})}
                   >
-                    <option value="">— Select a category —</option>
-                    <option>Business Website (Standard — 350k)</option>
-                    <option>Business Website (Basic — 150k)</option>
-                    <option>Business Website (Premium — 700k)</option>
+                    <option value="">Select a category</option>
+                    <option>Business Website (Standard - 350k)</option>
+                    <option>Business Website (Basic - 150k)</option>
+                    <option>Business Website (Premium - 700k)</option>
                     <option>Custom Web Application</option>
                     <option>Website Repair & Audit</option>
                     <option>E-commerce Store</option>
@@ -281,7 +281,7 @@ const HireModal = ({ isOpen, onClose }) => {
                   Contact Solomon via WhatsApp
                 </button>
               </form>
-              <p class="portfolio-modal-note">Available for new projects in Kampala.</p>
+              <p className="portfolio-modal-note">Available for new projects in Kampala.</p>
             </motion.div>
           </motion.div>
         )}

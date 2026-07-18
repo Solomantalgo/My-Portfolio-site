@@ -14,13 +14,13 @@ export const useTyping = (strings, typeSpeed = 100, backSpeed = 50, delay = 2000
       return;
     }
 
-    if (subIndex === 0 && reverse) {
-      setReverse(false);
-      setIndex((prev) => (prev + 1) % strings.length);
-      return;
-    }
-
     const timeout = setTimeout(() => {
+      if (subIndex === 0 && reverse) {
+        setReverse(false);
+        setIndex((prev) => (prev + 1) % strings.length);
+        return;
+      }
+
       setSubIndex((prev) => prev + (reverse ? -1 : 1));
       setText(strings[index].substring(0, subIndex));
     }, reverse ? backSpeed : typeSpeed);

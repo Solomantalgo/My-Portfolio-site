@@ -2,6 +2,22 @@ import { motion } from 'framer-motion';
 import { MessageCircle, Phone, Globe, Terminal } from 'lucide-react';
 import SEO from '../components/SEO';
 
+const GithubIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5 0-1.4-.5-2.5-1.5-3.3.1-.3.4-1.5-.1-3.3 0 0-1.2-.4-3.9 1.4a12.3 12.3 0 0 0-7 0C6.1 1.3 4.9 1.7 4.9 1.7c-.5 1.8-.2 3-.1 3.3-1 .8-1.5 1.9-1.5 3.3 0 5 2.9 6.2 6 6.5-1 .9-1.3 2.6-1.3 3.2V22" />
+    <path d="M9 20c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+  </svg>
+);
+
 const ConnectPage = () => {
   // Animation variants
   const containerVariants = {
@@ -23,22 +39,6 @@ const ConnectPage = () => {
       transition: { type: 'spring', stiffness: 300, damping: 24 },
     },
   };
-
-  const GithubIcon = ({ className }) => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-    >
-      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5 0-1.4-.5-2.5-1.5-3.3.1-.3.4-1.5-.1-3.3 0 0-1.2-.4-3.9 1.4a12.3 12.3 0 0 0-7 0C6.1 1.3 4.9 1.7 4.9 1.7c-.5 1.8-.2 3-.1 3.3-1 .8-1.5 1.9-1.5 3.3 0 5 2.9 6.2 6 6.5-1 .9-1.3 2.6-1.3 3.2V22" />
-      <path d="M9 20c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-    </svg>
-  );
 
   const links = [
     {

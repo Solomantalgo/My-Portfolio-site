@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import LinksPage from './pages/LinksPage';
@@ -31,5 +31,4 @@ function App() {
 }
 
 export default App;
-
 
