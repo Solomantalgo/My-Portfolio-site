@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serene Grove Hotel & Gardens | 700k Corporate Demo</title>
+    <link rel="icon" type="image/svg+xml" href="/src/assets/favicon/favicon.svg" />
+    <style>
+      :root {
+        --forest: #0d2419;
+        --deep: #07120e;
+        --panel: #10271d;
+        --panel2: #173326;
+        --cream: #f4efe2;
+        --muted: #b8c4b9;
+        --gold: #d2ad61;
+        --sage: #8bbf9a;
+        --line: rgba(244, 239, 226, 0.14);
+        --shadow: 0 28px 80px rgba(0, 0, 0, 0.36);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--deep);
+        color: var(--cream);
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+      }
+
+      .shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        background: #06100c;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .topbar .shell {
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(7, 18, 14, 0.92);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(18px);
+      }
+
+      nav {
+        height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 22px;
+      }
+
+      .brand {
+        display: grid;
+        gap: 2px;
+      }
+
+      .brand strong {
+        font-size: 16px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .brand span {
+        color: var(--gold);
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        border-radius: 999px;
+        padding: 0 20px;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .btn.primary {
+        background: var(--gold);
+        color: #1b1407;
+      }
+
+      .btn.ghost {
+        border: 1px solid var(--line);
+        color: var(--cream);
+      }
+
+      .hero {
+        min-height: 680px;
+        position: relative;
+        display: flex;
+        align-items: end;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(7, 18, 14, 0.94) 0%, rgba(7, 18, 14, 0.58) 48%, rgba(7, 18, 14, 0.12) 100%),
+          linear-gradient(0deg, var(--deep) 0%, rgba(7, 18, 14, 0) 34%),
+          url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1800&q=85");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero .shell {
+        position: relative;
+        z-index: 1;
+        padding: 86px 0 74px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        color: var(--gold);
+        border: 1px solid rgba(210, 173, 97, 0.32);
+        background: rgba(210, 173, 97, 0.08);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+
+      .tag::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+
+      h1 {
+        max-width: 820px;
+        font-size: clamp(44px, 8vw, 92px);
+        line-height: 0.94;
+        letter-spacing: -0.06em;
+        margin-bottom: 24px;
+      }
+
+      .hero-copy {
+        max-width: 640px;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .booking-strip {
+        position: relative;
+        z-index: 2;
+        margin-top: -38px;
+      }
+
+      .booking-box {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        overflow: hidden;
+      }
+
+      .booking-cell {
+        padding: 20px;
+        border-right: 1px solid var(--line);
+      }
+
+      .booking-cell:last-child {
+        border-right: 0;
+      }
+
+      .booking-cell label {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .booking-cell strong {
+        font-size: 15px;
+      }
+
+      section {
+        padding: 84px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 28px;
+        margin-bottom: 34px;
+      }
+
+      .section-head h2 {
+        max-width: 620px;
+        font-size: clamp(30px, 4.8vw, 56px);
+        line-height: 1.02;
+        letter-spacing: -0.045em;
+      }
+
+      .section-head p {
+        max-width: 460px;
+        color: var(--muted);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .stat {
+        padding: 26px;
+        background: var(--panel);
+        border-right: 1px solid var(--line);
+      }
+
+      .stat:last-child {
+        border-right: 0;
+      }
+
+      .stat strong {
+        display: block;
+        color: var(--gold);
+        font-size: 34px;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .rooms {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .room-card,
+      .event-card,
+      .trust-card,
+      .leader-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        overflow: hidden;
+      }
+
+      .room-card img {
+        height: 230px;
+        object-fit: cover;
+      }
+
+      .card-body {
+        padding: 24px;
+      }
+
+      .eyebrow {
+        display: block;
+        color: var(--gold);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .card-body h3 {
+        font-size: 23px;
+        letter-spacing: -0.025em;
+        margin-bottom: 10px;
+      }
+
+      .card-body p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .chips span {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: #dce5dd;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 7px 10px;
+      }
+
+      .event-layout {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 18px;
+      }
+
+      .event-photo {
+        min-height: 530px;
+        border-radius: 24px;
+        background:
+          linear-gradient(180deg, rgba(7, 18, 14, 0.05), rgba(7, 18, 14, 0.75)),
+          url("https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1300&q=85");
+        background-size: cover;
+        background-position: center;
+        border: 1px solid var(--line);
+        display: flex;
+        align-items: end;
+        padding: 28px;
+      }
+
+      .event-stack {
+        display: grid;
+        gap: 18px;
+      }
+
+      .event-card {
+        padding: 24px;
+      }
+
+      .event-card h3 {
+        margin-bottom: 8px;
+      }
+
+      .event-card p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .dining {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .dining-copy {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 34px;
+      }
+
+      .dining-copy h2 {
+        font-size: clamp(30px, 4vw, 52px);
+        line-height: 1.02;
+        letter-spacing: -0.045em;
+        margin-bottom: 16px;
+      }
+
+      .dining-copy p {
+        color: var(--muted);
+      }
+
+      .dining-image {
+        min-height: 470px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background:
+          linear-gradient(180deg, rgba(7, 18, 14, 0.05), rgba(7, 18, 14, 0.36)),
+          url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1300&q=85");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+
+      .trust-card {
+        padding: 22px;
+      }
+
+      .trust-card b {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .trust-card p {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .page-map {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 18px;
+      }
+
+      .page-nav,
+      .page-detail {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 26px;
+      }
+
+      .page-nav a,
+      .page-detail li {
+        display: block;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .page-detail ul {
+        columns: 2;
+        list-style: none;
+      }
+
+      .leadership {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .leader-card {
+        padding: 24px;
+      }
+
+      .leader-avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold), var(--sage));
+        margin-bottom: 18px;
+      }
+
+      .leader-card span {
+        color: var(--gold);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .leader-card p {
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      .cta {
+        background:
+          linear-gradient(135deg, rgba(210, 173, 97, 0.17), rgba(139, 191, 154, 0.13)),
+          var(--panel);
+        border: 1px solid rgba(210, 173, 97, 0.28);
+        border-radius: 30px;
+        padding: 38px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .cta h2 {
+        font-size: clamp(30px, 4vw, 50px);
+        letter-spacing: -0.045em;
+        line-height: 1.04;
+        margin-bottom: 10px;
+      }
+
+      .cta p {
+        color: var(--muted);
+        max-width: 720px;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 30px 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 980px) {
+        .nav-links {
+          display: none;
+        }
+
+        .booking-box,
+        .stats,
+        .rooms,
+        .event-layout,
+        .dining,
+        .trust-grid,
+        .page-map,
+        .leadership,
+        .cta {
+          grid-template-columns: 1fr;
+        }
+
+        .booking-cell,
+        .stat {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .section-head {
+          align-items: start;
+          flex-direction: column;
+        }
+
+        .page-detail ul {
+          columns: 1;
+        }
+
+        h1 {
+          font-size: 46px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="shell">
+        <span>Corporate demo for the 700k premium website tier</span>
+        <span>Hotel / Gardens / Events / Dining / Conferences</span>
+      </div>
+    </div>
+
+    <header>
+      <nav class="shell">
+        <a class="brand" href="#home">
+          <strong>Serene Grove</strong>
+          <span>Hotel & Gardens</span>
+        </a>
+        <div class="nav-links">
+          <a href="#rooms">Rooms</a>
+          <a href="#events">Events</a>
+          <a href="#dining">Dining</a>
+          <a href="#corporate">Corporate</a>
+          <a href="#pages">Pages</a>
+        </div>
+        <a class="btn primary" href="https://wa.me/256775224728?text=Hello%20Solomon%2C%20I%20want%20a%20700k%20hotel%20and%20garden%20website" target="_blank" rel="noopener noreferrer">Book Demo</a>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="shell">
+          <div class="tag">Premium Hotel Website</div>
+          <h1>A hotel and garden experience designed for weddings, conferences, and premium stays.</h1>
+          <p class="hero-copy">This is how a 700k corporate hospitality website can feel: rich visuals, multi-page structure, event sales pages, room showcases, governance trust, dining, gardens, and qualified booking funnels.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#rooms">Explore Rooms</a>
+            <a class="btn ghost" href="#events">Plan an Event</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="booking-strip">
+        <div class="shell">
+          <div class="booking-box" aria-label="Booking preview">
+            <div class="booking-cell"><label>Arrival</label><strong>Fri, 18 Oct</strong></div>
+            <div class="booking-cell"><label>Departure</label><strong>Sun, 20 Oct</strong></div>
+            <div class="booking-cell"><label>Guests</label><strong>2 Adults</strong></div>
+            <div class="booking-cell"><label>Purpose</label><strong>Wedding / Stay</strong></div>
+            <div class="booking-cell"><label>Action</label><strong>Check Availability</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <section id="overview">
+        <div class="shell">
+          <div class="section-head">
+            <h2>Built to sell more than rooms.</h2>
+            <p>The premium hotel site positions the property as a venue, retreat, restaurant, conference destination, and trusted corporate hospitality partner.</p>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong>42</strong><span>Rooms and suites</span></div>
+            <div class="stat"><strong>700</strong><span>Guest garden capacity</span></div>
+            <div class="stat"><strong>4</strong><span>Conference halls</span></div>
+            <div class="stat"><strong>24/7</strong><span>Reservations desk</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="rooms">
+        <div class="shell">
+          <div class="section-head">
+            <h2>Rooms page with premium buying confidence.</h2>
+            <p>Each room category can become its own page with amenities, gallery, rates request, policies, and WhatsApp booking.</p>
+          </div>
+          <div class="rooms">
+            <article class="room-card">
+              <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=85" alt="Executive suite bedroom" />
+              <div class="card-body">
+                <span class="eyebrow">Executive Suite</span>
+                <h3>Boardroom comfort after business hours.</h3>
+                <p>Large suite, work desk, lounge seating, garden view, breakfast, and express laundry.</p>
+                <div class="chips"><span>King Bed</span><span>Work Desk</span><span>Garden View</span></div>
+              </div>
+            </article>
+            <article class="room-card">
+              <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=900&q=85" alt="Deluxe room interior" />
+              <div class="card-body">
+                <span class="eyebrow">Deluxe Rooms</span>
+                <h3>Elegant rooms for couples and weekend guests.</h3>
+                <p>Modern interiors, private balcony options, breakfast, secure parking, and room service.</p>
+                <div class="chips"><span>Breakfast</span><span>Balcony</span><span>Parking</span></div>
+              </div>
+            </article>
+            <article class="room-card">
+              <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=900&q=85" alt="Family suite interior" />
+              <div class="card-body">
+                <span class="eyebrow">Family Villa</span>
+                <h3>Private space for families and bridal parties.</h3>
+                <p>Two bedrooms, lounge, kitchenette, garden access, and dedicated guest attendant.</p>
+                <div class="chips"><span>2 Bedrooms</span><span>Lounge</span><span>Private Garden</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="events">
+        <div class="shell">
+          <div class="section-head">
+            <h2>Events and gardens become a real sales engine.</h2>
+            <p>This section would link to separate pages for weddings, conferences, gardens, corporate retreats, and private dining.</p>
+          </div>
+          <div class="event-layout">
+            <div class="event-photo">
+              <div>
+                <span class="eyebrow">Signature Garden</span>
+                <h2>Outdoor events with a hotel team behind every detail.</h2>
+              </div>
+            </div>
+            <div class="event-stack">
+              <article class="event-card">
+                <span class="eyebrow">Weddings</span>
+                <h3>Garden ceremonies and ballroom receptions</h3>
+                <p>Package page with guest capacity, decor partners, bridal suite, catering menus, gallery, and booking form.</p>
+              </article>
+              <article class="event-card">
+                <span class="eyebrow">Corporate Events</span>
+                <h3>Conferences, trainings, launches, and retreats</h3>
+                <p>Dedicated page for AV setup, seating plans, accommodation bundles, menus, and quote requests.</p>
+              </article>
+              <article class="event-card">
+                <span class="eyebrow">Private Functions</span>
+                <h3>Birthdays, introductions, graduations, and dinners</h3>
+                <p>Clear packages reduce back-and-forth and help the hotel capture better event leads.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="dining">
+        <div class="shell dining">
+          <div class="dining-copy">
+            <span class="eyebrow">Restaurant & Bar</span>
+            <h2>A dining page that brings locals in, not only overnight guests.</h2>
+            <p>The restaurant section can include menus, chef specials, Sunday brunch, corporate lunch bookings, private dining, and WhatsApp reservations. This gives the hotel another revenue channel from the same website.</p>
+            <div class="chips"><span>Menu Pages</span><span>Private Dining</span><span>Sunday Brunch</span><span>WhatsApp Table Booking</span></div>
+          </div>
+          <div class="dining-image" aria-label="Restaurant dining room"></div>
+        </div>
+      </section>
+
+      <section id="corporate">
+        <div class="shell">
+          <div class="section-head">
+            <h2>Corporate trust pages for serious clients.</h2>
+            <p>For a 700k tier, the site should answer procurement, HR, wedding planners, and executive assistants before they call.</p>
+          </div>
+          <div class="trust-grid">
+            <div class="trust-card"><b>Safety and guest care</b><p>Security, reception process, parking, emergency contacts, and guest policies.</p></div>
+            <div class="trust-card"><b>Company profile</b><p>Downloadable PDF profile for procurement teams and event planners.</p></div>
+            <div class="trust-card"><b>Partners and vendors</b><p>Preferred decor, photography, transport, and catering partner sections.</p></div>
+            <div class="trust-card"><b>Reviews and proof</b><p>Testimonials, event photos, client logos, and Google review highlights.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pages">
+        <div class="shell">
+          <div class="section-head">
+            <h2>The actual multi-page structure.</h2>
+            <p>This is the sitemap I would pitch to a hotel or garden venue for the premium package.</p>
+          </div>
+          <div class="page-map">
+            <aside class="page-nav">
+              <a href="#pages">Home</a>
+              <a href="#pages">Rooms & Suites</a>
+              <a href="#pages">Weddings</a>
+              <a href="#pages">Conferences</a>
+              <a href="#pages">Gardens</a>
+              <a href="#pages">Restaurant</a>
+              <a href="#pages">Gallery</a>
+              <a href="#pages">About</a>
+              <a href="#pages">Contact</a>
+            </aside>
+            <div class="page-detail">
+              <ul>
+                <li>Room detail pages with amenities and booking CTA</li>
+                <li>Wedding package page with gallery and inquiry form</li>
+                <li>Conference page with hall layouts and quote request</li>
+                <li>Garden venue page with capacity and event use cases</li>
+                <li>Restaurant menu and private dining page</li>
+                <li>Corporate profile and procurement-friendly content</li>
+                <li>Gallery split by rooms, events, dining, gardens</li>
+                <li>Testimonials and client/event proof section</li>
+                <li>FAQ for bookings, deposits, cancellation, and check-in</li>
+                <li>WhatsApp routing for rooms, events, dining, and general inquiry</li>
+                <li>SEO setup for hotel, wedding garden, conference venue searches</li>
+                <li>Google Maps, analytics, Search Console, and lead tracking</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="leadership">
+        <div class="shell">
+          <div class="section-head">
+            <h2>Leadership and operations make the hotel feel established.</h2>
+            <p>Corporate buyers and wedding planners trust a venue faster when the website shows structure, people, and process.</p>
+          </div>
+          <div class="leadership">
+            <article class="leader-card">
+              <div class="leader-avatar"></div>
+              <span>General Manager</span>
+              <h3>Guest experience and operations</h3>
+              <p>Message focused on service standards, response time, and guest care.</p>
+            </article>
+            <article class="leader-card">
+              <div class="leader-avatar"></div>
+              <span>Events Director</span>
+              <h3>Weddings and corporate functions</h3>
+              <p>Message focused on planning, coordination, vendor flow, and guest capacity.</p>
+            </article>
+            <article class="leader-card">
+              <div class="leader-avatar"></div>
+              <span>Executive Chef</span>
+              <h3>Dining, menus, and private catering</h3>
+              <p>Message focused on cuisine quality, menus, and dining experiences.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="shell">
+          <div class="cta">
+            <div>
+              <h2>This is the kind of hotel site you can sell as a 700k corporate build.</h2>
+              <p>It has enough depth for rooms, events, dining, gardens, corporate trust, SEO, and qualified inquiries. The client sees value because the website supports multiple revenue streams.</p>
+            </div>
+            <a class="btn primary" href="https://wa.me/256775224728?text=Hello%20Solomon%2C%20show%20me%20the%20700k%20hotel%20and%20garden%20website%20demo" target="_blank" rel="noopener noreferrer">WhatsApp Inquiry</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell">Serene Grove Hotel & Gardens - 700k corporate hospitality demo by Solomon Talgo.</div>
+    </footer>
+  </body>
+</html>
