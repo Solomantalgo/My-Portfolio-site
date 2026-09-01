@@ -1,34 +1,22 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Gateway from './pages/Gateway';
+import Business from './pages/Business';
+import Developer from './pages/Developer';
 import LinksPage from './pages/LinksPage';
 import ConnectPage from './pages/ConnectPage';
-import Cursor from './components/Cursor';
-import FAB from './components/FAB';
-import HireModal from './components/HireModal';
+import './upgrade.css';
+import './popup-center.css';
 
-function App() {
-  const [isHireModalOpen, setIsHireModalOpen] = useState(false);
-
-  const openHireModal = (e) => {
-    if (e) e.preventDefault();
-    setIsHireModalOpen(true);
-  };
-  const closeHireModal = () => setIsHireModalOpen(false);
-
+export default function App() {
   return (
-    <Router>
-      <Cursor />
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home openHireModal={openHireModal} />} />
+        <Route path="/" element={<Gateway />} />
+        <Route path="/business" element={<Business />} />
+        <Route path="/developer" element={<Developer />} />
         <Route path="/links" element={<LinksPage />} />
         <Route path="/connect" element={<ConnectPage />} />
       </Routes>
-      <FAB />
-      <HireModal isOpen={isHireModalOpen} onClose={closeHireModal} />
-    </Router>
+    </BrowserRouter>
   );
 }
-
-export default App;
-

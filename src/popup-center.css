@@ -1,0 +1,25 @@
+.gateway {
+  place-items: center;
+  align-content: center;
+}
+
+.gateway .chooser {
+  margin: auto;
+}
+
+@media (max-width: 560px) {
+  .gateway {
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    padding-top: max(76px, env(safe-area-inset-top));
+    padding-right: max(12px, env(safe-area-inset-right));
+    padding-bottom: max(18px, env(safe-area-inset-bottom));
+    padding-left: max(12px, env(safe-area-inset-left));
+  }
+
+  .gateway .chooser {
+    width: min(100%, 680px);
+    margin-block: auto;
+  }
+}
