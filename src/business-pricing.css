@@ -1,0 +1,38 @@
+.business-pricing .prices { align-items: stretch; }
+.business-pricing .prices article { display:flex; flex-direction:column; min-width:0; padding:26px; border-color:rgba(255,255,255,.09); background:#101514; }
+.business-pricing .prices article.hot { border-color:rgba(184,243,74,.72); background:linear-gradient(180deg,rgba(184,243,74,.075),rgba(16,21,20,1) 32%); box-shadow:0 18px 50px rgba(0,0,0,.24); }
+.business-pricing .prices article>em { width:fit-content; margin:-10px 0 15px; padding:5px 8px; border-radius:999px; color:#111; background:var(--lime); font-weight:900; }
+.business-pricing .prices article>small { min-height:44px; color:#aab5b1; font-size:.78rem; line-height:1.45; }
+.business-pricing .prices h3 { margin:13px 0 0; font-size:1.15rem; }
+.business-pricing .prices article>strong { margin:8px 0 18px; }
+.business-pricing .prices ul { flex:1; }
+.business-pricing .prices details p { margin:9px 0 0; font-size:.72rem; line-height:1.55; }
+.business-pricing .package-cta { min-height:48px; padding-inline:12px; text-align:center; line-height:1.25; }
+.business-pricing .recommender { grid-template-columns:minmax(210px,.8fr) minmax(300px,1.3fr) minmax(200px,.65fr); gap:28px; padding:28px; }
+.recommender-intro h3 { margin:8px 0 10px; font-size:1.4rem; }
+.recommender-intro p { margin-bottom:7px; font-size:.83rem; line-height:1.55; }
+.recommender-intro>span { color:#78837e; font-size:.69rem; }
+.business-pricing .recommender fieldset { min-width:0; margin:0; padding:0; border:0; }
+.business-pricing .recommender label { align-items:flex-start; min-height:48px; margin:5px 0; padding:10px 11px; border:1px solid rgba(255,255,255,.065); border-radius:9px; cursor:pointer; line-height:1.45; }
+.business-pricing .recommender label:has(input:checked) { border-color:rgba(184,243,74,.45); background:rgba(184,243,74,.045); color:#dce4e0; }
+.business-pricing .recommender input { flex:none; width:18px; height:18px; margin:1px 2px 0 0; accent-color:var(--lime); }
+.business-pricing .recommender aside { align-content:center; min-width:0; padding-left:24px; border-left:1px solid rgba(255,255,255,.075); }
+.business-pricing .recommender aside b { line-height:1.05; }
+.business-pricing .recommender aside>span { color:#aab5b1; font-size:.78rem; line-height:1.45; }
+.business-pricing .recommender aside.neutral b { color:#dce4e0; font-size:1.05rem; }
+.business-pricing .recommender aside .button { min-height:44px; margin-top:5px; padding:11px 13px; font-size:.74rem; text-align:center; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+@media (max-width:900px) {
+ .business-pricing .recommender { grid-template-columns:1fr; gap:20px; }
+ .business-pricing .recommender aside { padding:20px 0 0; border-top:1px solid rgba(255,255,255,.075); border-left:0; }
+}
+@media (max-width:560px) {
+ .business-pricing .prices { gap:10px; margin-top:30px; }
+ .business-pricing .prices article { padding:21px 19px; }
+ .business-pricing .prices article>small { min-height:0; }
+ .business-pricing .prices ul { min-height:0; margin:3px 0 18px; }
+ .business-pricing .prices details { margin-bottom:15px; }
+ .business-pricing .recommender { gap:17px; margin-top:24px; padding:20px 17px; }
+ .business-pricing .recommender label { min-height:52px; margin:6px 0; padding:10px; font-size:.8rem; }
+ .business-pricing .recommender aside { padding-top:17px; }
+}

@@ -1,0 +1,71 @@
+.business-pricing .prices li {
+  color: #c2cbc7;
+  line-height: 1.45;
+}
+
+.business-pricing .prices article > small {
+  color: #929d98;
+}
+
+.business-pricing .prices li::first-letter {
+  color: var(--lime);
+}
+
+.business-pricing .recommender {
+  background: rgba(16, 21, 20, .82);
+}
+
+.business-pricing .recommender-intro small,
+.business-pricing .recommender-result small {
+  color: var(--lime);
+  font-size: .61rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+
+.business-pricing .recommender-options {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.business-pricing .recommender-options label span {
+  min-width: 0;
+}
+
+.business-pricing .recommender-result b {
+  font-size: 1.65rem;
+}
+
+.business-pricing .recommender-result .button {
+  width: 100%;
+}
+
+@media (max-width: 560px) {
+  .business-pricing .prices li {
+    margin: 8px 0;
+    font-size: .81rem;
+  }
+
+  .business-pricing .prices article > strong {
+    margin-bottom: 15px;
+  }
+
+  .business-pricing .prices ul {
+    margin-top: 1px;
+    margin-bottom: 16px;
+  }
+
+  .business-pricing .recommender-intro h3 {
+    font-size: 1.28rem;
+  }
+
+  .business-pricing .recommender-intro p {
+    margin-bottom: 0;
+  }
+
+  .business-pricing .recommender-result b {
+    font-size: 1.5rem;
+  }
+}

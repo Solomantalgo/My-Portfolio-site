@@ -1,0 +1,34 @@
+.business-pricing .prices .package-cta-secondary {
+  border-color: rgba(184, 243, 74, .34);
+  background: transparent;
+  color: #e7edea !important;
+  box-shadow: none;
+}
+
+.business-pricing .prices .package-cta-secondary:hover,
+.business-pricing .prices .package-cta-secondary:focus-visible {
+  border-color: rgba(184, 243, 74, .75);
+  background: rgba(184, 243, 74, .07);
+  color: var(--lime) !important;
+}
+
+.business-pricing .prices .package-cta-primary {
+  border-color: var(--lime);
+  background: var(--lime);
+  color: #111 !important;
+}
+
+.business-pricing .prices .package-cta-primary:hover,
+.business-pricing .prices .package-cta-primary:focus-visible {
+  border-color: #c8ff62;
+  background: #c8ff62;
+}
+
+@media (max-width: 560px) {
+  .business-pricing .prices .package-cta {
+    width: 100%;
+    min-height: 48px;
+    padding-inline: 12px;
+    white-space: normal;
+  }
+}

@@ -1,0 +1,10 @@
+const fs=require('fs');
+const path='src/pages/Business.jsx';
+let source=fs.readFileSync(path,'utf8');
+source=source.replace("import'../business-capabilities.css';","import'../business-capabilities.css';import'../business-pricing.css';");
+const start=source.indexOf('<section id="packages">');
+const end=source.indexOf('<div className="recommender">',start);
+if(start<0||end<0)throw new Error('Pricing markup not found');
+const replacement=`<section id="packages" className="business-pricing"><small>CAPABILITY-BASED PRICING</small><h2>Choose the right starting point</h2><p className="lead">Every package includes responsive design and two months of routine content updates after deployment.</p><div className="prices">{packs.map(p=>{const descriptions={Starter:'Get your business professionally online',Standard:'Let customers interact, book or order',Business:'Manage customer information and workflows',Advanced:'Connect payments and external services'};const labels={Starter:'Choose Starter',Standard:'Choose Standard',Business:'Discuss Business Website',Advanced:'Discuss Your Requirements'};return <article className={p.hot?'hot':''} key={p.n}>{p.hot&&<em>POPULAR</em>}<small>{descriptions[p.n]}</small><h3>{p.n}</h3><strong>{p.p}</strong><ul>{p.f.map(f=><li key={f}>✓ {f}</li>)}</ul><details><summary>See full package details</summary><p>Final scope is based on required functionality. Major extra features and integrations are quoted separately.</p></details><a className={p.hot?'button package-cta package-cta-primary':'button package-cta package-cta-secondary'} href={wa(\`Hi Solomon, I'm interested in the \${p.n} website package for my business.\`)}>{labels[p.n]}</a></article>})}</div>`;
+source=source.slice(0,start)+replacement+source.slice(end);
+fs.writeFileSync(path,source);
