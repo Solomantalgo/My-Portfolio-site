@@ -1,0 +1,100 @@
+/* Final Gateway proportions: comfortably prominent without becoming a takeover. */
+.gateway-refined .chooser {
+  width: min(640px, calc(100vw - 40px));
+  padding: 42px;
+}
+
+.gateway-refined .chooser h1 {
+  font-size: clamp(2.55rem, 4.6vw, 3.25rem);
+}
+
+.gateway-refined .chooser > p {
+  font-size: 1rem;
+}
+
+.gateway-refined .choices {
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.gateway-refined .choices > a {
+  min-height: 126px;
+  padding: 21px 22px 20px 25px;
+  gap: 6px 22px;
+}
+
+.gateway-refined .choices > a strong {
+  font-size: 1.08rem;
+}
+
+.gateway-refined .choices > a span {
+  font-size: .84rem;
+}
+
+.gateway-refined .choices > a b {
+  font-size: .8rem;
+}
+
+@media (max-width: 560px) {
+  .gateway-refined .chooser {
+    width: 100%;
+    padding: 29px 20px 20px;
+  }
+
+  .gateway-refined .chooser h1 {
+    font-size: clamp(2.15rem, 10vw, 2.65rem);
+  }
+
+  .gateway-refined .chooser > p {
+    font-size: .9rem;
+  }
+
+  .gateway-refined .choices {
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .gateway-refined .choices > a {
+    min-height: 112px;
+    padding: 16px 15px 15px 19px;
+    gap: 4px 12px;
+  }
+
+  .gateway-refined .choices > a strong {
+    font-size: .96rem;
+  }
+
+  .gateway-refined .choices > a span {
+    font-size: .76rem;
+  }
+
+  .gateway-refined .choices > a b {
+    font-size: .72rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .gateway-refined .chooser {
+    padding-inline: 15px;
+  }
+
+  .gateway-refined .choices > a {
+    min-height: 106px;
+    padding-inline: 16px 11px;
+  }
+}
+
+@media (max-height: 680px) and (max-width: 560px) {
+  .gateway-refined .chooser {
+    padding-top: 24px;
+  }
+
+  .gateway-refined .choices {
+    margin-top: 17px;
+  }
+
+  .gateway-refined .choices > a {
+    min-height: 98px;
+    padding-block: 12px;
+  }
+}

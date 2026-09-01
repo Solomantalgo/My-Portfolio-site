@@ -1,0 +1,146 @@
+/* Final mobile flow correction. Card appearance remains defined by the existing Gateway styles. */
+@media (max-width: 560px) {
+  html,
+  body {
+    min-height: 100%;
+  }
+
+  .gateway-refined {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    align-content: initial !important;
+    place-items: initial !important;
+    min-height: 100svh;
+    height: auto;
+    padding: max(18px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    overflow-x: hidden;
+    overflow-y: visible !important;
+  }
+
+  .gateway-refined > .logo {
+    position: relative !important;
+    inset: auto !important;
+    flex: none;
+    align-self: flex-start;
+    margin: 0 4px 56px;
+  }
+
+  .gateway-refined .chooser {
+    position: relative;
+    inset: auto;
+    display: block;
+    flex: none;
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    max-height: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 27px 18px 18px;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  .gateway-refined .chooser h1#choose-title {
+    position: relative;
+    z-index: 1;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-width: calc(100% - 42px);
+    margin: 0 42px 6px 0 !important;
+    color: var(--text, #f3f6f4) !important;
+    font-size: clamp(2.05rem, 9.7vw, 2.55rem);
+    line-height: 1.02;
+  }
+
+  .gateway-refined .chooser p#choose-description {
+    position: relative;
+    z-index: 1;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin: 0 !important;
+    color: var(--muted, #aab5b1) !important;
+    font-size: .88rem;
+    line-height: 1.45;
+  }
+
+  .gateway-refined .close {
+    z-index: 2;
+    top: 14px;
+    right: 14px;
+  }
+
+  .gateway-refined .choices {
+    gap: 9px;
+    margin-top: 19px;
+  }
+
+  .gateway-refined .choices > a {
+    min-height: 0;
+    padding: 14px 14px 13px 18px;
+    gap: 3px 10px;
+  }
+
+  .gateway-refined .choices > a::before {
+    top: 15px;
+    bottom: 15px;
+  }
+
+  .gateway-refined .choices > a i { font-size: .58rem; }
+  .gateway-refined .choices > a strong { font-size: .92rem; line-height: 1.2; }
+  .gateway-refined .choices > a span { font-size: .72rem; line-height: 1.35; }
+  .gateway-refined .choices > a b { font-size: .69rem; }
+
+  .gateway-refined .gateway-dismissed {
+    flex: 1;
+    align-content: start;
+  }
+
+  .gateway-refined > footer {
+    position: relative;
+    inset: auto;
+    margin-top: 22px;
+  }
+}
+
+@media (max-width: 340px) {
+  .gateway-refined {
+    padding-inline: max(9px, env(safe-area-inset-left));
+  }
+
+  .gateway-refined > .logo {
+    margin-bottom: 50px;
+  }
+
+  .gateway-refined .chooser {
+    padding: 24px 13px 14px;
+  }
+
+  .gateway-refined .choices {
+    gap: 7px;
+    margin-top: 16px;
+  }
+
+  .gateway-refined .choices > a {
+    padding: 12px 10px 11px 15px;
+    gap: 2px 7px;
+  }
+
+  .gateway-refined .choices > a strong { font-size: .86rem; }
+  .gateway-refined .choices > a span { font-size: .68rem; }
+}
+
+@media (max-height: 650px) and (max-width: 560px) {
+  .gateway-refined > .logo {
+    margin-bottom: 50px;
+  }
+
+  .gateway-refined .chooser {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}

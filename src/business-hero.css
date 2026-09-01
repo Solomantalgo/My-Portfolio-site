@@ -1,0 +1,29 @@
+@import './business-hero-base.css';
+
+/* Portfolio-proof media: show captured website interfaces, not industry photography. */
+.showcase-screen img[src="/images/medical.png"] {
+  content: url('/images/jopeem-website-preview.png');
+}
+
+.showcase-screen img[src="/images/saloon.png"] {
+  content: url('/images/levinah-website-preview.png');
+}
+
+.showcase-screen .menu-preview {
+  background: #151b18 url('/images/biteright-website-preview.png') top center / cover no-repeat;
+}
+
+.showcase-screen .menu-preview > * {
+  display: none;
+}
+
+@media (max-width: 360px) {
+  .showcase-browser-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-browser-bar > span,
+  .showcase-browser-bar > b {
+    display: none;
+  }
+}

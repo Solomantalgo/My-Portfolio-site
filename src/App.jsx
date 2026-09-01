@@ -6,6 +6,7 @@ import LinksPage from './pages/LinksPage';
 import ConnectPage from './pages/ConnectPage';
 import './upgrade.css';
 import './popup-center.css';
+import './gateway.css';
 
 export default function App() {
   return (

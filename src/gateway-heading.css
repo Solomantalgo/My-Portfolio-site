@@ -1,0 +1,25 @@
+@import './gateway-heading-base.css';
+
+@media (max-width: 560px) {
+  .mobile-gateway-intro {
+    margin-bottom: 22px;
+  }
+
+  .gateway-refined .chooser {
+    padding-top: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .gateway-refined .chooser::before {
+    display: none;
+  }
+}
+
+@media (max-width: 340px) {
+  .mobile-gateway-intro {
+    margin-bottom: 20px;
+  }
+}
