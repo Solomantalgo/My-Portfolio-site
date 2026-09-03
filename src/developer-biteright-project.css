@@ -1,0 +1,29 @@
+.compact-project-workflow {
+  margin-top: 15px;
+  padding: 11px 13px;
+  border-left: 2px solid rgba(100, 169, 255, .48);
+  color: #9eb3c5;
+  background: rgba(100, 169, 255, .035);
+  font-size: .68rem;
+  line-height: 1.5;
+}
+
+.compact-project-workflow b {
+  margin-right: 8px;
+  color: var(--blue);
+  font-size: .57rem;
+  letter-spacing: .12em;
+}
+
+@media (max-width: 560px) {
+  .compact-project-workflow {
+    margin-top: 14px;
+    padding: 10px 11px;
+    font-size: .65rem;
+  }
+
+  .compact-project-workflow b {
+    display: block;
+    margin: 0 0 4px;
+  }
+}

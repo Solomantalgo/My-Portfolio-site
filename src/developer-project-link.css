@@ -1,0 +1,27 @@
+.featured-project-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  margin-top: 22px;
+  padding: 9px 14px;
+  border: 1px solid rgba(100, 169, 255, .3);
+  border-radius: 7px;
+  color: #b9d8f6;
+  background: rgba(100, 169, 255, .045);
+  font-size: .72rem;
+  font-weight: 800;
+}
+
+.featured-project-link:hover,
+.featured-project-link:focus-visible {
+  border-color: rgba(100, 169, 255, .75);
+  color: #d9ebfc;
+  background: rgba(100, 169, 255, .09);
+}
+
+@media (max-width: 560px) {
+  .featured-project-link {
+    min-height: 44px;
+    margin-top: 18px;
+  }
+}
