@@ -12,6 +12,7 @@
   background:
     radial-gradient(ellipse 45% 40% at 62% 40%, rgba(195,248,62,.09), transparent 70%),
     radial-gradient(ellipse at 95% 96%, rgba(109, 65, 149, .32), transparent 30%),
+    radial-gradient(ellipse at 8% 62%, rgba(195,248,62,.08), transparent 24%),
     radial-gradient(ellipse at 40% 72%, rgba(126, 173, 35, .12), transparent 22%),
     radial-gradient(ellipse at 54% 48%, rgba(122, 180, 50, .035), transparent 45%),
     #070a09;
@@ -35,10 +36,10 @@
 
 .gateway-atmosphere::before {
   inset: 0;
-  opacity: .2;
-  background-image: radial-gradient(rgba(194, 239, 121, .34) .7px, transparent .7px);
+  opacity: .35;
+  background-image: radial-gradient(rgba(194, 239, 121, .42) .7px, transparent .7px);
   background-size: 9px 9px;
-  mask-image: radial-gradient(ellipse 14% 48% at 85% 42%, #000, transparent), radial-gradient(ellipse 16% 18% at 36% 77%, #000, transparent);
+  mask-image: radial-gradient(ellipse 18% 50% at 85% 42%, #000, transparent), radial-gradient(ellipse 20% 22% at 36% 77%, #000, transparent);
 }
 
 .gateway-atmosphere::after {
@@ -46,9 +47,14 @@
   left: 55%;
   width: min(58vw, 740px);
   aspect-ratio: 1;
-  border: 1px solid rgba(180, 226, 88, .15);
+  border: 1px solid transparent;
   border-radius: 50%;
-  box-shadow: 0 0 0 42px rgba(180, 226, 88, .009), 0 0 0 84px rgba(180, 226, 88, .006);
+  background: conic-gradient(from 220deg, transparent 0 20%, rgba(195,248,62,.42) 31%, rgba(195,248,62,.12) 47%, transparent 62% 100%) border-box;
+  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  box-shadow: 0 0 34px rgba(195,248,62,.18), 0 0 0 42px rgba(180, 226, 88, .045), 0 0 0 84px rgba(180, 226, 88, .014);
+  filter: blur(.15px);
   transform: translate(-50%, -50%);
 }
 
@@ -57,7 +63,7 @@
   z-index: 1;
   display: flex;
   width: min(100% - clamp(48px, 11vw, 176px), 1180px);
-  min-height: clamp(80px, 11dvh, 104px);
+  min-height: clamp(110px, 11dvh, 118px);
   flex: none;
   align-items: center;
   margin: 0 auto;
@@ -92,14 +98,6 @@
   letter-spacing: .17em;
   text-transform: uppercase;
 }
-
-.gateway-menu-wrap { position: relative; margin-left: auto; display: none; }
-.gateway-menu-button { display: grid; width: 46px; height: 46px; place-items: center; border: 1px solid rgba(255,255,255,.13); border-radius: 50%; color: #e8edf1; background: rgba(255,255,255,.035); cursor: pointer; }
-.gateway-menu-button:hover { border-color: rgba(195,248,62,.45); color: var(--gateway-lime); }
-.gateway-menu-button:focus-visible { outline: 2px solid var(--gateway-lime); outline-offset: 4px; }
-.gateway-menu { position: absolute; top: calc(100% + 10px); right: 0; z-index: 5; display: grid; width: max-content; min-width: 190px; gap: 3px; padding: 8px; border: 1px solid rgba(195,248,62,.24); border-radius: 14px; background: rgba(12,17,17,.97); box-shadow: 0 18px 45px rgba(0,0,0,.42); backdrop-filter: blur(14px); }
-.gateway-menu a { padding: 10px 12px; border-radius: 8px; color: #d8dee5; font-size: .78rem; text-decoration: none; }
-.gateway-menu a:hover, .gateway-menu a:focus-visible { color: var(--gateway-lime); background: rgba(195,248,62,.08); outline: none; }
 
 .gateway-layout {
   position: relative;
@@ -205,8 +203,8 @@
     radial-gradient(ellipse at 100% 0%, rgba(195,248,62,.14), transparent 37%) padding-box,
     radial-gradient(ellipse at 0% 100%, rgba(195,248,62,.08), transparent 33%) padding-box,
     linear-gradient(145deg, #0e1412, #0b0f13) padding-box,
-    linear-gradient(125deg, rgba(195,248,62,.85), rgba(195,248,62,.18) 30%, rgba(195,248,62,.4) 62%, rgba(195,248,62,.7)) border-box;
-  box-shadow: 0 26px 76px rgba(0,0,0,.45), 0 0 60px rgba(195,248,62,.10), inset 0 1px rgba(255,255,255,.05);
+    linear-gradient(45deg, rgba(195,248,62,.95) 0%, rgba(195,248,62,.14) 28%, rgba(195,248,62,.14) 68%, rgba(195,248,62,.95) 100%) border-box;
+  box-shadow: 0 26px 76px rgba(0,0,0,.45), 0 0 90px rgba(195,248,62,.18), inset 0 1px rgba(255,255,255,.05);
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
 }
@@ -224,14 +222,14 @@
   border-radius: 19px;
   color: inherit;
   text-decoration: none;
-  background: linear-gradient(108deg, color-mix(in srgb, var(--path-color) 3%, #0d1314), #0d1217 72%);
+  background: linear-gradient(108deg, color-mix(in srgb, var(--path-color) 5%, #0d1314), #0d1217 72%);
   box-shadow: inset 0 1px rgba(255, 255, 255, .026);
   transition: transform 210ms ease, border-color 210ms ease, box-shadow 210ms ease, background-color 210ms ease;
 }
 
-.gateway-card.employer { --path-color: var(--gateway-blue); }
-.gateway-card.personal { --path-color: var(--gateway-purple); }
-.gateway-card.client { border-color: #b5dc43; box-shadow: inset 0 0 24px rgba(169, 233, 41, .055), 0 0 18px rgba(163, 220, 46, .05); }
+.gateway-card.employer { --path-color: var(--gateway-blue); border-color: rgba(66,140,255,.4); background: radial-gradient(ellipse at 0% 100%, rgba(66,140,255,.09), transparent 58%), #0d151b; }
+.gateway-card.personal { --path-color: var(--gateway-purple); border-color: rgba(202,114,255,.38); background: radial-gradient(ellipse at 100% 100%, rgba(202,114,255,.14), transparent 55%), #101016; }
+.gateway-card.client { border-color: rgba(195,248,62,.75); background: radial-gradient(ellipse at 0% 100%, rgba(195,248,62,.16), transparent 55%), #0d1512; box-shadow: inset 0 0 24px rgba(169, 233, 41, .08), 0 0 28px rgba(195,248,62,.14); }
 
 .gateway-card-icon {
   display: grid;
@@ -241,11 +239,14 @@
   border: 1px solid color-mix(in srgb, var(--path-color) 18%, transparent);
   border-radius: 15px;
   color: color-mix(in srgb, var(--path-color) 82%, white);
-  background: color-mix(in srgb, var(--path-color) 15%, #0b1811);
+  background: var(--icon-bg, color-mix(in srgb, var(--path-color) 15%, #0b1811));
   transition: background-color 210ms ease, box-shadow 210ms ease;
 }
 
 .gateway-card-copy { display: grid; min-width: 0; gap: 7px; }
+.gateway-card.client .gateway-card-icon { --icon-bg: #233511; border-color: rgba(195,248,62,.24); }
+.gateway-card.employer .gateway-card-icon { --icon-bg: #10264f; border-color: rgba(66,140,255,.24); }
+.gateway-card.personal .gateway-card-icon { --icon-bg: #341c57; border-color: rgba(202,114,255,.24); }
 .gateway-card-icon svg { width: 36px; height: 36px; }
 .gateway-card-label { color: var(--path-color); font-size: .66rem; font-weight: 750; letter-spacing: .14em; line-height: 1.25; text-transform: uppercase; }
 .gateway-card-title { color: #f1f3f4; font-size: clamp(1rem, 1.85vw, 1.32rem); font-weight: 700; letter-spacing: -.012em; word-spacing: .03em; line-height: 1.28; }
@@ -290,9 +291,10 @@
   outline-offset: 5px;
 }
 
-.gateway-menu-button { font-family: inherit; }
-
 .gateway-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: min(100% - clamp(48px, 11vw, 176px), 1180px);
   min-height: 76px;
   flex: none;
@@ -315,16 +317,21 @@
   background: rgba(255, 255, 255, .025);
 }
 .gateway-footer a:hover { color: var(--gateway-lime); border-color: rgba(186, 255, 67, .3); }
+.gateway-socials { display: flex; align-items: center; gap: 14px; }
+
+@media (min-width: 861px) and (max-width: 1200px) {
+  .gateway-layout { grid-template-columns: minmax(360px, .55fr) minmax(0, 1fr); gap: 32px; }
+  .gateway-welcome h1 { font-size: clamp(2.8rem, 4.6vw, 3.35rem); }
+}
 
 /* Natural content height wins on short windows; no fixed-height content clipping. */
 @media (min-width: 861px) and (max-height: 680px) {
   .gateway-header { min-height: 76px; }
   .gateway-layout { padding-block: 18px; }
-  .gateway-footer { min-height: 64px; padding-block: 12px; }
+  .gateway-footer { min-height: 64px; padding: 12px 0 24px; }
 }
 
 @media (min-width: 861px) and (max-height: 780px) {
-  .gateway-page { min-height: 0; }
   .gateway-header { min-height: 68px; }
   .gateway-layout { padding-block: 10px; }
   .gateway-panel { padding: 22px 28px; gap: 12px; }
@@ -333,11 +340,11 @@
   .gateway-card-icon svg { width: 30px; height: 30px; }
   .gateway-welcome h1 { font-size: clamp(2.7rem, 4.6vw, 3.35rem); }
   .gateway-benefits { gap: 14px; margin-top: 22px; }
-  .gateway-footer { min-height: 58px; padding-block: 8px; }
+  .gateway-footer { min-height: 58px; padding: 8px 0 24px; }
 }
 
 @media (max-width: 860px) {
-  .gateway-menu-wrap { display: block; }
+  .gateway-atmosphere::before { opacity: .18; }
   .gateway-atmosphere::after { top: 35%; left: 65%; width: 100vw; opacity: .7; }
   .gateway-footer { display: none; }
   .gateway-header { width: calc(100% - clamp(40px, 11vw, 92px)); min-height: 83px; }
