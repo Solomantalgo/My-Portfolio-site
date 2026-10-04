@@ -419,3 +419,110 @@
   .gateway-card-icon,
   .gateway-card-arrow { transition: none; }
 }
+
+/* ===== FINAL MATCH OVERRIDES: append at the END of src/gateway.css ===== */
+
+/* ---------- Cards (desktop + mobile) ---------- */
+.gateway-card.client {
+  border-color: rgba(195, 248, 62, .9);
+  background:
+    radial-gradient(ellipse 70% 120% at 0% 100%, rgba(195, 248, 62, .24), transparent 65%),
+    radial-gradient(ellipse 50% 90% at 100% 0%, rgba(195, 248, 62, .10), transparent 70%),
+    #0d1610;
+  box-shadow: 0 0 0 1px rgba(195, 248, 62, .22), inset 0 0 38px rgba(195, 248, 62, .10), 0 0 36px rgba(195, 248, 62, .22);
+}
+.gateway-card.employer {
+  border-color: rgba(66, 140, 255, .55);
+  background: radial-gradient(ellipse 70% 120% at 0% 100%, rgba(66, 140, 255, .16), transparent 65%), #0c141d;
+  box-shadow: inset 0 0 30px rgba(66, 140, 255, .05);
+}
+.gateway-card.personal {
+  border-color: rgba(202, 114, 255, .5);
+  background: radial-gradient(ellipse 70% 120% at 100% 100%, rgba(202, 114, 255, .24), transparent 65%), #110f19;
+  box-shadow: inset 0 0 30px rgba(202, 114, 255, .06);
+}
+/* Hover must be re-declared AFTER the rules above, otherwise they override it */
+.gateway-card.client:hover {
+  border-color: #d6ff5a;
+  box-shadow: 0 0 0 1px rgba(195, 248, 62, .35), inset 0 0 44px rgba(195, 248, 62, .14), 0 10px 32px rgba(0, 0, 0, .35), 0 0 46px rgba(195, 248, 62, .30);
+}
+.gateway-card.employer:hover {
+  border-color: rgba(66, 140, 255, .9);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .35), 0 0 34px rgba(66, 140, 255, .22), inset 0 0 36px rgba(66, 140, 255, .08);
+}
+.gateway-card.personal:hover {
+  border-color: rgba(202, 114, 255, .85);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .35), 0 0 34px rgba(202, 114, 255, .22), inset 0 0 36px rgba(202, 114, 255, .08);
+}
+
+/* ---------- Desktop only ---------- */
+@media (min-width: 861px) {
+  .gateway-page {
+    background:
+      radial-gradient(ellipse 38% 34% at 90% 94%, rgba(122, 72, 170, .42), transparent 72%),
+      radial-gradient(ellipse 22% 24% at 30% 70%, rgba(195, 248, 62, .15), transparent 70%),
+      radial-gradient(ellipse 45% 40% at 60% 42%, rgba(195, 248, 62, .09), transparent 70%),
+      radial-gradient(ellipse at 8% 62%, rgba(195, 248, 62, .06), transparent 24%),
+      #070a09;
+  }
+
+  .gateway-atmosphere::before {
+    opacity: .55;
+    background-image: radial-gradient(rgba(205, 245, 130, .6) .8px, transparent .9px);
+    background-size: 8px 8px;
+    -webkit-mask-image:
+      radial-gradient(ellipse 11% 15% at 82% 14%, #000, transparent),
+      radial-gradient(ellipse 9% 14% at 32% 67%, #000, transparent);
+    mask-image:
+      radial-gradient(ellipse 11% 15% at 82% 14%, #000, transparent),
+      radial-gradient(ellipse 9% 14% at 32% 67%, #000, transparent);
+  }
+
+  .gateway-atmosphere::after {
+    --ring: min(58vw, 740px, 88dvh);
+    top: 50%;
+    left: 55%;
+    width: calc(var(--ring) + 120px);
+    aspect-ratio: 1;
+    border: 0;
+    border-radius: 50%;
+    box-shadow: none;
+    filter: none;
+    opacity: 1;
+    background: radial-gradient(closest-side,
+      transparent calc(100% - 90px),
+      rgba(195, 248, 62, .04) calc(100% - 72px),
+      rgba(195, 248, 62, .14) calc(100% - 63px),
+      rgba(195, 248, 62, .42) calc(100% - 60px),
+      rgba(195, 248, 62, .14) calc(100% - 57px),
+      rgba(195, 248, 62, .04) calc(100% - 48px),
+      transparent calc(100% - 30px));
+    -webkit-mask: none;
+    mask: none;
+    -webkit-mask-image: conic-gradient(from 200deg, rgba(0,0,0,.18) 0deg, rgba(0,0,0,.9) 75deg, #000 120deg, rgba(0,0,0,.55) 175deg, rgba(0,0,0,.18) 230deg, rgba(0,0,0,.12) 300deg, rgba(0,0,0,.18) 360deg);
+    mask-image: conic-gradient(from 200deg, rgba(0,0,0,.18) 0deg, rgba(0,0,0,.9) 75deg, #000 120deg, rgba(0,0,0,.55) 175deg, rgba(0,0,0,.18) 230deg, rgba(0,0,0,.12) 300deg, rgba(0,0,0,.18) 360deg);
+    transform: translate(-50%, -50%);
+  }
+
+  .gateway-panel {
+    border-width: 2px;
+    background:
+      radial-gradient(ellipse 55% 45% at 100% 0%, rgba(195, 248, 62, .22), transparent 70%) padding-box,
+      radial-gradient(ellipse 50% 40% at 0% 100%, rgba(195, 248, 62, .14), transparent 70%) padding-box,
+      linear-gradient(145deg, rgba(14, 20, 18, .92), rgba(10, 14, 18, .94)) padding-box,
+      linear-gradient(45deg, #d6ff5a 0%, rgba(195, 248, 62, .22) 30%, rgba(195, 248, 62, .16) 66%, #d6ff5a 100%) border-box;
+    box-shadow:
+      0 26px 76px rgba(0, 0, 0, .5),
+      0 0 70px rgba(195, 248, 62, .14),
+      0 0 140px rgba(195, 248, 62, .06),
+      inset 0 0 50px rgba(195, 248, 62, .04),
+      inset 0 1px rgba(255, 255, 255, .06);
+  }
+}
+
+@media (max-width: 860px) {
+  .gateway-card.client {
+    box-shadow: 0 0 0 1px rgba(195, 248, 62, .2), inset 0 0 28px rgba(195, 248, 62, .08), 0 0 20px rgba(195, 248, 62, .12);
+  }
+  .gateway-atmosphere::after { opacity: .3; }
+}
