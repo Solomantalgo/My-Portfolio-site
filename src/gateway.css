@@ -548,3 +548,149 @@
   .gateway-card-arrow { width: 36px; height: 36px; }
   .gateway-benefits { margin-top: 18px; }
 }
+
+/* Mobile gateway: keep the complete experience inside the dynamic viewport. */
+@media (max-width: 860px) {
+  .gateway-page {
+    height: 100dvh;
+    min-height: 0;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .gateway-header,
+  .gateway-layout { width: calc(100% - clamp(32px, 10vw, 52px)); }
+
+  .gateway-header {
+    min-height: clamp(52px, 7.1dvh, 66px);
+    flex: none;
+  }
+
+  .gateway-brand-mark { width: 40px; height: 40px; }
+  .gateway-brand { gap: 11px; }
+  .gateway-brand-name { font-size: clamp(.76rem, 3.2vw, .86rem); letter-spacing: .1em; }
+
+  .gateway-layout {
+    min-height: 0;
+    flex: 1 1 auto;
+    grid-template-rows: min-content min-content min-content min-content min-content;
+    align-content: space-between;
+    gap: 0;
+    padding: clamp(5px, 1.6dvh, 14px) 0 clamp(8px, 1.8dvh, 16px);
+  }
+
+  .gateway-welcome { display: contents; }
+  .gateway-eyebrow { grid-row: 1; margin: 0 0 clamp(5px, 1.1dvh, 10px) 4px; font-size: .64rem; }
+  .gateway-eyebrow > span { width: 8px; height: 8px; }
+  .gateway-welcome h1 {
+    grid-row: 2;
+    max-width: 100%;
+    font-size: clamp(2.05rem, min(10.6vw, 6.3dvh), 2.75rem);
+    line-height: .99;
+    letter-spacing: -.04em;
+  }
+  .gateway-description {
+    grid-row: 3;
+    max-width: 100%;
+    margin: clamp(7px, 1.2dvh, 11px) 0 clamp(9px, 1.8dvh, 16px) 4px;
+    font-size: clamp(.86rem, 4.25vw, 1.02rem);
+    line-height: 1.38;
+  }
+  .gateway-desktop-break { display: none; }
+
+  .gateway-panel {
+    grid-row: 4;
+    gap: clamp(6px, 1.1dvh, 10px);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .gateway-card {
+    min-height: clamp(98px, 12dvh, 106px);
+    grid-template-columns: clamp(48px, 14vw, 58px) minmax(0, 1fr) clamp(34px, 10vw, 40px);
+    gap: clamp(8px, 2.7vw, 12px);
+    padding: 11px clamp(9px, 2.8vw, 13px);
+    border-radius: 15px;
+  }
+  .gateway-card-icon { width: clamp(48px, 14vw, 58px); height: clamp(48px, 14vw, 58px); border-radius: 13px; align-self: center; }
+  .gateway-card-icon svg { width: clamp(25px, 7.2vw, 31px); height: clamp(25px, 7.2vw, 31px); }
+  .gateway-card-copy { gap: 3px; }
+  .gateway-card-label { font-size: clamp(.52rem, 2.45vw, .62rem); letter-spacing: .1em; }
+  .gateway-card-title { font-size: clamp(.83rem, 3.75vw, .98rem); line-height: 1.2; }
+  .gateway-card-description { font-size: clamp(.72rem, 3.15vw, .82rem); line-height: 1.28; }
+  .gateway-card-arrow { width: clamp(34px, 10vw, 40px); height: clamp(34px, 10vw, 40px); }
+  .gateway-card-arrow svg { width: 18px; height: 18px; }
+
+  .gateway-benefits {
+    grid-row: 5;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(4px, 2vw, 10px);
+    margin: clamp(9px, 1.8dvh, 16px) 0 0;
+  }
+  .gateway-benefit { min-width: 0; flex-direction: column; align-items: center; gap: 5px; padding: 0 1px; text-align: center; }
+  .gateway-benefit-icon,
+  .gateway-benefit:nth-child(3) .gateway-benefit-icon {
+    width: clamp(32px, 10vw, 40px);
+    height: clamp(32px, 10vw, 40px);
+    flex: 0 0 clamp(32px, 10vw, 40px);
+    border: 1px solid rgba(186, 255, 67, .11);
+    border-radius: 11px;
+    background: rgba(186, 255, 67, .06);
+    color: var(--gateway-lime);
+  }
+  .gateway-benefit:nth-child(3) .gateway-benefit-icon { color: #ffc144; border-color: rgba(255,193,68,.13); background: rgba(255,193,68,.06); }
+  .gateway-benefit-icon svg { width: 20px; height: 20px; }
+  .gateway-benefit-copy { justify-items: center; gap: 2px; }
+  .gateway-benefit-copy strong { max-width: none; color: #e9ecef; font-size: clamp(.64rem, 2.85vw, .77rem); font-weight: 650; line-height: 1.18; }
+  .gateway-benefit-copy small { display: block; color: #aeb7c4; font-size: clamp(.58rem, 2.5vw, .68rem); line-height: 1.25; }
+}
+
+/* Short phones spend less height on gaps while preserving every content row. */
+@media (max-width: 860px) and (max-height: 720px) {
+  .gateway-header { min-height: 48px; }
+  .gateway-brand-mark { width: 36px; height: 36px; }
+  .gateway-layout { padding-block: 3px 7px; }
+  .gateway-eyebrow { margin-bottom: 4px; }
+  .gateway-welcome h1 { font-size: clamp(1.95rem, min(10vw, 5.7dvh), 2.35rem); }
+  .gateway-description { margin-block: 5px 8px; font-size: clamp(.82rem, 4vw, .94rem); line-height: 1.28; }
+  .gateway-card { min-height: 78px; padding-block: 8px; }
+  .gateway-card-copy { gap: 2px; }
+  .gateway-card-title { font-size: clamp(.8rem, 3.55vw, .9rem); }
+  .gateway-card-description { font-size: clamp(.69rem, 2.9vw, .76rem); line-height: 1.2; }
+  .gateway-benefits { margin-top: 7px; }
+  .gateway-benefit { gap: 3px; }
+  .gateway-benefit-icon,
+  .gateway-benefit:nth-child(3) .gateway-benefit-icon { width: 28px; height: 28px; flex-basis: 28px; }
+  .gateway-benefit-icon svg { width: 18px; height: 18px; }
+}
+
+@media (max-width: 350px) {
+  .gateway-header,
+  .gateway-layout { width: calc(100% - 28px); }
+  .gateway-brand-name { font-size: .72rem; letter-spacing: .08em; }
+  .gateway-card { min-height: 70px; grid-template-columns: 44px minmax(0, 1fr) 32px; gap: 8px; padding-inline: 8px; }
+  .gateway-card-icon { width: 44px; height: 44px; }
+  .gateway-card-arrow { width: 32px; height: 32px; }
+  .gateway-card-label { letter-spacing: .065em; }
+  .gateway-benefit-copy strong { font-size: .6rem; }
+  .gateway-benefit-copy small { font-size: .53rem; }
+}
+
+@media (max-width: 860px) and (max-height: 600px) {
+  .gateway-header { min-height: 44px; }
+  .gateway-brand-mark { width: 32px; height: 32px; }
+  .gateway-layout { padding-block: 1px 4px; }
+  .gateway-eyebrow { margin-bottom: 3px; font-size: .58rem; }
+  .gateway-welcome h1 { font-size: clamp(1.8rem, min(9.5vw, 5.2dvh), 2.1rem); }
+  .gateway-description { margin-block: 4px 6px; font-size: .8rem; }
+  .gateway-panel { gap: 5px; }
+  .gateway-card { padding-block: 6px; }
+  .gateway-card-title { font-size: .78rem; }
+  .gateway-card-description { font-size: .66rem; }
+  .gateway-benefits { margin-top: 5px; }
+  .gateway-benefit-copy small { font-size: .62rem; }
+}
