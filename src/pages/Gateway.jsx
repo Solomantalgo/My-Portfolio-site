@@ -1,14 +1,6 @@
-import { ArrowRight, Code2, Star, UserRound, Zap } from 'lucide-react';
+import { ArrowRight, BriefcaseBusiness, Code2, Star, UserRound, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-
-function BusinessIcon({ size, strokeWidth }) {
-  return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="7" width="18" height="14" rx="2" /><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2" /></svg>;
-}
-
-function ProfileIcon({ size, strokeWidth }) {
-  return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="6.5" r="3.5" /><path d="M4 21v-2a8 6 0 0 1 16 0v2Z" /></svg>;
-}
 
 const destinations = [
   {
@@ -17,7 +9,7 @@ const destinations = [
     title: 'I need a website or digital solution',
     description: 'Websites, booking, ordering and business systems.',
     to: '/business',
-    Icon: BusinessIcon,
+    Icon: BriefcaseBusiness,
   },
   {
     className: 'employer',
@@ -33,7 +25,7 @@ const destinations = [
     title: 'I’m looking for Solomon',
     description: 'Social profiles and direct contact.',
     to: '/connect',
-    Icon: ProfileIcon,
+    Icon: UserRound,
   },
 ];
 
