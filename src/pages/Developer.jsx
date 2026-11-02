@@ -20,6 +20,15 @@ const MotionParagraph = motion.p;
 const MotionDiv = motion.div;
 const MotionSpan = motion.span;
 
+// replace with new photo when the Developer hero image changes.
+const DEVELOPER_HERO_IMAGE = {
+  src: "/images/solomon-hero-1280.webp",
+  srcSet: "/images/solomon-hero-640.webp 640w, /images/solomon-hero-1280.webp 1280w, /images/solomon-hero-1774.webp 1774w",
+  sizes: "(max-width: 900px) 100vw, 58vw",
+  desktopPosition: "50% 30%",
+  mobilePosition: "50% 25%",
+};
+
 const secondaryProjects = [
   {
     name: "Jopeem Pharmacy",
@@ -235,7 +244,7 @@ export default function Developer() {
         description="Developer portfolio of Solomon Kisense: React, JavaScript, practical web products and business systems."
       />
       <Helmet>
-        <link rel="preload" as="image" href="/images/solomon-cutout-800.webp" imageSrcSet="/images/solomon-cutout-480.webp 480w, /images/solomon-cutout-800.webp 800w, /images/solomon-cutout-1254.webp 1254w" imageSizes="(max-width: 700px) 100vw, 52vw" fetchPriority="high" />
+        <link rel="preload" as="image" href={DEVELOPER_HERO_IMAGE.src} imageSrcSet={DEVELOPER_HERO_IMAGE.srcSet} imageSizes={DEVELOPER_HERO_IMAGE.sizes} fetchPriority="high" />
       </Helmet>
       <header id="top" ref={headerRef} className={`dev-header${isScrolled ? " is-scrolled" : ""}`}>
         <Link className="logo" to="/">
@@ -296,7 +305,7 @@ export default function Developer() {
       <main>
         <MotionSection className="dev-hero" initial={reduceMotion ? false : "hidden"} animate="visible" variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0 : 0.05 } } }}>
           <div className="dev-hero-media">
-            <img src="/images/solomon-cutout-800.webp" srcSet="/images/solomon-cutout-480.webp 480w, /images/solomon-cutout-800.webp 800w, /images/solomon-cutout-1254.webp 1254w" sizes="(max-width: 700px) 100vw, 52vw" width="1254" height="1254" alt="Portrait of Solomon against the blue-lit hero background" fetchPriority="high" decoding="async" />
+            <img src={DEVELOPER_HERO_IMAGE.src} srcSet={DEVELOPER_HERO_IMAGE.srcSet} sizes={DEVELOPER_HERO_IMAGE.sizes} width="1774" height="887" alt="Solomon posed in front of an illuminated city skyline at dusk" style={{ "--dev-hero-object-position": DEVELOPER_HERO_IMAGE.desktopPosition, "--dev-hero-mobile-object-position": DEVELOPER_HERO_IMAGE.mobilePosition }} fetchPriority="high" decoding="async" />
           </div>
           <div className="dev-hero-copy">
           <MotionSmall variants={reduceMotion ? heroStatic : heroEntrance}>FOR EMPLOYERS &amp; RECRUITERS</MotionSmall>
