@@ -16,11 +16,18 @@
   cursor: pointer;
 }
 
-.more-projects-toggle:hover,
 .more-projects-toggle:focus-visible {
   border-color: rgba(100, 169, 255, .68);
   color: #d9ebfc;
   background: rgba(100, 169, 255, .075);
+}
+
+@media (hover: hover) {
+  .more-projects-toggle:hover {
+    border-color: rgba(100, 169, 255, .68);
+    color: #d9ebfc;
+    background: rgba(100, 169, 255, .075);
+  }
 }
 
 .more-projects-panel {
@@ -124,9 +131,14 @@
   font-weight: 800;
 }
 
-.secondary-project-actions a:hover,
 .secondary-project-actions a:focus-visible {
   color: var(--blue);
+}
+
+@media (hover: hover) {
+  .secondary-project-actions a:hover {
+    color: var(--blue);
+  }
 }
 
 @media (max-width: 900px) {

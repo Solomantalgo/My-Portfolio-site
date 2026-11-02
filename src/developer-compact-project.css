@@ -96,11 +96,18 @@
   font-weight: 800;
 }
 
-.compact-project-actions a:hover,
 .compact-project-actions a:focus-visible {
   border-color: rgba(100, 169, 255, .68);
   color: #d8eafb;
   background: rgba(100, 169, 255, .07);
+}
+
+@media (hover: hover) {
+  .compact-project-actions a:hover {
+    border-color: rgba(100, 169, 255, .68);
+    color: #d8eafb;
+    background: rgba(100, 169, 255, .07);
+  }
 }
 
 @media (max-width: 560px) {

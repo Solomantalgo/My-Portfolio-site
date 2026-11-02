@@ -20,43 +20,11 @@
   font-size: clamp(3rem, 5.6vw, 5.35rem);
 }
 
-.developer .dev-hero > p:not(.developer-availability) {
+.developer .dev-hero > p {
   max-width: 790px;
   margin-bottom: 0;
   color: #bcc7c2;
   font-size: 1.02rem;
-}
-
-.developer-tech-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 18px;
-  margin: 27px 0 0;
-  padding: 15px 0;
-  border-top: 1px solid rgba(100, 169, 255, .18);
-  border-bottom: 1px solid rgba(100, 169, 255, .12);
-  color: #bfd7f4;
-  list-style: none;
-}
-
-.developer-tech-strip li {
-  position: relative;
-  font-size: .73rem;
-  font-weight: 750;
-  letter-spacing: .035em;
-}
-
-.developer-tech-strip li:not(:last-child)::after {
-  content: '·';
-  position: absolute;
-  right: -11px;
-  color: #526779;
-}
-
-.developer-availability {
-  margin: 16px 0 0;
-  color: #81929e;
-  font-size: .72rem;
 }
 
 .developer .dev-hero .actions {
@@ -67,13 +35,6 @@
 
 .developer .dev-hero .actions .button {
   min-height: 48px;
-}
-
-.developer .dev-hero .actions .button.outline:hover,
-.developer .dev-hero .actions .button.outline:focus-visible {
-  border-color: rgba(100, 169, 255, .75);
-  color: #bcdcff !important;
-  background: rgba(100, 169, 255, .07);
 }
 
 @media (max-width: 900px) {
@@ -101,32 +62,9 @@
     line-height: .99;
   }
 
-  .developer .dev-hero > p:not(.developer-availability) {
+  .developer .dev-hero > p {
     font-size: .9rem;
     line-height: 1.65;
-  }
-
-  .developer-tech-strip {
-    max-width: 100%;
-    gap: 8px 6px;
-    margin-top: 22px;
-    padding-block: 13px;
-  }
-
-  .developer-tech-strip li {
-    font-size: .69rem;
-  }
-
-  .developer-tech-strip li:not(:last-child)::after {
-    position: static;
-    display: inline-block;
-    margin-left: 9px;
-  }
-
-  .developer-availability {
-    margin-top: 14px;
-    font-size: .67rem;
-    line-height: 1.45;
   }
 
   .developer .dev-hero .actions {
