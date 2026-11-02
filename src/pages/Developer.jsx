@@ -8,6 +8,7 @@ import "../developer-project-link.css";
 import "../developer-compact-project.css";
 import "../developer-biteright-project.css";
 import "../developer-more-projects.css";
+import "../developer-polish.css";
 
 const secondaryProjects = [
   {

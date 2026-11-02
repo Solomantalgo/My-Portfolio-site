@@ -1,0 +1,46 @@
+/* Route-scoped finishing layer for the Developer page. */
+.developer {
+  --dev-bg: #0b0f13;
+  --dev-card: #14191d;
+  --dev-line: #354047;
+  --dev-text: #f4f0e8;
+  --dev-muted: #aab3b9;
+  --dev-blue: #3278f6;
+  --dev-blue-light: #83adff;
+  min-width: 0;
+  color: var(--dev-text);
+  background: var(--dev-bg);
+}
+
+.developer #projects,
+.developer #skills,
+.developer #background {
+  scroll-margin-top: 90px;
+}
+
+.developer :is(.featured-project-detail p, .compact-project-detail p,
+  .compact-project-summary, .compact-project-workflow, .skill-grid p,
+  .secondary-project-card > p) {
+  font-size: max(0.875rem, 1em);
+}
+
+.developer :is(.featured-project-meta, .compact-project-meta,
+  .secondary-project-card > small, .developer-availability) {
+  font-size: max(0.68rem, 1em);
+}
+
+.developer :is(.actions .button, .compact-project-actions a,
+  .featured-project-link, .more-projects-toggle, .dev-footer-links a) {
+  min-height: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .developer *,
+  .developer *::before,
+  .developer *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    scroll-behavior: auto;
+    transition-duration: 0.01ms;
+  }
+}
