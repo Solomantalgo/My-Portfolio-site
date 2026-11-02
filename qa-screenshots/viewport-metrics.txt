@@ -1,0 +1,48 @@
+gateway desktop {"width":1440,"height":900,"scrollWidth":1440,"scrollHeight":900}
+gateway mobile-320 {"width":320,"height":568,"scrollWidth":320,"scrollHeight":568}
+gateway mobile-375 {"width":375,"height":667,"scrollWidth":375,"scrollHeight":667}
+gateway mobile-390 {"width":390,"height":844,"scrollWidth":390,"scrollHeight":844}
+business desktop {"width":1440,"height":900,"scrollWidth":1425,"scrollHeight":7804}
+business mobile-390 {"width":390,"height":844,"scrollWidth":390,"scrollHeight":12477}
+developer desktop {"width":1440,"height":900,"scrollWidth":1425,"scrollHeight":3795}
+developer mobile-390 {"width":390,"height":844,"scrollWidth":390,"scrollHeight":4452}
+connect desktop {"width":1440,"height":900,"scrollWidth":1425,"scrollHeight":1922}
+connect mobile-390 {"width":390,"height":844,"scrollWidth":390,"scrollHeight":968}
+links desktop {"width":1440,"height":900,"scrollWidth":1425,"scrollHeight":1896}
+links mobile-390 {"width":390,"height":844,"scrollWidth":390,"scrollHeight":2007}
+gateway desktop {"width":1440,"height":900,"scrollWidth":1440,"scrollHeight":900}
+gateway mobile-320 {"width":320,"height":568,"scrollWidth":320,"scrollHeight":568}
+gateway mobile-375 {"width":375,"height":667,"scrollWidth":375,"scrollHeight":667}
+gateway mobile-390 {"width":390,"height":844,"scrollWidth":390,"scrollHeight":844}
+business desktop {"width":1440,"height":900,"scrollWidth":1440,"scrollHeight":900}
+business mobile-390 {"width":390,"height":844,"scrollWidth":390,"scrollHeight":844}
+developer desktop {"width":1440,"height":900,"scrollWidth":1425,"scrollHeight":3086}
+developer mobile-390 {"width":390,"height":844,"scrollWidth":390,"scrollHeight":4159}
+connect desktop {"width":1440,"height":900,"scrollWidth":1425,"scrollHeight":3086}
+connect mobile-390 {"width":390,"height":844,"scrollWidth":390,"scrollHeight":4159}
+links desktop {"width":1440,"height":900,"scrollWidth":1425,"scrollHeight":3086}
+links mobile-390 {"width":390,"height":844,"scrollWidth":390,"scrollHeight":4159}
+gateway desktop {"url":"http://127.0.0.1:5179/","title":"Solomantalgo | Ideas, systems, people","h1":"Solomantalgo\nChoose your path.","width":1440,"height":900,"scrollWidth":1440,"scrollHeight":900}
+gateway mobile-320 {"url":"http://127.0.0.1:5179/","title":"Solomantalgo | Ideas, systems, people","h1":"Solomantalgo\nChoose your path.","width":320,"height":568,"scrollWidth":320,"scrollHeight":568}
+gateway mobile-375 {"url":"http://127.0.0.1:5179/","title":"Solomantalgo | Ideas, systems, people","h1":"Solomantalgo\nChoose your path.","width":375,"height":667,"scrollWidth":375,"scrollHeight":667}
+gateway mobile-390 {"url":"http://127.0.0.1:5179/","title":"Solomantalgo | Ideas, systems, people","h1":"Solomantalgo\nChoose your path.","width":390,"height":844,"scrollWidth":390,"scrollHeight":844}
+business desktop {"url":"http://127.0.0.1:5179/business","title":"Web & Systems Development Kampala | Solomantalgo","h1":"A better way to show what you do.","width":1440,"height":900,"scrollWidth":1425,"scrollHeight":6926}
+business mobile-390 {"url":"http://127.0.0.1:5179/business","title":"Web & Systems Development Kampala | Solomantalgo","h1":"A better way to show what you do.","width":390,"height":844,"scrollWidth":390,"scrollHeight":11809}
+developer desktop {"url":"http://127.0.0.1:5179/business","title":"Web & Systems Development Kampala | Solomantalgo","h1":"A better way to show what you do.","width":1440,"height":900,"scrollWidth":1425,"scrollHeight":6926}
+developer mobile-390 {"url":"http://127.0.0.1:5179/developer","title":"Solomon Kisense | Web & Systems Developer","h1":"I’m Solomon. I build web and systems software.","width":390,"height":844,"scrollWidth":390,"scrollHeight":4159}
+connect desktop {"url":"http://127.0.0.1:5179/connect","title":"Let's talk | Solomantalgo","h1":"Let’s talk.","width":1440,"height":900,"scrollWidth":1440,"scrollHeight":900}
+connect mobile-390 {"url":"http://127.0.0.1:5179/connect","title":"Let's talk | Solomantalgo","h1":"Let’s talk.","width":390,"height":844,"scrollWidth":390,"scrollHeight":844}
+links desktop {"url":"http://127.0.0.1:5179/links","title":"Links | Solomon Talgo - Web Developer Portfolio","h1":"Direct Links","width":1440,"height":900,"scrollWidth":1425,"scrollHeight":1946}
+links mobile-390 {"url":"http://127.0.0.1:5179/links","title":"Links | Solomon Talgo - Web Developer Portfolio","h1":"Direct Links","width":390,"height":844,"scrollWidth":390,"scrollHeight":1917}
+gateway desktop {"url":"http://127.0.0.1:5179/","title":"Solomantalgo | Ideas, systems, people","h1":"Solomantalgo\nChoose your path.","width":1440,"height":900,"scrollWidth":1440,"scrollHeight":900}
+gateway mobile-320 {"url":"http://127.0.0.1:5179/","title":"Solomantalgo | Ideas, systems, people","h1":"Solomantalgo\nChoose your path.","width":320,"height":568,"scrollWidth":320,"scrollHeight":568}
+gateway mobile-375 {"url":"http://127.0.0.1:5179/","title":"Solomantalgo | Ideas, systems, people","h1":"Solomantalgo\nChoose your path.","width":375,"height":667,"scrollWidth":375,"scrollHeight":667}
+gateway mobile-390 {"url":"http://127.0.0.1:5179/","title":"Solomantalgo | Ideas, systems, people","h1":"Solomantalgo\nChoose your path.","width":390,"height":844,"scrollWidth":390,"scrollHeight":844}
+business desktop {"url":"http://127.0.0.1:5179/business","title":"Web & Systems Development Kampala | Solomantalgo","h1":"A better way to show what you do.","width":1440,"height":900,"scrollWidth":1425,"scrollHeight":6926}
+business mobile-390 {"url":"http://127.0.0.1:5179/business","title":"Web & Systems Development Kampala | Solomantalgo","h1":"A better way to show what you do.","width":390,"height":844,"scrollWidth":390,"scrollHeight":11809}
+developer desktop {"url":"http://127.0.0.1:5179/business","title":"Web & Systems Development Kampala | Solomantalgo","h1":"A better way to show what you do.","width":1440,"height":900,"scrollWidth":1425,"scrollHeight":6926}
+developer mobile-390 {"url":"http://127.0.0.1:5179/business","title":"Web & Systems Development Kampala | Solomantalgo","h1":"A better way to show what you do.","width":390,"height":844,"scrollWidth":390,"scrollHeight":11809}
+connect desktop {"url":"http://127.0.0.1:5179/business","title":"Web & Systems Development Kampala | Solomantalgo","h1":"A better way to show what you do.","width":1440,"height":900,"scrollWidth":1425,"scrollHeight":6926}
+connect mobile-390 {"url":"http://127.0.0.1:5179/business","title":"Web & Systems Development Kampala | Solomantalgo","h1":"A better way to show what you do.","width":390,"height":844,"scrollWidth":390,"scrollHeight":11809}
+links desktop {"url":"http://127.0.0.1:5179/links","title":"Links | Solomon Talgo - Web Developer Portfolio","h1":"Direct Links","width":1440,"height":900,"scrollWidth":1425,"scrollHeight":1946}
+links mobile-390 {"url":"http://127.0.0.1:5179/links","title":"Links | Solomon Talgo - Web Developer Portfolio","h1":"Direct Links","width":390,"height":844,"scrollWidth":390,"scrollHeight":1917}

@@ -109,6 +109,12 @@ const caseStudies = [
     ],
   },
 ];
+const responsiveImageSrcSets = {
+  "/images/jopeem-website-preview.png": "/images/jopeem-website-preview-640.webp 640w, /images/jopeem-website-preview-960.webp 960w",
+  "/images/levinah-website-preview.png": "/images/levinah-website-preview-640.webp 640w, /images/levinah-website-preview-960.webp 960w",
+  "/images/medical.png": "/images/medical-480.webp 480w, /images/medical-960.webp 960w",
+  "/images/saloon.png": "/images/saloon-480.webp 480w, /images/saloon-960.webp 960w",
+};
 function RealWork() {
   return (
     <section id="work" className="real-work-section">
@@ -138,11 +144,17 @@ function RealWork() {
                 <i />
                 <span>{p.url.replace("https://", "")}</span>
               </div>
-              <img
-                src={p.image}
-                alt={`${p.name} live website interface`}
-                loading="lazy"
-              />
+              <picture>
+                <source type="image/webp" srcSet={responsiveImageSrcSets[p.image]} sizes="(max-width: 700px) 100vw, (max-width: 1200px) 55vw, 680px" />
+                <img
+                  src={p.image}
+                  alt={`${p.name} live website interface`}
+                  width="1200"
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </a>
             <div className="case-study-copy">
               <em>REAL CLIENT WORK</em>
@@ -267,11 +279,17 @@ function DemoLibrary() {
               onClick={() => setActiveDemo(project)}
               aria-label={"Preview " + project.title}
             >
-              <img
-                src={project.image}
-                alt={project.title + " concept preview"}
-                loading="lazy"
-              />
+              <picture>
+                {responsiveImageSrcSets[project.image] && <source type="image/webp" srcSet={responsiveImageSrcSets[project.image]} sizes="(max-width: 700px) 100vw, (max-width: 1000px) 45vw, 360px" />}
+                <img
+                  src={project.image}
+                  alt={project.title + " concept preview"}
+                  width={project.image.includes("medical.png") || project.image.includes("saloon.png") ? 1024 : undefined}
+                  height={project.image.includes("medical.png") || project.image.includes("saloon.png") ? 1024 : undefined}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </button>
             <div className="demo-card-copy">
               <div className="demo-card-meta">

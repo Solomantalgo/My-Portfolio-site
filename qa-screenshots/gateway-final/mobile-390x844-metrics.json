@@ -1,0 +1,324 @@
+{
+  "viewport": [
+    390,
+    844
+  ],
+  "client": [
+    390,
+    844
+  ],
+  "scroll": [
+    390,
+    844
+  ],
+  "headline": "I am Solomon.\nI am Solomon.",
+  "subtitle": "Choose your path.",
+  "links": [
+    "/business",
+    "/developer",
+    "/connect"
+  ],
+  "image": [
+    {
+      "src": "http://127.0.0.1:5181/images/newlogo-320.png",
+      "complete": true,
+      "size": [
+        156,
+        52
+      ]
+    },
+    {
+      "src": "http://127.0.0.1:5181/images/gateway-workspace-640.webp",
+      "complete": true,
+      "size": [
+        390,
+        219
+      ]
+    }
+  ],
+  "bounds": [
+    {
+      "class": "gateway-option2 is-card-entering",
+      "rect": [
+        0,
+        0,
+        390,
+        844
+      ],
+      "padding": "8px 17.55px 9px",
+      "margin": "0px"
+    },
+    {
+      "class": "gateway-header",
+      "rect": [
+        17.546875,
+        8,
+        354.90625,
+        52
+      ],
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "class": "",
+      "rect": [
+        17.546875,
+        8,
+        156,
+        52
+      ],
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "class": "gateway-stage",
+      "rect": [
+        17.546875,
+        60,
+        354.90625,
+        753
+      ],
+      "padding": "1px 0px 9px",
+      "margin": "0px"
+    },
+    {
+      "class": "gateway-intro",
+      "rect": [
+        17.546875,
+        61,
+        354.90625,
+        67.421875
+      ],
+      "padding": "0px 0px 9px",
+      "margin": "0px"
+    },
+    {
+      "class": "gateway-photo",
+      "rect": [
+        0,
+        97.640625,
+        390,
+        436.734375
+      ],
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "class": "gateway-destinations",
+      "rect": [
+        17.546875,
+        508.609375,
+        354.90625,
+        295.390625
+      ],
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "class": "gateway-destination business",
+      "rect": [
+        17.546875,
+        519.171875,
+        354.90625,
+        70
+      ],
+      "padding": "9px 13px",
+      "margin": "0px"
+    },
+    {
+      "class": "gateway-destination work",
+      "rect": [
+        17.546875,
+        621.296875,
+        354.90625,
+        70
+      ],
+      "padding": "9px 13px",
+      "margin": "0px"
+    },
+    {
+      "class": "gateway-destination connect",
+      "rect": [
+        17.546875,
+        723.421875,
+        354.90625,
+        70
+      ],
+      "padding": "9px 13px",
+      "margin": "0px"
+    },
+    {
+      "class": "gateway-footer",
+      "rect": [
+        17.546875,
+        813,
+        354.90625,
+        22
+      ],
+      "padding": "5px 0px 0px",
+      "margin": "0px"
+    }
+  ],
+  "frames": 54,
+  "sequenceCompletedMs": 7241,
+  "viewportChecks": [
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "client": [
+        320,
+        568
+      ],
+      "scroll": [
+        320,
+        568
+      ],
+      "cards": [
+        {
+          "href": "/business",
+          "rect": [
+            16,
+            290.65625,
+            288,
+            70
+          ]
+        },
+        {
+          "href": "/developer",
+          "rect": [
+            16,
+            375.984375,
+            288,
+            70
+          ]
+        },
+        {
+          "href": "/connect",
+          "rect": [
+            16,
+            461.328125,
+            288,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "viewport": [
+        375,
+        667
+      ],
+      "client": [
+        375,
+        667
+      ],
+      "scroll": [
+        375,
+        667
+      ],
+      "cards": [
+        {
+          "href": "/business",
+          "rect": [
+            16.875,
+            380,
+            341.25,
+            70
+          ]
+        },
+        {
+          "href": "/developer",
+          "rect": [
+            16.875,
+            467,
+            341.25,
+            70
+          ]
+        },
+        {
+          "href": "/connect",
+          "rect": [
+            16.875,
+            554,
+            341.25,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "client": [
+        390,
+        844
+      ],
+      "scroll": [
+        390,
+        844
+      ],
+      "cards": [
+        {
+          "href": "/business",
+          "rect": [
+            17.546875,
+            519.171875,
+            354.90625,
+            70
+          ]
+        },
+        {
+          "href": "/developer",
+          "rect": [
+            17.546875,
+            621.296875,
+            354.90625,
+            70
+          ]
+        },
+        {
+          "href": "/connect",
+          "rect": [
+            17.546875,
+            723.421875,
+            354.90625,
+            70
+          ]
+        }
+      ]
+    }
+  ],
+  "reducedMotion": {
+    "subtitle": "Choose your path.",
+    "cards": [
+      "1",
+      "1",
+      "1"
+    ],
+    "sequence": false,
+    "readyMs": 672
+  },
+  "keyboard": {
+    "href": "/business",
+    "outline": "solid"
+  },
+  "routeStatus": [
+    [
+      "/business",
+      200
+    ],
+    [
+      "/developer",
+      200
+    ],
+    [
+      "/connect",
+      200
+    ]
+  ],
+  "runtimeErrors": []
+}

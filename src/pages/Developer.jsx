@@ -48,7 +48,7 @@ export default function Developer() {
       />
       <header>
         <Link className="logo" to="/">
-          <img src="/images/newlogo.png" alt="Solomantalgo" />
+          <img src="/images/newlogo.png" srcSet="/images/newlogo-320.png 320w, /images/newlogo-640.png 640w" sizes="(max-width: 700px) 150px, 220px" alt="Solomantalgo" width="2172" height="724" decoding="async" />
         </Link>
         <nav>
           <a href="#skills">Skills</a>
@@ -365,7 +365,7 @@ export default function Developer() {
       </main>
       <footer>
         <Link className="logo" to="/" aria-label="Solomantalgo home">
-          <img src="/images/newlogo.png" alt="Solomantalgo" />
+          <img src="/images/newlogo.png" srcSet="/images/newlogo-320.png 320w, /images/newlogo-640.png 640w" sizes="(max-width: 700px) 150px, 220px" alt="Solomantalgo" width="2172" height="724" decoding="async" />
         </Link>
         <a href="https://github.com/solomantalgo">GitHub</a>
         <Link to="/business">Business Services</Link>

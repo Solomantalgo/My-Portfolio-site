@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
-import SEO from '../components/SEO';
+import React, { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
 import {
   ArrowLeft,
   Cake,
@@ -18,9 +18,9 @@ import {
   ShoppingCart,
   Sparkles,
   Stethoscope,
-  Utensils
-} from 'lucide-react';
-import { projects } from '../data/projects';
+  Utensils,
+} from "lucide-react";
+import { projects } from "../data/projects";
 
 const iconMap = {
   bakery: Cake,
@@ -37,27 +37,27 @@ const iconMap = {
   nails: Sparkles,
   photography: Camera,
   restaurant: Utensils,
-  spa: Heart
+  spa: Heart,
 };
 
 const projectIcon = (project) => {
   const key = project.industry.toLowerCase();
-  if (key.includes('bakery')) return 'bakery';
-  if (key.includes('beauty')) return 'beauty';
-  if (key.includes('bridal')) return 'bridal';
-  if (key.includes('fashion')) return 'fashion';
-  if (key.includes('fitness')) return 'fitness';
-  if (key.includes('fmcg')) return 'fmcg';
-  if (key.includes('health')) return 'healthcare';
-  if (key.includes('hotel')) return 'hotel';
-  if (key.includes('jewellery')) return 'jewellery';
-  if (key.includes('laundry')) return 'laundry';
-  if (key.includes('makeup')) return 'makeup';
-  if (key.includes('nails')) return 'nails';
-  if (key.includes('photo')) return 'photography';
-  if (key.includes('restaurant')) return 'restaurant';
-  if (key.includes('spa')) return 'spa';
-  return 'fmcg';
+  if (key.includes("bakery")) return "bakery";
+  if (key.includes("beauty")) return "beauty";
+  if (key.includes("bridal")) return "bridal";
+  if (key.includes("fashion")) return "fashion";
+  if (key.includes("fitness")) return "fitness";
+  if (key.includes("fmcg")) return "fmcg";
+  if (key.includes("health")) return "healthcare";
+  if (key.includes("hotel")) return "hotel";
+  if (key.includes("jewellery")) return "jewellery";
+  if (key.includes("laundry")) return "laundry";
+  if (key.includes("makeup")) return "makeup";
+  if (key.includes("nails")) return "nails";
+  if (key.includes("photo")) return "photography";
+  if (key.includes("restaurant")) return "restaurant";
+  if (key.includes("spa")) return "spa";
+  return "fmcg";
 };
 
 const groupBy = (items, key) => {
@@ -66,19 +66,30 @@ const groupBy = (items, key) => {
     return acc;
   }, {});
 
-  return Object.keys(grouped).sort().map((group) => ({ category: group, items: grouped[group] }));
+  return Object.keys(grouped)
+    .sort()
+    .map((group) => ({ category: group, items: grouped[group] }));
 };
 
 const LinkCard = ({ item }) => {
   const Icon = iconMap[projectIcon(item)] || Globe;
 
   return (
-    <a href={item.url} target="_blank" rel="noopener noreferrer" className="link-card">
-      <div className="link-icon"><Icon size={18} /></div>
+    <a
+      href={item.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="link-card"
+    >
+      <div className="link-icon">
+        <Icon size={18} />
+      </div>
       <div style={{ flex: 1 }}>
         <h3>{item.title}</h3>
         <p>{item.desc}</p>
-        <span>{item.live ? 'Live client' : item.tier} / {item.industry}</span>
+        <span>
+          {item.live ? "Live client" : item.tier} / {item.industry}
+        </span>
       </div>
       <ExternalLink size={16} className="link-out-icon" />
     </a>
@@ -86,7 +97,10 @@ const LinkCard = ({ item }) => {
 };
 
 const LinkSection = ({ title, sections, defaultOpen = false }) => {
-  const [openGroups, setOpenGroups] = useState(() => new Set(defaultOpen ? sections.map((section) => section.category) : []));
+  const [openGroups, setOpenGroups] = useState(
+    () =>
+      new Set(defaultOpen ? sections.map((section) => section.category) : []),
+  );
 
   const toggleGroup = (category) => {
     setOpenGroups((current) => {
@@ -104,14 +118,26 @@ const LinkSection = ({ title, sections, defaultOpen = false }) => {
           const isOpen = openGroups.has(section.category);
           return (
             <div key={section.category} className="links-accordion">
-              <button type="button" onClick={() => toggleGroup(section.category)} aria-expanded={isOpen}>
+              <button
+                type="button"
+                onClick={() => toggleGroup(section.category)}
+                aria-expanded={isOpen}
+              >
                 <span>{section.category}</span>
-                <small>{section.items.length} {section.items.length === 1 ? 'site' : 'sites'}</small>
+                <small>
+                  {section.items.length}{" "}
+                  {section.items.length === 1 ? "site" : "sites"}
+                </small>
                 <ChevronDown size={18} />
               </button>
               {isOpen && (
                 <div className="links-panel">
-                  {section.items.map((item) => <LinkCard key={`${section.category}-${item.title}`} item={item} />)}
+                  {section.items.map((item) => (
+                    <LinkCard
+                      key={`${section.category}-${item.title}`}
+                      item={item}
+                    />
+                  ))}
                 </div>
               )}
             </div>
@@ -123,8 +149,16 @@ const LinkSection = ({ title, sections, defaultOpen = false }) => {
 };
 
 const LinksPage = () => {
-  const clientLinks = useMemo(() => [{ category: 'Live Client Sites', items: projects.filter((item) => item.live) }], []);
-  const byIndustry = useMemo(() => groupBy(projects, 'industry'), []);
+  const clientLinks = useMemo(
+    () => [
+      {
+        category: "Live Client Sites",
+        items: projects.filter((item) => item.live),
+      },
+    ],
+    [],
+  );
+  const byIndustry = useMemo(() => groupBy(projects, "industry"), []);
 
   return (
     <div className="links-page">
@@ -138,19 +172,36 @@ const LinksPage = () => {
       />
 
       <div className="links-container">
-        <Link to="/" className="links-back"><ArrowLeft size={16} /> Back to Portfolio</Link>
+        <div className="links-topbar">
+          <Link to="/" aria-label="Solomantalgo home">
+            <img src="/images/newlogo.png" srcSet="/images/newlogo-320.png 320w, /images/newlogo-640.png 640w" sizes="(max-width: 700px) 154px, 210px" alt="Solomantalgo" width="2172" height="724" decoding="async" />
+          </Link>
+          <Link to="/" className="links-back">
+            <ArrowLeft size={16} /> Back to Portfolio
+          </Link>
+        </div>
 
         <header className="links-hero">
-          <div className="links-mark"><Globe size={30} /></div>
-          <h1>Direct <span>Links</span></h1>
-          <p>Browse live client work and demo sites by budget tier or business industry.</p>
+          <div className="links-mark">
+            <Globe size={30} />
+          </div>
+          <h1>
+            Direct <span>Links</span>
+          </h1>
+          <p>
+            Browse live client work and demo sites by budget tier or business
+            industry.
+          </p>
         </header>
 
         <LinkSection title="Client Work" sections={clientLinks} defaultOpen />
         <LinkSection title="Demos By Industry" sections={byIndustry} />
 
         <footer className="links-footer">
-          <p>&copy; {new Date().getFullYear()} Solomon Talgo. Built with care in Kampala.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Solomon Talgo. Built with care in
+            Kampala.
+          </p>
         </footer>
       </div>
     </div>

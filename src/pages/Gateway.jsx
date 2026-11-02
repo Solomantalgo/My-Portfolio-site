@@ -1,111 +1,167 @@
-import { ArrowRight, BriefcaseBusiness, Code2, Star, UserRound, Zap } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 
-const destinations = [
-  {
-    className: 'client',
-    label: 'Client / Business',
-    title: 'I need a website or digital solution',
-    description: 'Websites, booking, ordering and business systems.',
-    to: '/business',
-    Icon: BriefcaseBusiness,
-  },
-  {
-    className: 'employer',
-    label: 'Employer / Recruiter',
-    title: 'I’m an employer or recruiter',
-    description: 'Technical work, projects, experience and CV.',
-    to: '/developer',
-    Icon: Code2,
-  },
-  {
-    className: 'personal',
-    label: 'Personal',
-    title: 'I’m looking for Solomon',
-    description: 'Social profiles and direct contact.',
-    to: '/connect',
-    Icon: UserRound,
-  },
+const HEADLINE = 'I am Solomon.';
+const FIRST_LINE = 'I build, explore and connect.';
+const FINAL_LINE = 'Choose your path.';
+let introductionFinishedThisDocument = false;
+const DESTINATIONS = [
+  { number: '01', name: 'Business', description: 'Ideas to impact.', href: '/business', tone: 'business' },
+  { number: '02', name: 'Work & CV', description: 'Experience in focus.', href: '/developer', tone: 'work' },
+  { number: '03', name: 'Connect', description: "Let's talk.", href: '/connect', tone: 'connect' },
 ];
 
-const benefits = [
-  { title: 'Fast access', description: 'Get to the right section quickly', Icon: Zap },
-  { title: 'Tailored experience', description: 'See what’s relevant to you', Icon: UserRound },
-  { title: 'Same portfolio', description: 'Different entry points', Icon: Star },
-];
-
-function EntryOptionCard({ option }) {
-  const { className, label, title, description, to, Icon } = option;
-
-  return (
-    <Link className={`gateway-card ${className}`} to={to}>
-      <span className="gateway-card-icon" aria-hidden="true"><Icon size={27} strokeWidth={2} /></span>
-      <span className="gateway-card-copy">
-        <span className="gateway-card-label">{label}</span>
-        <span className="gateway-card-title">{title}</span>
-        <span className="gateway-card-description">{description}</span>
-      </span>
-      <span className="gateway-card-arrow" aria-hidden="true"><ArrowRight size={19} strokeWidth={2} /></span>
-    </Link>
-  );
-}
-
-function BenefitItem({ benefit }) {
-  const { title, description, Icon } = benefit;
-
-  return (
-    <li className="gateway-benefit">
-      <span className="gateway-benefit-icon" aria-hidden="true"><Icon size={20} strokeWidth={2} /></span>
-      <span className="gateway-benefit-copy"><strong>{title}</strong><small>{description}</small></span>
-    </li>
-  );
+function shouldPlayIntroduction() {
+  if (typeof window === 'undefined') return false;
+  const shouldReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (shouldReduceMotion) {
+    introductionFinishedThisDocument = true;
+    return false;
+  }
+  if (introductionFinishedThisDocument) return false;
+  return true;
 }
 
 export default function Gateway() {
-  return (
-    <main className="gateway-page">
-      <div className="gateway-atmosphere" aria-hidden="true" />
-      <SEO title="Solomantalgo | Web & Systems Developer Kampala" description="Choose business services, Solomon's developer portfolio or direct contact." />
+  const [isSequencing, setIsSequencing] = useState(shouldPlayIntroduction);
+  const [subtitle, setSubtitle] = useState(() => isSequencing ? '' : FINAL_LINE);
+  const [caretLine, setCaretLine] = useState('');
+  const [cardsEntering, setCardsEntering] = useState(false);
+  const finishSequence = useRef(() => {});
 
-      <header className="gateway-header">
-        <Link className="gateway-brand" to="/" aria-label="Solomantalgo home">
-          <span className="gateway-brand-mark" aria-hidden="true">S</span>
-          <span className="gateway-brand-name">Solomantalgo</span>
-        </Link>
-      </header>
+  useEffect(() => {
+    if (!isSequencing) return undefined;
 
-      <div className="gateway-layout">
-        <section className="gateway-welcome" aria-labelledby="choose-title">
-          <p className="gateway-eyebrow"><span aria-hidden="true" />Welcome</p>
-          <h1 id="choose-title">What brings<br className="gateway-heading-break" /> you <span>here?</span></h1>
-          <p className="gateway-description">Choose where you’d like to go and<br className="gateway-desktop-break" /> I’ll take you there.</p>
+    let cancelled = false;
+    const timers = new Set();
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const pause = (duration) => new Promise((resolve) => {
+      const pending = { id: 0, resolve };
+      pending.id = window.setTimeout(() => {
+        timers.delete(pending);
+        resolve();
+      }, duration);
+      timers.add(pending);
+    });
+    const clearTimers = () => {
+      timers.forEach((pending) => {
+        window.clearTimeout(pending.id);
+        pending.resolve();
+      });
+      timers.clear();
+    };
+    const finish = () => {
+      if (cancelled) return;
+      cancelled = true;
+      introductionFinishedThisDocument = true;
+      clearTimers();
+      setSubtitle(FINAL_LINE);
+      setCaretLine('');
+      setCardsEntering(false);
+      setIsSequencing(false);
+    };
+    const reduceNow = () => motionPreference.matches && finish();
+    finishSequence.current = finish;
+    motionPreference.addEventListener?.('change', reduceNow);
 
-          <ul className="gateway-benefits" aria-label="A few things to expect">
-            {benefits.map((benefit) => <BenefitItem key={benefit.title} benefit={benefit} />)}
-          </ul>
-        </section>
+    const type = async (text, setter, speed) => {
+      let visible = '';
+      for (const character of text) {
+        if (cancelled) return;
+        visible += character;
+        setter(visible);
+        await pause(speed);
+      }
+    };
 
-        <div className="gateway-panel" role="navigation" aria-label="Choose your destination">
-          {destinations.map((option) => <EntryOptionCard key={option.to} option={option} />)}
-        </div>
+    const run = async () => {
+      await pause(380);
+      if (cancelled) return;
+      setCaretLine('subtitle');
+      await type(FIRST_LINE, setSubtitle, 64);
+      if (cancelled) return;
+      await pause(750);
+      if (cancelled) return;
+      for (let length = FIRST_LINE.length - 1; length >= 0 && !cancelled; length -= 1) {
+        setSubtitle(FIRST_LINE.slice(0, length));
+        await pause(35);
+      }
+      if (cancelled) return;
+      await type(FINAL_LINE, setSubtitle, 72);
+      if (cancelled) return;
+      if (!cancelled) {
+        setCaretLine('');
+        setCardsEntering(true);
+        await pause(620);
+      }
+      if (!cancelled) {
+        introductionFinishedThisDocument = true;
+        setIsSequencing(false);
+      }
+    };
+
+    run();
+    return () => {
+      cancelled = true;
+      clearTimers();
+      motionPreference.removeEventListener?.('change', reduceNow);
+    };
+  }, [isSequencing]);
+
+  const completeOnInput = () => {
+    if (isSequencing) finishSequence.current();
+  };
+  return <main
+    className={`gateway-option2${isSequencing ? ' is-sequencing' : ''}${cardsEntering ? ' is-card-entering' : ''}`}
+    onPointerDownCapture={completeOnInput}
+    onKeyDownCapture={completeOnInput}
+    onFocusCapture={completeOnInput}
+  >
+    <SEO title="Solomantalgo | Personal portfolio" description="I build, explore and connect. Find my business work, engineering projects and ways to get in touch." />
+    <Helmet>
+      <link
+        rel="preload"
+        as="image"
+        type="image/webp"
+        imageSrcSet="/images/gateway-workspace-640.webp 640w, /images/gateway-workspace-1280.webp 1280w, /images/gateway-workspace.webp 1672w"
+        imageSizes="(max-width: 700px) 100vw, 60vw"
+        fetchPriority="high"
+      />
+    </Helmet>
+    <header className="gateway-header">
+      <img src="/images/newlogo.png" srcSet="/images/newlogo-320.png 320w, /images/newlogo-640.png 640w" sizes="(max-width: 700px) 156px, 174px" alt="Solomantalgo" width="2172" height="724" decoding="async" />
+    </header>
+    <section className="gateway-stage" aria-label="Personal portfolio">
+      <div className="gateway-intro">
+        <h1><span aria-hidden="true">I am Solomon<span className="gateway-period">.</span></span><span className="gateway-sr-only">{HEADLINE}</span></h1>
+        <p aria-hidden="true" className="gateway-subtitle">
+          <span className="gateway-subtitle-text">{subtitle}</span>
+          {caretLine === 'subtitle' && <span className="gateway-caret" />}
+        </p>
+        <span className="gateway-sr-only">{FINAL_LINE}</span>
       </div>
-      <footer className="gateway-footer">
-        <small>© {new Date().getFullYear()} Solomantalgo. All rights reserved.</small>
-        <div className="gateway-socials">
-        <a href="https://github.com/solomantalgo" target="_blank" rel="noopener noreferrer" aria-label="Solomantalgo on GitHub (opens in a new tab)">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path fill="currentColor" stroke="none" d="M12 2.1c-5.1 0-9.2 4.1-9.2 9.2 0 4.1 2.7 7.6 6.5 8.8.5.1.7-.2.7-.5v-1.7c-2.7.6-3.3-1.1-3.3-1.1-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.6.4-1.1.6-1.3-2.2-.3-4.5-1.1-4.5-4.8 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.5 9.5 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.7-2.3 4.5-4.5 4.8.4.3.6.9.6 1.8v2.7c0 .3.2.6.7.5 3.8-1.3 6.5-4.8 6.5-8.8 0-5.1-4.1-9.2-9.2-9.2Z" />
-          </svg>
-        </a>
-        <a href="https://www.linkedin.com/in/kisense-solomon-015336325" target="_blank" rel="noopener noreferrer" aria-label="Solomantalgo on LinkedIn (opens in a new tab)">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.2 8.2H1.7V22h3.5V8.2ZM3.45 2A2.05 2.05 0 1 0 3.45 6.1 2.05 2.05 0 0 0 3.45 2ZM22.3 13.95c0-4.16-2.22-6.1-5.18-6.1-2.39 0-3.46 1.31-4.06 2.23V8.2H9.56V22h3.5v-6.83c0-1.8.34-3.54 2.57-3.54 2.2 0 2.23 2.06 2.23 3.67V22h3.5l.94-8.05Z" /></svg>
-        </a>
-        <a href="https://www.tiktok.com/@solomantalgo" target="_blank" rel="noopener noreferrer" aria-label="Solomantalgo on TikTok (opens in a new tab)">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.7 2h3.05c.22 1.8 1.25 3.3 3.25 4.12v3.03c-1.2-.04-2.33-.38-3.25-.9v6.1c0 4.36-3.3 7.05-7.15 7.05A6.56 6.56 0 0 1 5 14.87c0-3.8 2.88-6.6 6.77-6.6.3 0 .6.02.9.07v3.14a3.76 3.76 0 0 0-.9-.12c-1.4 0-3.25.99-3.25 3.52 0 1.55 1.13 3.56 3.25 3.56 2.29 0 3.93-1.7 3.93-4.13V2Z" /></svg>
-        </a>
-        </div>
-      </footer>
-    </main>
-  );
+      <div className="gateway-photo" aria-hidden="true">
+        <picture>
+          <source
+            type="image/webp"
+            srcSet="/images/gateway-workspace-640.webp 640w, /images/gateway-workspace-1280.webp 1280w, /images/gateway-workspace.webp 1672w"
+            sizes="(max-width: 700px) 100vw, 60vw"
+          />
+          <img src="/images/gateway-workspace.png" alt="" width="1672" height="941" fetchPriority="high" />
+        </picture>
+      </div>
+      <nav className="gateway-destinations" aria-label="Choose your path">
+        {DESTINATIONS.map((item) => <Link className={`gateway-destination ${item.tone}`} to={item.href} key={item.name}>
+          <span className="gateway-number" aria-hidden="true">{item.number}</span>
+          <span className="gateway-accent" aria-hidden="true" />
+          <span className="gateway-destination-copy"><strong>{item.name}</strong><small>{item.description}</small></span>
+          <span className="gateway-arrow" aria-hidden="true"><ArrowRight size={20} strokeWidth={1.7} /></span>
+        </Link>)}
+      </nav>
+    </section>
+    <footer className="gateway-footer"><span>Kampala, Uganda</span><span>© {new Date().getFullYear()} Solomantalgo</span></footer>
+  </main>;
 }

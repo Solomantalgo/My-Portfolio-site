@@ -1,0 +1,1 @@
+Gateway animation captures: mobile and desktop use Chrome headless CDP Page.reload(ignoreCache=true). Videos contain the hard-reload animation from start through card entry.

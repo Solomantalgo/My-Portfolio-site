@@ -82,7 +82,7 @@ body:has(.business), body:has(.developer), body:has(.connect-page) { overflow-x:
   .developer > header nav a:not(:last-child) { display: none; }
   .developer > header nav a:last-child { font-size: .69rem; }
   .developer .dev-hero { min-height: 0 !important; padding: 42px 20px 0 !important; }
-  .developer .dev-hero::before { inset: auto 0 0; height: 165px; background-image: linear-gradient(180deg,#0b0f13 0%,rgba(11,15,19,.12) 55%),url('/images/studio/developer-hero.webp'); background-position: center, 66% 50%; }
+  .developer .dev-hero::before { inset: auto 0 0; height: 165px; background-image: linear-gradient(180deg,#0b0f13 0%,rgba(11,15,19,.12) 55%),url('/images/studio/developer-hero-mobile.webp'); background-position: center, 66% 50%; }
   .developer .dev-hero > small { font-size: .57rem; }
   .developer .dev-hero h1 { width: 100%; max-width: 100%; margin: 13px 0; font-size: clamp(2.1rem,8.5vw,2.9rem); line-height: 1.02; }
   .developer .dev-hero > p { max-width: 100%; margin-bottom: 19px; font-size: .89rem; line-height: 1.5; }
@@ -106,13 +106,14 @@ body:has(.business), body:has(.developer), body:has(.connect-page) { overflow-x:
 /* Connect: sunset-led desktop composition; photo band precedes the mobile invitation. */
 .connect-page, .connect-page * { box-sizing: border-box; }
 .connect-page { position: relative; isolation: isolate; display: flex; width: min(100%,1600px); min-height: 100svh; flex-direction: column; margin: 0 auto; padding: 16px clamp(24px,5vw,76px) 12px; color: var(--studio-ink); background: var(--studio-bg); font-family: var(--studio-sans); }
-.connect-page::before { position: absolute; z-index: -1; inset: 0; content: ''; background: linear-gradient(90deg,#0b0f13 0%,rgba(11,15,19,.98) 28%,rgba(11,15,19,.78) 49%,rgba(11,15,19,.15) 100%),linear-gradient(0deg,#0b0f13 0%,transparent 38%),url('/images/studio/gateway-connect.webp') center 51% / cover no-repeat; }
+.connect-page::before { position: absolute; z-index: -1; inset: 0; content: ''; background: linear-gradient(90deg,#0b0f13 0%,rgba(11,15,19,.98) 28%,rgba(11,15,19,.78) 49%,rgba(11,15,19,.15) 100%),linear-gradient(0deg,#0b0f13 0%,transparent 38%),url('/images/studio/gateway-connect-1280.webp') center 51% / cover no-repeat; }
 .connect-header { display: flex; min-height: 48px; align-items: center; justify-content: space-between; }
 .connect-header > a:first-child { display: block; line-height: 0; }
 .connect-header img { display: block; width: 190px; height: 48px; object-fit: contain; }
 .connect-back { display: inline-flex; align-items: center; gap: 11px; color: #e0d9e7; font-size: .86rem; text-decoration: none; }
 .connect-layout { display: grid; min-height: 0; flex: 1; grid-template-columns: minmax(0,1fr) minmax(0,1fr); align-items: center; margin: 8px 0 0; border: 0; }
 .connect-photo { display: none; }
+.connect-photo picture { display: block; width: 100%; height: 100%; }
 .connect-copy { grid-column: 1; grid-row: 1; width: 100%; max-width: 610px; min-width: 0; padding: 30px 25px 30px 0; }
 .connect-copy::before { position: absolute; top: 20%; bottom: 20%; left: 0; width: 1px; background: rgba(167,123,208,.65); content: ''; }
 .connect-copy .studio-kicker { margin: 0 0 16px; padding-left: 24px; color: #d2b7ec; }
@@ -194,7 +195,7 @@ body:has(.business), body:has(.developer), body:has(.connect-page) { overflow-x:
 .business h1, .business h2, .business h3, .business h4 { color: var(--studio-ink); font-family: var(--studio-serif); font-weight: 400; letter-spacing: -.035em; }
 .business p { color: var(--studio-muted); }
 .business > header { position: sticky; z-index: 20; top: 0; display: flex; width: 100%; height: 74px; align-items: center; justify-content: space-between; padding: 0 clamp(24px, 5vw, 76px); border-bottom: 1px solid var(--studio-line); background: rgba(11,15,19,.97); }
-.business .logo { display: block; flex: 0 0 220px; width: 220px; height: 56px; background: url('/images/newlogo.png') center / contain no-repeat; font-size: 0; }
+.business .logo { display: block; flex: 0 0 220px; width: 220px; height: 56px; background: image-set(url('/images/newlogo-320.png') 1x, url('/images/newlogo-640.png') 2x) center / contain no-repeat; font-size: 0; }
 .business .logo b, .business .logo i { display: none; }
 .business .business-nav { position: static; inset: auto; display: flex; width: auto; align-items: center; gap: clamp(12px, 2vw, 27px); padding: 0; border: 0; background: transparent; backdrop-filter: none; transform: none; font-size: .82rem; }
 .business .business-nav a { color: #d0d3d1; text-decoration: none; }
@@ -234,10 +235,11 @@ body:has(.business), body:has(.developer), body:has(.connect-page) { overflow-x:
 .case-study, .capability-card, .demo-card, .business .prices article { min-width: 0; overflow: hidden; border: 1px solid var(--studio-line) !important; border-radius: 10px; background: var(--studio-card) !important; }
 .case-study { display: flex; flex-direction: column; }
 .case-study-visual { display: block; height: clamp(210px, 23vw, 300px); overflow: hidden; background: #20262b; }
+.case-study-visual picture { display: block; width: 100%; height: calc(100% - 27px); }
 .case-browser-bar { display: flex; height: 27px; align-items: center; gap: 4px; padding: 0 9px; color: #aab3b9; background: #20262b; font-size: .56rem; }
 .case-browser-bar i { width: 6px; height: 6px; border-radius: 50%; background: #59625e; }
 .case-browser-bar span { margin-left: auto; }
-.case-study-visual img { display: block; width: 100%; height: calc(100% - 27px); object-fit: cover; object-position: center top; }
+.case-study-visual img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .case-study-copy { padding: 22px 24px 24px; }
 .case-study-copy > span { color: var(--studio-muted); font-size: .68rem; }
 .case-study-copy h3 { margin: 7px 0 9px; font-size: 1.8rem; }
@@ -262,6 +264,7 @@ body:has(.business), body:has(.developer), body:has(.connect-page) { overflow-x:
 .business .prices .hot { border-color: var(--studio-lime) !important; }
 .business .demo-library-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
 .business .demo-card-preview { display: block; width: 100%; height: 170px; overflow: hidden; border: 0; background: #20262b; }
+.business .demo-card-preview picture { display: block; width: 100%; height: 100%; }
 .business .demo-card-preview img { width: 100%; height: 100%; object-fit: cover; }
 .business footer { border-color: var(--studio-line); background: var(--studio-bg); color: var(--studio-muted); }
 .business a:focus-visible, .business button:focus-visible { outline: 3px solid var(--studio-lime); outline-offset: 3px; }
@@ -279,7 +282,7 @@ body:has(.business), body:has(.developer), body:has(.connect-page) { overflow-x:
   .business .business-nav a:not(.button) { display: none; }
   .business .business-nav .button { min-height: 42px; padding: 9px 15px; font-size: .75rem; }
   .business .business-hero { display: flex; min-height: 0 !important; flex-direction: column; align-items: stretch; gap: 0; padding: 0 20px 36px; }
-  .business main .business-hero::before { inset: 0 0 auto !important; width: auto !important; height: 205px !important; top: 0 !important; right: 0 !important; bottom: auto !important; left: 0 !important; border-radius: 0 !important; background-image: linear-gradient(0deg,#0b0f13 0%,rgba(11,15,19,.1) 65%),url('/images/studio/business-hero.webp') !important; background-position: center,58% 47% !important; background-size: cover,cover !important; }
+  .business main .business-hero::before { inset: 0 0 auto !important; width: auto !important; height: 205px !important; top: 0 !important; right: 0 !important; bottom: auto !important; left: 0 !important; border-radius: 0 !important; background-image: linear-gradient(0deg,#0b0f13 0%,rgba(11,15,19,.1) 65%),url('/images/studio/business-hero-mobile.webp') !important; background-position: center,58% 47% !important; background-size: cover,cover !important; }
   .business .business-showcase { display: none; }
   .business-hero-copy { padding-top: 226px; }
   .business .business-hero h1 { max-width: 100%; margin: 13px 0; font-size: clamp(2.25rem, 9vw, 3rem); line-height: 1.02; overflow-wrap: break-word; }
