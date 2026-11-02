@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import SEO from "../components/SEO";
 import Reveal from "../components/Reveal";
+import { developerProjects } from "../data/developerProjects";
 import "../developer-hero.css";
 import "../developer-featured-project.css";
 import "../developer-project-link.css";
@@ -19,6 +20,8 @@ const MotionHeading = motion.h1;
 const MotionParagraph = motion.p;
 const MotionDiv = motion.div;
 const MotionSpan = motion.span;
+const [yakaProject, kookeeCartProject, biteRightProject] = developerProjects;
+const AVAILABILITY = "Graduating November 2026 · Open to full-time software, web and IT roles · Kampala, Uganda";
 
 // replace with new photo when the Developer hero image changes.
 const DEVELOPER_HERO_IMAGE = {
@@ -40,6 +43,7 @@ const secondaryProjects = [
     imageUrl: "jopeempharmacy.com",
     liveUrl: "https://jopeempharmacy.com",
     codeUrl: null,
+    result: "Live on its own domain, jopeempharmacy.com.",
   },
   {
     name: "Levinah Salons",
@@ -51,6 +55,7 @@ const secondaryProjects = [
     imageUrl: "levinahsalons.com",
     liveUrl: "https://www.levinahsalons.com",
     codeUrl: null,
+    result: "",
   },
   {
     name: "Stuwies Salon",
@@ -63,24 +68,29 @@ const secondaryProjects = [
     imageUrl: "",
     liveUrl: "https://stuwies-salon.vercel.app",
     codeUrl: null,
+    result: "",
   },
 ];
 
 function BrowserPreview({ image = null, title, address }) {
   if (!image) return (
     <figure className="developer-browser-preview developer-preview-placeholder" aria-label={`${title} screenshot unavailable`}>
-      <div className="developer-browser-bar" aria-hidden="true"><span className="developer-browser-dots"><i /><i /><i /></span><span className="developer-browser-address">{title}</span></div>
+      <div className="developer-browser-bar" aria-hidden="true"><span className="developer-browser-dots"><i /><i /><i /></span><span className="developer-browser-address">{address || title}</span></div>
       <div className="developer-preview-empty"><span>Live preview</span><strong>Screenshot unavailable</strong><small>Visit the project to explore the interface.</small></div>
     </figure>
   );
-  const responsiveImage = image.includes("biteright")
+  const responsiveImage = image.includes("kookeecart")
+    ? "/images/kookee-cart-preview-640.webp 640w, /images/kookee-cart-preview-960.webp 960w"
+    : image.includes("biteright")
     ? "/images/biteright-website-preview-640.webp 640w, /images/biteright-website-preview-960.webp 960w"
     : image.includes("jopeem")
       ? "/images/jopeem-website-preview-640.webp 640w, /images/jopeem-website-preview-960.webp 960w"
       : image.includes("levinah")
         ? "/images/levinah-website-preview-640.webp 640w, /images/levinah-website-preview-960.webp 960w"
         : undefined;
-  const optimizedImage = image.replace("-preview.png", "-preview-960.webp");
+  const optimizedImage = image.includes("kookeecart")
+    ? "/images/kookee-cart-preview-960.webp"
+    : image.replace("-preview.png", "-preview-960.webp");
   return (
     <figure className="developer-browser-preview" aria-label={`${title} website preview`}>
       <div className="developer-browser-bar" aria-hidden="true">
@@ -90,6 +100,11 @@ function BrowserPreview({ image = null, title, address }) {
       <img src={responsiveImage ? optimizedImage : image} srcSet={responsiveImage} sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 46vw, 560px" alt={`${title} website screenshot`} loading="lazy" decoding="async" width="1200" height="800" />
     </figure>
   );
+}
+
+function ProjectResult({ result }) {
+  if (!result) return null;
+  return <p className="project-result"><span>RESULT</span><span>{result}</span></p>;
 }
 
 function ProjectDetails({ title, children }) {
@@ -151,16 +166,39 @@ export default function Developer() {
   const [activeSection, setActiveSection] = useState("");
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [emailCopyMessage, setEmailCopyMessage] = useState("");
   const headerRef = useRef(null);
   const mobileNavRef = useRef(null);
   const mobileFirstLinkRef = useRef(null);
   const menuButtonRef = useRef(null);
+  const emailCopyInputRef = useRef(null);
   const wasMenuOpen = useRef(false);
-  const liveSiteCount = [
-    { liveUrl: "https://kookee-cart.vercel.app" },
-    { liveUrl: "https://biteright-restuarant.vercel.app/" },
-    ...secondaryProjects,
-  ].filter((project) => project.liveUrl && project.status !== "WORK IN PROGRESS").length;
+  const liveSiteCount = [...developerProjects, ...secondaryProjects]
+    .filter((project) => project.liveUrl && project.status !== "WORK IN PROGRESS").length;
+
+  const copyEmail = async () => {
+    const input = emailCopyInputRef.current;
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText("kmantalgosolo@gmail.com");
+      } else {
+        input?.focus();
+        input?.select();
+        input?.setSelectionRange(0, input.value.length);
+        if (!document.execCommand("copy")) return;
+      }
+      setEmailCopyMessage("Copied");
+    } catch {
+      input?.focus();
+      input?.select();
+      input?.setSelectionRange(0, input.value.length);
+      try {
+        if (document.execCommand("copy")) setEmailCopyMessage("Copied");
+      } catch {
+        setEmailCopyMessage("");
+      }
+    }
+  };
 
   useEffect(() => {
     const updateScroll = () => {
@@ -322,65 +360,47 @@ export default function Developer() {
           <MotionDiv className="developer-fact-strip" variants={reduceMotion ? heroStatic : heroEntrance}>
             <span>Final-year BSc IT · KIU</span><span>React · Node.js · IoT</span><span>{liveSiteCount} live client sites</span>
           </MotionDiv>
+          <MotionDiv className="developer-availability-pill" variants={reduceMotion ? heroStatic : heroEntrance}>{AVAILABILITY}</MotionDiv>
           </div>
         </MotionSection>
         <section id="projects" className="dev-projects">
           <small>SELECTED ENGINEERING WORK</small>
           <h2>Projects I've built and contributed to.</h2>
-          <Reveal as="article" id="yaka-system" delay={0.04} className="featured-engineering-project developer-project-card" onPointerMove={trackCardGlow} onPointerLeave={clearCardGlow}>
-            <b>01</b>
+          <Reveal as="article" id={yakaProject.id} delay={0.04} className="featured-engineering-project developer-project-card" onPointerMove={trackCardGlow} onPointerLeave={clearCardGlow}>
+            <b>{yakaProject.number}</b>
             <div className="yaka-architecture" role="img" aria-label="USSD connects through Africa's Talking to the Node.js backend, which uses SQLite. The ESP32 polls the backend over HTTP and receives responses.">
               <div className="yaka-flow-row yaka-flow-services"><span>USSD</span><i aria-hidden="true" /><span>Africa's Talking</span><i aria-hidden="true" /><span>Node.js backend</span><i aria-hidden="true" /><span>SQLite</span></div>
               <div className="yaka-flow-row yaka-flow-device"><span>ESP32</span><i aria-hidden="true"><b>HTTP polling</b></i><span>Node.js backend</span></div>
             </div>
             <div className="featured-project-body">
               <div className="featured-project-meta">
-                <span>KIU FINAL-YEAR PROJECT</span>
-                <span>5-PERSON TEAM</span>
+                {yakaProject.meta.map((item) => <span key={item}>{item}</span>)}
               </div>
-              <h3>Automated Yaka Token Entry System</h3>
-              <div className="featured-project-type">
-                IoT, backend and API integration
-              </div>
-              <p className="featured-project-summary">
-                An IoT-based system designed to automate prepaid electricity
-                token entry by connecting a Node.js backend, USSD workflow and
-                ESP32 hardware.
-              </p>
-              <ProjectDetails title="Automated Yaka Token Entry System details">
+              <h3>{yakaProject.name}</h3>
+              <div className="featured-project-type">{yakaProject.type}</div>
+              <p className="featured-project-summary">{yakaProject.summary}</p>
+              <ProjectResult result={yakaProject.result} />
+              <ProjectDetails title={`${yakaProject.name} details`}>
               <div className="featured-project-breakdown">
                 <section className="featured-project-detail">
                   <h4>MY ROLE</h4>
-                  <p>
-                    System architecture, ESP32 and firmware integration, Node.js
-                    backend development, database/API integration, USSD
-                    integration and connecting the hardware-software workflow.
-                  </p>
+                  <p>{yakaProject.role}</p>
                 </section>
                 <section className="featured-project-detail">
                   <h4>STACK</h4>
                   <ul className="featured-project-stack">
-                    <li>ESP32</li>
-                    <li>Node.js</li>
-                    <li>SQLite</li>
-                    <li>REST API</li>
-                    <li>Africa's Talking</li>
-                    <li>HTTP</li>
+                    {yakaProject.stack.map((item) => <li key={item}>{item}</li>)}
                   </ul>
                 </section>
                 <section className="featured-project-detail">
                   <h4>ENGINEERING CHALLENGE</h4>
-                  <p>
-                    Connecting a physical device with backend services and a
-                    USSD-based workflow while keeping each component
-                    synchronized through HTTP polling and shared data.
-                  </p>
+                  <p>{yakaProject.challenge}</p>
                 </section>
               </div>
               </ProjectDetails>
               <a
                 className="featured-project-link"
-                href="https://github.com/Solomantalgo/ussd-electricity"
+                href={yakaProject.codeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View code for Automated Yaka Token Entry System (opens in new tab)"
@@ -389,51 +409,38 @@ export default function Developer() {
               </a>
             </div>
           </Reveal>
-          <Reveal as="article" delay={0.08} id="kookee-cart" className="compact-engineering-project developer-project-card" onPointerMove={trackCardGlow} onPointerLeave={clearCardGlow}>
-            <b>02</b>
+          <Reveal as="article" delay={0.08} id={kookeeCartProject.id} className="compact-engineering-project developer-project-card" onPointerMove={trackCardGlow} onPointerLeave={clearCardGlow}>
+            <b>{kookeeCartProject.number}</b>
             <div className="compact-project-body">
-              <div className="compact-project-meta">
-                PROFESSIONAL PROJECT: KOOKEE ENTERPRISES
-              </div>
-              <h3>Kookee Cart</h3>
-              <BrowserPreview image={null} title="Kookee Cart" address="" />
-              <p className="compact-project-summary">
-                React ecommerce platform built and deployed for Kookee
-                Enterprises and integrated with the company's existing WordPress
-                website.
-              </p>
-              <ProjectDetails title="Kookee Cart details">
+              <div className="compact-project-meta">{kookeeCartProject.meta}</div>
+              <BrowserPreview image={kookeeCartProject.image} title={kookeeCartProject.name} address={kookeeCartProject.imageUrl} />
+              <h3>{kookeeCartProject.name}</h3>
+              <p className="compact-project-summary">{kookeeCartProject.summary}</p>
+              <ProjectResult result={kookeeCartProject.result} />
+              <ProjectDetails title={`${kookeeCartProject.name} details`}>
               <div className="compact-project-details">
                 <div className="compact-project-detail">
                   <h4>MY ROLE</h4>
-                  <p>
-                    As the sole developer, I handled application development,
-                    business-requirement implementation, website integration,
-                    deployment, maintenance and iteration.
-                  </p>
+                  <p>{kookeeCartProject.role}</p>
                 </div>
                 <div className="compact-project-detail">
                   <h4>STACK</h4>
                   <ul className="compact-project-stack">
-                    <li>React</li>
-                    <li>JavaScript</li>
-                    <li>Vite</li>
-                    <li>Git/GitHub</li>
-                    <li>Vercel</li>
+                    {kookeeCartProject.stack.map((item) => <li key={item}>{item}</li>)}
                   </ul>
                 </div>
               </div>
               </ProjectDetails>
               <div className="compact-project-actions">
                 <a
-                  href="https://kookee-cart.vercel.app"
+                  href={kookeeCartProject.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Live Site
                 </a>
                 <a
-                  href="https://github.com/Solomantalgo/kookee-cart"
+                  href={kookeeCartProject.codeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="View code for Kookee Cart (opens in new tab)"
@@ -443,49 +450,34 @@ export default function Developer() {
               </div>
             </div>
           </Reveal>
-          <Reveal as="article" delay={0.12} id="biteright-ordering" className="compact-engineering-project developer-project-card" onPointerMove={trackCardGlow} onPointerLeave={clearCardGlow}>
-            <b>03</b>
+          <Reveal as="article" delay={0.12} id={biteRightProject.id} className="compact-engineering-project developer-project-card" onPointerMove={trackCardGlow} onPointerLeave={clearCardGlow}>
+            <b>{biteRightProject.number}</b>
             <div className="compact-project-body">
-              <div className="compact-project-meta">
-                CLIENT PROJECT: RESTAURANT ORDERING
-              </div>
-              <BrowserPreview image="/images/biteright-website-preview.png" title="BiteRight Ordering Experience" address="biteright-restuarant.vercel.app" />
-              <h3>BiteRight Ordering Experience</h3>
-              <p className="compact-project-summary">
-                A responsive ordering experience that lets customers browse the
-                restaurant menu, select items and quantities, and prepare a
-                structured order for WhatsApp handoff.
-              </p>
-              <ProjectDetails title="BiteRight project details">
+              <div className="compact-project-meta">{biteRightProject.meta}</div>
+              <BrowserPreview image={biteRightProject.image} title={biteRightProject.name} address={biteRightProject.imageUrl} />
+              <h3>{biteRightProject.name}</h3>
+              <p className="compact-project-summary">{biteRightProject.summary}</p>
+              <ProjectResult result={biteRightProject.result} />
+              <ProjectDetails title={`${biteRightProject.name} details`}>
               <div className="compact-project-details">
                 <div className="compact-project-detail">
                   <h4>MY ROLE</h4>
-                  <p>
-                    Built the customer ordering flow, menu interactions,
-                    quantity handling, location and order workflow, analytics
-                    integration, business-data workflow and deployment.
-                  </p>
+                  <p>{biteRightProject.role}</p>
                 </div>
                 <div className="compact-project-detail">
                   <h4>STACK</h4>
                   <ul className="compact-project-stack">
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>Apps Script</li>
-                    <li>GA4</li>
-                    <li>Vercel</li>
+                    {biteRightProject.stack.map((item) => <li key={item}>{item}</li>)}
                   </ul>
                 </div>
               </div>
               </ProjectDetails>
               <div className="compact-project-workflow">
-                <b>WORKFLOW</b>Customers select menu items and quantities, enter
-                their details, then send the order through WhatsApp.
+                <b>WORKFLOW</b>{biteRightProject.workflow}
               </div>
               <div className="compact-project-actions">
                 <a
-                  href="https://biteright-restuarant.vercel.app/"
+                  href={biteRightProject.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -532,6 +524,7 @@ export default function Developer() {
                     {project.status && <span className="project-status">{project.status}</span>}
                     <h4>{project.name}</h4>
                     <p>{project.description}</p>
+                    <ProjectResult result={project.result} />
                     {project.stack.length > 0 && (
                       <ul
                         className="secondary-project-stack"
@@ -652,6 +645,20 @@ export default function Developer() {
                 </p>
               </div>
             </Reveal>
+            <Reveal as="article" delay={0.25} className="developer-timeline-item">
+              <span className="developer-timeline-dot" aria-hidden="true" />
+              <div>
+                <h3>Founder, Solomantalgo Web Design (since early 2025)</h3>
+                <p>Built a freelance web business from scratch. Research businesses without a working site, scope and price solutions, run the client conversation, then build, deploy and support the result.</p>
+              </div>
+            </Reveal>
+            <Reveal as="article" delay={0.35} className="developer-timeline-item">
+              <span className="developer-timeline-dot" aria-hidden="true" />
+              <div>
+                <h3>Sales &amp; merchandising, Kookee Enterprises</h3>
+                <p>Worked in sales and merchandising alongside my studies, and built the company's ecommerce platform.</p>
+              </div>
+            </Reveal>
           </div>
         </section>
         <Reveal as="section" className="developer-opportunity-cta">
@@ -667,6 +674,12 @@ export default function Developer() {
           >
             Discuss an Opportunity
           </a>
+          <p className="developer-availability-line">{AVAILABILITY}</p>
+          <div className="developer-email-copy">
+            <input id="developer-email-address" aria-label="Email address" ref={emailCopyInputRef} type="text" value="kmantalgosolo@gmail.com" readOnly onFocus={(event) => event.currentTarget.select()} />
+            <button type="button" onClick={copyEmail}>Copy</button>
+            <span className="developer-email-copy-status" aria-live="polite">{emailCopyMessage}</span>
+          </div>
           <div className="developer-social-actions" role="group" aria-label="More ways to connect">
             <a href="/Solomon-Kisense-CV.pdf" download aria-label="Download CV">
               <ArrowDownToLine size={18} aria-hidden="true" /><span>Download CV</span>
