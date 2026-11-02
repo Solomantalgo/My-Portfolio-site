@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
-import { ArrowDownToLine, ArrowRight, Menu, X } from "lucide-react";
+import { ArrowDownToLine, ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
 import Reveal from "../components/Reveal";
@@ -26,6 +26,8 @@ const secondaryProjects = [
     description:
       "Responsive pharmacy experience for browsing product categories, understanding healthcare services, finding the appropriate branch and contacting the team.",
     stack: ["HTML", "CSS", "JavaScript"],
+    image: "/images/jopeem-website-preview.png",
+    imageUrl: "jopeempharmacy.com",
     liveUrl: "https://jopeempharmacy.com",
     codeUrl: null,
   },
@@ -35,6 +37,8 @@ const secondaryProjects = [
     description:
       "Mobile-friendly salon presence combining services, prices, previous work, business information and WhatsApp booking.",
     stack: ["HTML", "CSS", "JavaScript"],
+    image: "/images/levinah-website-preview.png",
+    imageUrl: "levinahsalons.com",
     liveUrl: "https://www.levinahsalons.com",
     codeUrl: null,
   },
@@ -44,10 +48,39 @@ const secondaryProjects = [
     description:
       "An in-progress salon and spa product presenting services and supporting structured appointment requests and customer contact.",
     stack: ["HTML", "CSS", "JavaScript"],
+    image: null,
+    status: "WORK IN PROGRESS",
+    imageUrl: "",
     liveUrl: "https://stuwies-salon.vercel.app",
     codeUrl: null,
   },
 ];
+
+function BrowserPreview({ image = null, title, address }) {
+  if (!image) return null;
+  return (
+    <figure className="developer-browser-preview" aria-label={`${title} website preview`}>
+      <div className="developer-browser-bar" aria-hidden="true">
+        <span className="developer-browser-dots"><i /><i /><i /></span>
+        <span className="developer-browser-address">{address}</span>
+      </div>
+      <img src={image} alt={`${title} website screenshot`} loading="lazy" decoding="async" width="1200" height="800" />
+    </figure>
+  );
+}
+
+function trackCardGlow(event) {
+  if (!window.matchMedia("(hover: hover)").matches) return;
+  const bounds = event.currentTarget.getBoundingClientRect();
+  event.currentTarget.style.setProperty("--mx", `${event.clientX - bounds.left}px`);
+  event.currentTarget.style.setProperty("--my", `${event.clientY - bounds.top}px`);
+}
+
+function clearCardGlow(event) {
+  event.currentTarget.style.removeProperty("--mx");
+  event.currentTarget.style.removeProperty("--my");
+}
+
 export default function Developer() {
   const [showMoreProjects, setShowMoreProjects] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -216,7 +249,7 @@ export default function Developer() {
         <section id="projects" className="dev-projects">
           <small>SELECTED ENGINEERING WORK</small>
           <h2>Projects I've built and contributed to.</h2>
-          <article className="featured-engineering-project">
+          <Reveal as="article" delay={0.04} className="featured-engineering-project developer-project-card" onPointerMove={trackCardGlow} onPointerLeave={clearCardGlow}>
             <b>01</b>
             <div className="featured-project-body">
               <div className="featured-project-meta">
@@ -232,6 +265,14 @@ export default function Developer() {
                 token entry by connecting a Node.js backend, USSD workflow and
                 ESP32 hardware.
               </p>
+              <div className="yaka-architecture" role="img" aria-label="USSD connects through Africa's Talking to the Node.js backend, which uses SQLite. The ESP32 polls the backend over HTTP and receives responses.">
+                <div className="yaka-flow-row yaka-flow-services">
+                  <span>USSD</span><i aria-hidden="true" /><span>Africa’s Talking</span><i aria-hidden="true" /><span>Node.js backend</span><i aria-hidden="true" /><span>SQLite</span>
+                </div>
+                <div className="yaka-flow-row yaka-flow-device">
+                  <span>ESP32</span><i aria-hidden="true"><b>HTTP polling</b></i><span>Node.js backend</span>
+                </div>
+              </div>
               <div className="featured-project-breakdown">
                 <section className="featured-project-detail">
                   <h4>MY ROLE</h4>
@@ -263,21 +304,23 @@ export default function Developer() {
               </div>
               <a
                 className="featured-project-link"
-                href="https://github.com/Solomantalgo/ussd-electricity.git"
+                href="https://github.com/Solomantalgo/ussd-electricity"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="View code for Automated Yaka Token Entry System (opens in new tab)"
               >
                 View Code ↗
               </a>
             </div>
-          </article>
-          <article className="compact-engineering-project">
+          </Reveal>
+          <Reveal as="article" delay={0.08} id="kookee-cart" className="compact-engineering-project developer-project-card" onPointerMove={trackCardGlow} onPointerLeave={clearCardGlow}>
             <b>02</b>
             <div className="compact-project-body">
               <div className="compact-project-meta">
                 PROFESSIONAL PROJECT: KOOKEE ENTERPRISES
               </div>
               <h3>Kookee Cart</h3>
+              <BrowserPreview image={null} title="Kookee Cart" address="" />
               <p className="compact-project-summary">
                 React ecommerce platform built and deployed for Kookee
                 Enterprises and integrated with the company's existing WordPress
@@ -312,21 +355,23 @@ export default function Developer() {
                   Live Site ↗
                 </a>
                 <a
-                  href="https://github.com/Solomantalgo/kookee-cart.git"
+                  href="https://github.com/Solomantalgo/kookee-cart"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="View code for Kookee Cart (opens in new tab)"
                 >
                   View Code ↗
                 </a>
               </div>
             </div>
-          </article>
-          <article className="compact-engineering-project">
+          </Reveal>
+          <Reveal as="article" delay={0.12} id="biteright-ordering" className="compact-engineering-project developer-project-card" onPointerMove={trackCardGlow} onPointerLeave={clearCardGlow}>
             <b>03</b>
             <div className="compact-project-body">
               <div className="compact-project-meta">
                 CLIENT PROJECT: RESTAURANT ORDERING
               </div>
+              <BrowserPreview image="/images/biteright-website-preview.png" title="BiteRight Ordering Experience" address="biteright-restuarant.vercel.app" />
               <h3>BiteRight Ordering Experience</h3>
               <p className="compact-project-summary">
                 A responsive ordering experience that lets customers browse the
@@ -368,7 +413,7 @@ export default function Developer() {
                 </a>
               </div>
             </div>
-          </article>
+          </Reveal>
           <div className="more-projects-toggle-wrap">
             <button
               type="button"
@@ -377,11 +422,13 @@ export default function Developer() {
               aria-controls="more-shipped-work"
               onClick={() => setShowMoreProjects((open) => !open)}
             >
-              {showMoreProjects ? "Show Less ↑" : "View More Projects ↓"}
+              <span>{showMoreProjects ? "Show Less" : "View More Projects"}</span>
+              <ChevronDown className={showMoreProjects ? "is-open" : ""} size={17} aria-hidden="true" />
             </button>
           </div>
+          <AnimatePresence initial={false}>
           {showMoreProjects && (
-            <div className="more-projects-panel" id="more-shipped-work">
+            <motion.div className="more-projects-panel" id="more-shipped-work" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ height: { duration: 0.35, ease: [0.22, 1, 0.36, 1] }, opacity: { duration: 0.22 } }}>
               <div className="more-projects-intro">
                 <small>MORE SHIPPED WORK</small>
                 <h3>Other products and client work.</h3>
@@ -391,12 +438,18 @@ export default function Developer() {
                 </p>
               </div>
               <div className="secondary-project-grid">
-                {secondaryProjects.map((project) => (
-                  <article
+                {secondaryProjects.map((project, index) => (
+                  <Reveal
+                    as="article"
+                    delay={index * 0.07}
                     className="secondary-project-card"
                     key={project.name}
+                    onPointerMove={trackCardGlow}
+                    onPointerLeave={clearCardGlow}
                   >
+                    <BrowserPreview image={project.image} title={project.name} address={project.imageUrl} />
                     <small>{project.type}</small>
+                    {project.status && <span className="project-status">{project.status}</span>}
                     <h4>{project.name}</h4>
                     <p>{project.description}</p>
                     {project.stack.length > 0 && (
@@ -427,11 +480,12 @@ export default function Developer() {
                         </a>
                       )}
                     </div>
-                  </article>
+                  </Reveal>
                 ))}
               </div>
-            </div>
+            </motion.div>
           )}
+          </AnimatePresence>
         </section>
         <section id="skills">
           <small>TECHNICAL SUMMARY</small>

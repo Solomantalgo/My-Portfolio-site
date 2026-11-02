@@ -27,7 +27,7 @@
   margin-top: 35px;
   padding-top: 29px;
   border-top: 1px solid rgba(100, 169, 255, .12);
-  animation: moreProjectsReveal .22s ease-out both;
+  overflow: hidden;
 }
 
 .more-projects-intro {
@@ -129,11 +129,6 @@
   color: var(--blue);
 }
 
-@keyframes moreProjectsReveal {
-  from { opacity: 0; transform: translateY(7px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 @media (max-width: 900px) {
   .secondary-project-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -166,10 +161,4 @@
   .developer .dev-projects .secondary-project-card {
     padding: 17px;
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .more-projects-panel {
-    animation: none;
-  }
-}
+}\n
