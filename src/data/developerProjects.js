@@ -21,7 +21,7 @@ export const developerProjects = [
     result: "Delivered live and handed over with documentation.",
     role: "As the sole developer, I handled application development, business-requirement implementation, website integration, deployment and handover documentation.",
     stack: ["React", "JavaScript", "Vite", "Git/GitHub", "Vercel"],
-    image: null,
+    image: "/images/kookeecart.jpg",
     imageUrl: "kookee-cart.vercel.app",
     liveUrl: "https://kookee-cart.vercel.app",
     codeUrl: "https://github.com/Solomantalgo/kookee-cart",

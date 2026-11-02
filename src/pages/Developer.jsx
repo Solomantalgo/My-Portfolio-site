@@ -79,7 +79,7 @@ function BrowserPreview({ image = null, title, address }) {
       <div className="developer-preview-empty"><span>Live preview</span><strong>Screenshot unavailable</strong><small>Visit the project to explore the interface.</small></div>
     </figure>
   );
-  const responsiveImage = image.includes("kookeecart")
+  const responsiveImage = image.includes("kookee-cart-preview")
     ? "/images/kookee-cart-preview-640.webp 640w, /images/kookee-cart-preview-960.webp 960w"
     : image.includes("biteright")
     ? "/images/biteright-website-preview-640.webp 640w, /images/biteright-website-preview-960.webp 960w"
@@ -88,7 +88,7 @@ function BrowserPreview({ image = null, title, address }) {
       : image.includes("levinah")
         ? "/images/levinah-website-preview-640.webp 640w, /images/levinah-website-preview-960.webp 960w"
         : undefined;
-  const optimizedImage = image.includes("kookeecart")
+  const optimizedImage = image.includes("kookee-cart-preview")
     ? "/images/kookee-cart-preview-960.webp"
     : image.replace("-preview.png", "-preview-960.webp");
   return (
