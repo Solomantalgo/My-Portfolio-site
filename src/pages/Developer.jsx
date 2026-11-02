@@ -676,7 +676,8 @@ export default function Developer() {
           </a>
           <p className="developer-availability-line">{AVAILABILITY}</p>
           <div className="developer-email-copy">
-            <input id="developer-email-address" aria-label="Email address" ref={emailCopyInputRef} type="text" value="kmantalgosolo@gmail.com" readOnly onFocus={(event) => event.currentTarget.select()} />
+            <a className="developer-email-address" href="mailto:kmantalgosolo@gmail.com">kmantalgosolo@gmail.com</a>
+            <input className="developer-email-copy-source" aria-hidden="true" tabIndex={-1} ref={emailCopyInputRef} type="text" value="kmantalgosolo@gmail.com" readOnly />
             <button type="button" onClick={copyEmail}>Copy</button>
             <span className="developer-email-copy-status" aria-live="polite">{emailCopyMessage}</span>
           </div>

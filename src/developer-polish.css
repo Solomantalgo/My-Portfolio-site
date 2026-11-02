@@ -155,7 +155,9 @@
 .developer .developer-opportunity-cta h2 { display: flex; max-width: 780px; align-items: center; justify-content: center; gap: 18px; margin: 12px auto 20px; color: var(--dev-text); font: 500 clamp(1.85rem, 3.5vw, 3rem)/1.1 var(--studio-serif, Georgia, serif); }
 .developer .developer-availability-line { max-width: 780px; margin: 17px auto 0; color: var(--dev-muted); font: 500 .82rem/1.5 Inter, sans-serif; overflow-wrap: anywhere; }
 .developer .developer-email-copy { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 10px; margin: 14px auto 0; }
-.developer .developer-email-copy input { width: min(100%, 270px); min-width: 0; min-height: 44px; padding: 0 12px; border: 1px solid var(--dev-line); border-radius: 8px; color: var(--dev-text); background: #14191d; font: 500 .88rem/1 Inter, sans-serif; text-align: center; }
+.developer .developer-email-address { display: inline-flex; width: min(100%, 270px); min-width: 0; min-height: 44px; align-items: center; justify-content: center; padding: 0 12px; border: 1px solid var(--dev-line); border-radius: 8px; color: var(--dev-text); background: #14191d; font: 500 .88rem/1 Inter, sans-serif; text-align: center; text-decoration: none; overflow-wrap: anywhere; }
+.developer .developer-email-address:focus-visible { outline: 2px solid var(--dev-blue-light); outline-offset: 3px; }
+.developer .developer-email-copy-source { position: absolute; width: 1px; height: 1px; padding: 0; border: 0; clip-path: inset(50%); white-space: nowrap; overflow: hidden; }
 .developer .developer-email-copy button { min-width: 68px; min-height: 44px; padding: 0 14px; border: 1px solid #83adff60; border-radius: 8px; color: var(--dev-blue-light); background: #14191d; font: 650 .82rem/1 Inter, sans-serif; cursor: pointer; }
 .developer .developer-email-copy-status { min-width: 4.5em; color: var(--dev-blue-light); font: 600 .8rem/1.4 Inter, sans-serif; text-align: left; }
 .developer .developer-cta-avatar { width: 92px; height: 92px; flex: 0 0 auto; border: 2px solid #83adff; border-radius: 50%; object-fit: cover; object-position: center 36%; box-shadow: 0 0 0 6px #3278f61a; }
@@ -252,7 +254,7 @@
   .developer .developer-timeline-dot { left: -26px; }
   .developer .developer-opportunity-cta h2 { flex-direction: column; gap: 13px; }
   .developer .developer-email-copy { display: grid; grid-template-columns: minmax(0, 1fr) auto; width: 100%; }
-  .developer .developer-email-copy input { width: 100%; }
+  .developer .developer-email-address { width: 100%; }
   .developer .developer-email-copy-status { grid-column: 1 / -1; min-height: 1.2em; text-align: center; }
   .developer .developer-cta-avatar { width: 68px; height: 68px; }
   .developer .developer-social-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
