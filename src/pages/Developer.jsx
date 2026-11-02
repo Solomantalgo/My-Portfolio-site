@@ -1,7 +1,9 @@
-import { useState } from "react";
-import { ArrowDownToLine, ArrowRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, MotionConfig, motion } from "framer-motion";
+import { ArrowDownToLine, ArrowRight, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
+import Reveal from "../components/Reveal";
 import "../developer-hero.css";
 import "../developer-featured-project.css";
 import "../developer-project-link.css";
@@ -9,6 +11,13 @@ import "../developer-compact-project.css";
 import "../developer-biteright-project.css";
 import "../developer-more-projects.css";
 import "../developer-polish.css";
+
+const MotionNav = motion.nav;
+const MotionSection = motion.section;
+const MotionSmall = motion.small;
+const MotionHeading = motion.h1;
+const MotionParagraph = motion.p;
+const MotionDiv = motion.div;
 
 const secondaryProjects = [
   {
@@ -41,40 +50,169 @@ const secondaryProjects = [
 ];
 export default function Developer() {
   const [showMoreProjects, setShowMoreProjects] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const headerRef = useRef(null);
+  const mobileNavRef = useRef(null);
+  const menuButtonRef = useRef(null);
+  const wasMenuOpen = useRef(false);
+
+  useEffect(() => {
+    const updateScroll = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(scrollable > 0 ? window.scrollY / scrollable : 0);
+      setIsScrolled(window.scrollY > 8);
+    };
+    updateScroll();
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    window.addEventListener("resize", updateScroll);
+    return () => {
+      window.removeEventListener("scroll", updateScroll);
+      window.removeEventListener("resize", updateScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const sections = ["projects", "skills", "background"]
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActiveSection(visible.target.id);
+      },
+      { rootMargin: "-24% 0px -64% 0px", threshold: [0, 0.15, 0.4, 0.7] },
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      wasMenuOpen.current = true;
+      mobileNavRef.current?.querySelector("a")?.focus({ preventScroll: true });
+    } else if (wasMenuOpen.current) {
+      wasMenuOpen.current = false;
+      menuButtonRef.current?.focus({ preventScroll: true });
+    }
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return undefined;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setMobileMenuOpen(false);
+    };
+    const closeOutside = (event) => {
+      if (!headerRef.current?.contains(event.target)) setMobileMenuOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    document.addEventListener("pointerdown", closeOutside);
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("pointerdown", closeOutside);
+    };
+  }, [mobileMenuOpen]);
+
+  const sectionLink = (id, label, className = "") => (
+    <a
+      className={className}
+      href={`#${id}`}
+      aria-current={activeSection === id ? "location" : undefined}
+      onClick={() => setMobileMenuOpen(false)}
+    >
+      {label}
+    </a>
+  );
+
   return (
+    <MotionConfig reducedMotion="user">
     <div className="developer">
       <SEO
         title="Solomon Kisense | Web & Systems Developer"
         description="Developer portfolio of Solomon Kisense: React, JavaScript, practical web products and business systems."
       />
-      <header>
+      <header ref={headerRef} className={`dev-header${isScrolled ? " is-scrolled" : ""}`}>
         <Link className="logo" to="/">
           <img src="/images/newlogo.png" srcSet="/images/newlogo-320.png 320w, /images/newlogo-640.png 640w" sizes="(max-width: 700px) 150px, 220px" alt="Solomantalgo" width="2172" height="724" decoding="async" />
         </Link>
-        <nav>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#background">Background</a>
+        <nav className="dev-desktop-nav" aria-label="Developer page navigation">
+          {sectionLink("skills", "Skills")}
+          {sectionLink("projects", "Projects")}
+          {sectionLink("background", "Background")}
           <Link to="/business">Business Services</Link>
         </nav>
+        <button
+          ref={menuButtonRef}
+          className="dev-menu-toggle"
+          type="button"
+          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="developer-mobile-menu"
+          onClick={() => setMobileMenuOpen((open) => !open)}
+        >
+          {mobileMenuOpen ? <X size={21} aria-hidden="true" /> : <Menu size={21} aria-hidden="true" />}
+        </button>
+        <span className="dev-scroll-progress" aria-hidden="true">
+          <span style={{ transform: `scaleX(${scrollProgress})` }} />
+        </span>
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <MotionNav
+              id="developer-mobile-menu"
+              ref={mobileNavRef}
+              className="dev-mobile-menu"
+              aria-label="Developer page mobile navigation"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              onKeyDown={(event) => {
+                if (event.key !== "Tab") return;
+                const links = [...event.currentTarget.querySelectorAll("a")];
+                if (event.shiftKey && document.activeElement === links[0]) {
+                  event.preventDefault();
+                  links.at(-1)?.focus();
+                } else if (!event.shiftKey && document.activeElement === links.at(-1)) {
+                  event.preventDefault();
+                  links[0]?.focus();
+                }
+              }}
+            >
+              {sectionLink("skills", "Skills", "dev-menu-link")}
+              {sectionLink("projects", "Projects", "dev-menu-link")}
+              {sectionLink("background", "Background", "dev-menu-link")}
+              <Link className="dev-menu-link" to="/business" onClick={() => setMobileMenuOpen(false)}>Business Services</Link>
+              <a className="dev-menu-link dev-menu-cv" href="/Solomon-Kisense-CV.pdf" download onClick={() => setMobileMenuOpen(false)}>Download CV</a>
+            </MotionNav>
+          )}
+        </AnimatePresence>
       </header>
       <main>
-        <section className="dev-hero">
-          <small>FOR EMPLOYERS &amp; RECRUITERS</small>
-          <h1>I’m Solomon. I build web and systems software.</h1>
-          <p>
+        <MotionSection
+          className="dev-hero"
+          initial="hidden"
+          animate="visible"
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }}
+        >
+          <MotionSmall variants={heroEntrance}>FOR EMPLOYERS &amp; RECRUITERS</MotionSmall>
+          <MotionHeading variants={heroEntrance}>I’m Solomon. I build web and systems software.</MotionHeading>
+          <MotionParagraph variants={heroEntrance}>
             Explore the projects I’ve built and contributed to, my technical
             skills, and my CV.
-          </p>
-          <div className="actions">
+          </MotionParagraph>
+          <MotionDiv className="actions" variants={heroEntrance}>
             <a className="button blue" href="/Solomon-Kisense-CV.pdf" download>
               Download CV <ArrowDownToLine size={17} aria-hidden="true" />
             </a>
             <a className="button outline" href="#projects">
               View projects <ArrowRight size={17} aria-hidden="true" />
             </a>
-          </div>
-        </section>
+          </MotionDiv>
+        </MotionSection>
         <section id="projects" className="dev-projects">
           <small>SELECTED ENGINEERING WORK</small>
           <h2>Projects I've built and contributed to.</h2>
@@ -372,5 +510,11 @@ export default function Developer() {
         <Link to="/business">Business Services</Link>
       </footer>
     </div>
+    </MotionConfig>
   );
 }
+
+const heroEntrance = {
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.38, ease: [0.22, 1, 0.36, 1] } },
+};

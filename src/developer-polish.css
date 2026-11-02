@@ -12,6 +12,160 @@
   background: var(--dev-bg);
 }
 
+.developer > header.dev-header {
+  position: sticky;
+  z-index: 50;
+  top: 0;
+  width: 100%;
+  border-bottom-color: rgba(53, 64, 71, 0.72);
+  background: rgba(11, 15, 19, 0.82);
+  backdrop-filter: blur(14px);
+}
+
+.developer > header.dev-header.is-scrolled {
+  border-bottom-color: rgba(131, 173, 255, 0.25);
+  background: rgba(11, 15, 19, 0.94);
+}
+
+.developer .dev-desktop-nav a {
+  position: relative;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: #c2cbd0;
+}
+
+.developer .dev-desktop-nav a[aria-current="location"] {
+  color: var(--dev-blue-light);
+}
+
+.developer .dev-menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid var(--dev-line);
+  border-radius: 9px;
+  color: var(--dev-text);
+  background: var(--dev-card);
+  cursor: pointer;
+}
+
+.developer .dev-scroll-progress {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.developer .dev-scroll-progress > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--dev-blue);
+  transform-origin: left center;
+}
+
+.developer .dev-mobile-menu {
+  position: absolute;
+  z-index: 51;
+  top: calc(100% + 1px);
+  right: 12px;
+  left: 12px;
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid var(--dev-line);
+  border-radius: 12px;
+  background: rgba(20, 25, 29, 0.98);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.34);
+}
+
+.developer .dev-menu-link {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  padding: 0 13px;
+  border-radius: 7px;
+  color: var(--dev-text);
+  font-size: 0.92rem;
+}
+
+.developer .dev-menu-link[aria-current="location"] {
+  color: var(--dev-blue-light);
+  background: rgba(50, 120, 246, 0.1);
+}
+
+.developer .dev-menu-cv {
+  margin-top: 4px;
+  color: #fff;
+  background: var(--dev-blue);
+}
+
+.developer .dev-hero {
+  min-height: clamp(450px, 43vw, 590px);
+  overflow: hidden;
+}
+
+.developer .dev-hero::before {
+  animation: developer-hero-settle 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: center;
+}
+
+.developer .dev-hero h1 {
+  max-width: 850px;
+  font-size: clamp(3rem, 4.8vw, 4.9rem);
+  line-height: 1.01;
+}
+
+.developer .dev-hero .actions .button {
+  gap: 11px;
+  transition: transform 180ms ease;
+}
+
+.developer .dev-hero .actions .button svg {
+  transition: transform 180ms ease;
+}
+
+.developer .dev-hero .actions .button:first-child svg {
+  transition: transform 180ms ease;
+}
+
+.developer .dev-hero .actions .button:last-child svg {
+  transition: transform 180ms ease;
+}
+
+@keyframes developer-hero-settle {
+  from { transform: scale(1.05); }
+  to { transform: scale(1); }
+}
+
+@media (hover: hover) {
+  .developer .dev-desktop-nav a:hover,
+  .developer .dev-mobile-menu a:hover {
+    color: var(--dev-blue-light);
+  }
+
+  .developer .dev-hero .actions .button:hover {
+    transform: translateY(-2px);
+  }
+
+  .developer .dev-hero .actions .button:first-child:hover svg {
+    transform: translateY(2px);
+  }
+
+  .developer .dev-hero .actions .button:last-child:hover svg {
+    transform: translateX(3px);
+  }
+}
+
+.developer .dev-hero .actions .button:active {
+  transform: translateY(1px);
+}
+
 .developer #projects,
 .developer #skills,
 .developer #background {
@@ -42,5 +196,45 @@
     animation-iteration-count: 1;
     scroll-behavior: auto;
     transition-duration: 0.01ms;
+  }
+
+  .developer .dev-hero::before {
+    animation: none;
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .developer > header.dev-header {
+    height: 64px;
+    padding-inline: 18px;
+  }
+
+  .developer .dev-desktop-nav {
+    display: none;
+  }
+
+  .developer .dev-menu-toggle {
+    display: grid;
+  }
+}
+
+@media (max-width: 700px) {
+  .developer .dev-hero {
+    min-height: 0;
+    padding: 38px 20px 220px;
+  }
+
+  .developer .dev-hero::before {
+    inset: auto 0 0;
+    height: 205px;
+    background-image: linear-gradient(180deg, #0b0f13 0%, rgba(11, 15, 19, 0.14) 44%, #0b0f13 100%), url('/images/studio/developer-hero-mobile.webp');
+    background-position: center, 66% 50%;
+    background-size: cover, cover;
+  }
+
+  .developer .dev-hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.1rem, 8.5vw, 2.9rem);
   }
 }
